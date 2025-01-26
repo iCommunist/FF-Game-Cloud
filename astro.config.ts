@@ -14,7 +14,7 @@ import type { AstroIntegration } from 'astro';
 import astrowind from './vendor/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
-
+import vue from '@astrojs/vue';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const hasExternalScripts = false;
@@ -69,6 +69,7 @@ export default defineConfig({
     astrowind({
       config: './src/config.yaml',
     }),
+    vue()
   ],
 
   image: {

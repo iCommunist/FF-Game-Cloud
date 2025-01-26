@@ -16,7 +16,7 @@ import BasicScripts from '~/components/common/BasicScripts.astro';
 import { ClientRouter } from 'astro:transitions';
 
 import type { MetaData as MetaDataType } from '~/types';
-
+import 'element-plus/dist/index.css'; // 全局引入 Element UI 样式
 export interface Props {
   metadata?: MetaDataType;
 }
@@ -26,7 +26,7 @@ const { language, textDirection } = I18N;
 ---
 
 <!doctype html>
-<html lang={language} dir={textDirection} class="2xl:text-[20px]">
+<html lang={language} dir={textDirection} class="2xl:text-[16px]" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl">
   <head>
     <CommonMeta />
     <Favicons />

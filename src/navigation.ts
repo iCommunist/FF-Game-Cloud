@@ -115,53 +115,32 @@ export const headerData = {
       href: '#',
     },
   ],
-  actions: [{ text: '立即登录', href: '', target: '_blank' }],
+  actions: [{ text: '立即登录', href: '#', target: '' }],
 };
 
 export const footerData = {
   links: [
     {
-      title: 'Product',
+      title: '产品',
       links: [
-        { text: 'Features', href: '#' },
-        { text: 'Security', href: '#' },
-        { text: 'Team', href: '#' },
-        { text: 'Enterprise', href: '#' },
-        { text: 'Customer stories', href: '#' },
-        { text: 'Pricing', href: '#' },
-        { text: 'Resources', href: '#' },
+        { text: '游戏库', href: '#' },
+        { text: '定制服务', href: '#' },
+        { text: '服务监控', href: '#' },
       ],
     },
     {
-      title: 'Platform',
+      title: '支持',
       links: [
-        { text: 'Developer API', href: '#' },
-        { text: 'Partners', href: '#' },
-        { text: 'Atom', href: '#' },
-        { text: 'Electron', href: '#' },
-        { text: 'AstroWind Desktop', href: '#' },
+        { text: '文档中心', href: '#' },
+        { text: '变更日志', href: '#' },
+        { text: '提交工单', href: '#' },
       ],
     },
     {
-      title: 'Support',
+      title: '安全',
       links: [
-        { text: 'Docs', href: '#' },
-        { text: 'Community Forum', href: '#' },
-        { text: 'Professional Services', href: '#' },
-        { text: 'Skills', href: '#' },
-        { text: 'Status', href: '#' },
-      ],
-    },
-    {
-      title: 'Company',
-      links: [
-        { text: 'About', href: '#' },
-        { text: 'Blog', href: '#' },
-        { text: 'Careers', href: '#' },
-        { text: 'Press', href: '#' },
-        { text: 'Inclusion', href: '#' },
-        { text: 'Social Impact', href: '#' },
-        { text: 'Shop', href: '#' },
+        { text: '隐私协议', href: '#' },
+        { text: '服务协议', href: '#' },
       ],
     },
   ],
@@ -170,14 +149,11 @@ export const footerData = {
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
   socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
-    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
+    { ariaLabel: 'B1-202357421', icon: 'tabler:brand-x', href: '#' },
+    { ariaLabel: '豫ICP备2023021746号', icon: 'tabler:brand-instagram', href: '#' },
+    { ariaLabel: '公网安备41010702003337号', icon: 'tabler:brand-facebook', href: '#' },
   ],
   footNote: `
-    <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="https://onwidget.com/favicon/favicon-32x32.png" alt="onWidget logo" loading="lazy"></img>
-    Made by <a class="text-blue-600 underline dark:text-muted" href="https://onwidget.com/"> onWidget</a> · All rights reserved.
+    <a>Copyright©2024 河南轻柔水科技有限公司丨飞鱼游戏云丨合作伙伴</a>
   `,
 };

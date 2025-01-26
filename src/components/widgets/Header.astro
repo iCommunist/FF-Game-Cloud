@@ -8,6 +8,8 @@ import Button from '~/components/ui/Button.astro';
 import { getHomePermalink } from '~/utils/permalinks';
 import { trimSlash, getAsset } from '~/utils/permalinks';
 import type { CallToAction } from '~/types';
+// import { defineComponent } from 'vue';
+
 
 interface Link {
   text?: string;
@@ -50,23 +52,24 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 <header
   class:list={[
     { sticky: isSticky, relative: !isSticky, dark: isDark },
-    'top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out',
+    'top-0 z-40 flex-none mx-auto w-full  border-gray-50/0 transition-[opacity] ease-in-out',
   ]}
   {...isSticky ? { 'data-aw-sticky-header': true } : {}}
   {...id ? { id } : {}}
 >
   <div class="absolute inset-0"></div>
   <div
+
     class:list={[
-      'relative text-default py-3 px-3 md:px-6 mx-auto w-full',
+      'relative text-default py-3 px-3 md:px-6 mx-auto w-full','w-[90%]',
       {
         'md:flex md:justify-between': position !== 'center',
       },
       {
-        'md:grid md:grid-cols-3 md:items-center': position === 'center',
+        'md:grid md:grid-cols-2 md:items-center': position === 'center',
       },
       {
-        'max-w-7xl': !isFullWidth,
+        
       },
     ]}
   >
@@ -78,7 +81,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         <ToggleMenu />
       </div>
     </div>
-    <nav
+    <!-- <nav
       class="items-center w-full md:w-auto hidden md:flex md:mx-5 text-default overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:justify-self-center"
       aria-label="Main navigation"
     >
@@ -128,7 +131,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
           ))
         }
       </ul>
-    </nav>
+    </nav> -->
     <div
       class:list={[
         { 'ml-auto rtl:ml-0 rtl:mr-auto': position === 'left' },
@@ -136,7 +139,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       ]}
     >
       <div class="items-center flex justify-between w-full md:w-auto">
-        <div class="flex">
+        <!-- <div class="flex">
           {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
           {
             showRssFeed && (
@@ -149,12 +152,14 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               </a>
             )
           }
-        </div>
+        </div> -->
+        <!-- <ElButton type="danger">Hello, Element UI!</ElButton> -->
         {
           actions?.length ? (
             <span class="ml-4 rtl:ml-0 rtl:mr-4">
               {actions.map((btnProps) => (
-                <Button {...btnProps} class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto" />
+                // <Button {...btnProps} class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto" />
+                <img src="../../src/assets/images/login.png" alt=""  class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto cursor-pointer" >
               ))}
             </span>
           ) : (
