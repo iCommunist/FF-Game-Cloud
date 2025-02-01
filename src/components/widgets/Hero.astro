@@ -24,34 +24,20 @@ const {
       {bg ? <Fragment set:html={bg} /> : null}
     </slot>
   </div>
-  <div class="relative  mx-auto">
-    <div class="intersect-once intercept-no-queue intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-      {image && (
-        <div class="relative w-full h-full">
-          {typeof image === 'string' ? (
-            <Fragment set:html={image} />
-          ) : (
-            <Image
-              class="w-full h-full object-cover"  // 使用 object-cover 保证图片充满容器且保持比例
-              widths={[400, 768, 1024, 2040]}
-              sizes="(max-width: 767px) 100vw, (max-width: 1023px) 100vw, (max-width: 2039px) 100vw, 100vw"
-              loading="eager"
-              width={2040}
-              height={1152}  // 高度根据横向比例调整，确保在横屏情况下图片不会被拉伸
-              {...image}
-            />
-          )}
-    
-          <!-- 文字内容 -->
-          <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-lg flex flex-col items-center justify-between ">
-           <div>飞鱼游戏云</div>
-           <div>自助游戏开服平台丨 体验快速开服联机</div>
-           <div><ElButton plain >游戏库</ElButton></div>
-          </div>
-        </div>
-      )}
+  <div class="relative mx-auto">
+    <div
+      class="intersect-once intercept-no-queue intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+    >
+    <div class="relative w-full h-full">
+       <img class="w-full" src="../../src/assets/images/game-img.png" alt="">
+
+      <!-- 文字内容 -->
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-lg flex flex-col items-center justify-between ">
+        <div> <img src="../../src/assets/images/ffClould.png" alt=""  class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto " > </div>
+        <div> <img src="../../src/assets/images/ffClouldDesc.png" alt=""  class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto " > </div>
+        <div> <img src="../../src/assets/images/yxkbtn.png" alt=""  class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto cursor-pointer" > </div>
+      </div>
     </div>
-      
     </div>
   </div>
 </section>

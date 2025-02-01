@@ -12,6 +12,7 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
+
 const metadata = {
   title: '飞鱼游戏云',
   ignoreTitleTemplate: true,
@@ -33,10 +34,7 @@ postData();
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
 
-  <Hero
-    
-    image={{ src: '~/assets/images/game-img.png', alt: 'AstroWind Hero Image' }}
-  >
+  <Hero image={{ src: '~/assets/images/game-img.png', alt: 'AstroWind Hero Image' }}>
     <!-- <Fragment slot="title">
       Free template for <span class="hidden xl:inline">creating websites with</span>
       <span class="text-accent dark:text-white highlight"> Astro 5.0</span> + Tailwind CSS
@@ -55,8 +53,7 @@ postData();
 
   <!-- Note Widget ******************* -->
 
-  <!-- <Note /> -->
-
+  <Note />
   <!-- Features Widget *************** -->
 
   <!-- <Features

@@ -1,11 +1,32 @@
 ---
-import { Icon } from 'astro-icon/components';
+// import { Icon } from 'astro-icon/components';
+import Problem from '~/components/problem.astro';
+import Partners from '~/components/partners.astro';
+import Feature from '../feature.astro';
+const accordionItems = [
+  { title: '折叠面板 1', content: '这里是第一个折叠面板的内容。' },
+  { title: '折叠面板 2', content: '这里是第二个折叠面板的内容。' },
+  { title: '折叠面板 3', content: '这里是第三个折叠面板的内容。' },
+];
 ---
 
-<section class="bg-blue-50 dark:bg-slate-800 not-prose">
+<!-- <section class="bg-blue-50 dark:bg-slate-800 not-prose">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium">
-    <span class="font-bold">
-      <Icon name="tabler:info-square" class="w-5 h-5 inline-block align-text-bottom" /> Philosophy:</span
-    > Simplicity, Best Practices and High Performance
+    
   </div>
+</section> -->
+<section
+  class="bg-blue-50 dark:bg-slate-800 not-prose ease-in-out"
+  style="background-image: url('../../src/assets/images/212bg.png'); background-size: cover; background-position: center;height:100%"
+>
+<Feature/>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium">
+    <img
+      src="../../src/assets/images/rmyxk.png"
+      alt=""
+      class=" py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto cursor-pointer"
+    />
+  </div>
+  <Partners />
+  <Problem items={accordionItems} />
 </section>
