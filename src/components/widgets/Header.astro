@@ -1,55 +1,67 @@
 ---
-import { Icon } from 'astro-icon/components';
 import Logo from '~/components/Logo.astro';
-import ToggleTheme from '~/components/common/ToggleTheme.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
-import Button from '~/components/ui/Button.astro';
-
 import { getHomePermalink } from '~/utils/permalinks';
-import { trimSlash, getAsset } from '~/utils/permalinks';
-import type { CallToAction } from '~/types';
-import { ElButton } from 'element-plus';
-// import { defineComponent } from 'vue';
 
-
-interface Link {
-  text?: string;
-  href?: string;
-  ariaLabel?: string;
-  icon?: string;
-}
-
-interface MenuLink extends Link {
-  links?: Array<MenuLink>;
-}
-
-export interface Props {
-  id?: string;
-  links?: Array<MenuLink>;
-  actions?: Array<CallToAction>;
-  isSticky?: boolean;
-  isDark?: boolean;
-  isFullWidth?: boolean;
-  showToggleTheme?: boolean;
-  showRssFeed?: boolean;
-  position?: string;
-}
-
-const {
-  id = 'header',
-  links = [],
-  actions = [],
-  isSticky = false,
-  isDark = false,
-  isFullWidth = false,
-  // showToggleTheme = false,
-  showToggleTheme = true,
-  showRssFeed = false,
-  position = 'center',
-} = Astro.props;
-
-const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
+const { id = 'header', isSticky = false, isDark = false, position = 'center' } = Astro.props;
 ---
+
+<script>
+  // 获取元素
+  document.addEventListener('DOMContentLoaded', () => {
+    const loginImg = document.getElementById('login-img');
+    const loginForm = document.getElementById('login-form');
+    const submitButton = document.getElementById('submit-button');
+    const closeButton = document.getElementById('close-button');
+
+    // 点击图片时显示登录表单
+    loginImg?.addEventListener('click', () => {
+      loginForm.style.display = 'flex'; // 显示表单
+    });
+
+    // 点击关闭按钮时隐藏登录表单
+    closeButton?.addEventListener('click', () => {
+      loginForm.style.display = 'none'; // 隐藏表单
+    });
+
+    // 提交登录表单的事件绑定
+    submitButton?.addEventListener('click', () => {
+      const username = document.getElementById('username')?.value;
+      const password = document.getElementById('password')?.value;
+
+      console.log('用户名:', username);
+      console.log('密码:', password);
+
+      // 提交数据到后端接口
+      fetch('https://apifoxmock.com/m1/5804244-5489264-default/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('登录成功:', data);
+          if (data.code === 200) {
+            alert('登录成功！');
+          } else {
+            alert('登录失败！请检查用户名和密码');
+          }
+        })
+        .catch((error) => {
+          console.error('请求错误:', error);
+          alert('发生了错误，请稍后再试');
+        });
+
+      // 提交后关闭表单
+      loginForm.style.display = 'none';
+    });
+  });
+</script>
 
 <header
   class:list={[
@@ -61,18 +73,11 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 >
   <div class="absolute inset-0"></div>
   <div
-
     class:list={[
-      'relative text-default py-3 px-3 md:px-6 mx-auto w-full','w-[90%]',
-      {
-        'md:flex md:justify-between': position !== 'center',
-      },
-      {
-        'md:grid md:grid-cols-2 md:items-center': position === 'center',
-      },
-      {
-        
-      },
+      'relative text-default py-3 px-3 md:px-6 mx-auto w-full',
+      'w-[90%]',
+      { 'md:flex md:justify-between': position !== 'center' },
+      { 'md:grid md:grid-cols-2 md:items-center': position === 'center' },
     ]}
   >
     <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex justify-between']}>
@@ -83,92 +88,218 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         <ToggleMenu />
       </div>
     </div>
-    <!-- <nav
-      class="items-center w-full md:w-auto hidden md:flex md:mx-5 text-default overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:justify-self-center"
-      aria-label="Main navigation"
-    >
-      <ul
-        class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium md:justify-center"
-      >
-        {
-          links.map(({ text, href, links }) => (
-            <li class={links?.length ? 'dropdown' : ''}>
-              {links?.length ? (
-                <>
-                  <button
-                    type="button"
-                    class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap"
-                  >
-                    {text}{' '}
-                    <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
-                  </button>
-                  <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl">
-                    {links.map(({ text: text2, href: href2 }) => (
-                      <li>
-                        <a
-                          class:list={[
-                            'first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
-                            { 'aw-link-active': href2 === currentPath },
-                          ]}
-                          href={href2}
-                        >
-                          {text2}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              ) : (
-                <a
-                  class:list={[
-                    'hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap',
-                    { 'aw-link-active': href === currentPath },
-                  ]}
-                  href={href}
-                >
-                  {text}
-                </a>
-              )}
-            </li>
-          ))
-        }
-      </ul>
-    </nav> -->
     <div
       class:list={[
         { 'ml-auto rtl:ml-0 rtl:mr-auto': position === 'left' },
-        'hidden md:self-center md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-3 md:p-0 md:justify-self-end',
+        'hidden md:self-center md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-1 md:p-0 md:justify-self-end',
       ]}
     >
       <div class="items-center flex justify-between w-full md:w-auto">
-        <!-- <div class="flex">
-          {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
-          {
-            showRssFeed && (
-              <a
-                class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-                aria-label="RSS Feed"
-                href={getAsset('/rss.xml')}
-              >
-                <Icon name="tabler:rss" class="w-5 h-5" />
-              </a>
-            )
-          }
-        </div> -->
-        <!-- <ElButton type="danger">Hello, Element UI!</ElButton> -->
-        {
-          actions?.length ? (
-            <span class="ml-4 rtl:ml-0 rtl:mr-4">
-              {actions.map((btnProps) => (
-                // <Button {...btnProps} class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto" />
-                <img src="../../src/assets/images/login.png" alt=""  class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto cursor-pointer" >
-              ))}
-            </span>
-          ) : (
-            ''
-          )
-        }
+        <img src="../../src/assets/images/login.png" alt="login" id="login-img" class="cursor-pointer" />
       </div>
     </div>
   </div>
 </header>
+
+<!-- 登录表单（默认为显示） -->
+<div
+  id="login-form"
+  class="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center"
+  style="backdrop-filter: blur(5px);"
+>
+  <div class="bg-[#262323] rounded-lg w-[545px] h-[380px] flex">
+    <!-- 左侧图片区域，占2/5 -->
+    <div class="w-[238px] h-full flex justify-center items-center">
+      <img src="../../src/assets/images/login-img.png" alt="" class="object-fill w-full h-full" />
+    </div>
+
+    <!-- 右侧表单区域，占3/5 -->
+    <div id="login-right" class="w-[307px] h-full flex flex-col justify-between items-center text-white px-4 py-6">
+      <h2 class="text-lg font-medium">账号登录</h2>
+      <div class="text-center text-sm text-[#949494] mb-4">推荐使用快捷登录，防止盗号风险</div>
+
+      <!-- 用户名输入框 -->
+      <div class="relative w-[220px] mb-3">
+        <img src="../../src/assets/images/user-icon.png" alt="用户图标" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4" />
+        <input
+          type="text"
+          placeholder="用户名"
+          id="username"
+          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- 密码输入框 -->
+      <div class="relative w-[220px] mb-3">
+        <img src="../../src/assets/images/password-icon.png" alt="密码图标" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4" />
+        <input
+          type="password"
+          placeholder="密码"
+          id="password"
+          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
+        />
+        <!-- 查看密码图标 -->
+        <img
+          src="../../src/assets/images/eye-icon.png"
+          alt="查看密码"
+          class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-4 h-4"
+          id="toggle-password"
+        />
+      </div>
+
+      <!-- 登录按钮 -->
+      <div
+        id="submit-button"
+        class="w-[220px] h-[40px] flex justify-center items-center cursor-pointer rounded-md bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
+      >
+        <img src="../../src/assets/images/loginicon.png" alt="" class="w-4 h-4 mr-2" />
+        <span class="text-sm">登录</span>
+      </div>
+
+      <!-- 忘记密码、注册表单切换 -->
+      <div class="flex justify-between gap-2 w-[220px] text-xs mt-3 text-[#1D82EC]">
+        <div id="show-register" class="cursor-pointer">账号注册</div>
+        <div id="show-forgot" class="cursor-pointer">忘记密码？</div>
+      </div>
+
+      <!-- 第三方登录 -->
+      <div class="flex justify-center gap-2 w-[220px] mt-4 text-xs">
+        第三方快捷登录
+      </div>
+      <div class="flex justify-center gap-2 w-[220px] mt-4">
+        <img src="../../src/assets/images/微信.png" alt="微信登录" class="w-6 h-6 cursor-pointer" />
+        <img src="../../src/assets/images/QQ登录.png" alt="QQ登录" class="w-6 h-6 cursor-pointer" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 注册表单（默认为隐藏） -->
+<div id="register-form" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center backdrop-blur">
+  <div class="bg-[#262323] rounded-lg w-[545px] h-[380px] flex">
+    <!-- 左侧图片区域，占2/5 -->
+    <div class="w-[238px] h-full flex justify-center items-center">
+      <img src="../../src/assets/images/login-img.png" alt="haib" class="object-fill  w-full h-full" />
+    </div>
+
+    <!-- 右侧表单区域，占3/5 -->
+    <div id="register-right" class="w-[307px] h-full flex flex-col justify-between items-center text-white px-4 py-6">
+      <h2 class="text-lg font-medium">注册账号</h2>
+      <div class="text-center text-sm text-[#949494] mb-4">请输入您的信息来创建账号</div>
+
+      <!-- 用户名输入框 -->
+      <div class="relative w-[220px] mb-3">
+        <img src="../../src/assets/images/user-icon.png" alt="用户图标" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4" />
+        <input
+          type="text"
+          placeholder="用户名"
+          id="register-username"
+          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- 密码输入框 -->
+      <div class="relative w-[220px] mb-3">
+        <img src="../../src/assets/images/password-icon.png" alt="密码图标" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4" />
+        <input
+          type="password"
+          placeholder="密码"
+          id="register-password"
+          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
+        />
+        <!-- 查看密码图标 -->
+        <img
+          src="../../src/assets/images/eye-icon.png"
+          alt="查看密码"
+          class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-5 h-5"
+          id="register-toggle-password"
+        />
+      </div>
+
+      <!-- 注册按钮 -->
+      <div
+        id="register-submit-button"
+        class="w-[220px] h-[40px] flex justify-center items-center cursor-pointer rounded-md bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
+      >
+        <span class="text-sm">注册</span>
+      </div>
+
+      <!-- 返回登录表单 -->
+      <div class="text-xs text-[#1D82EC] mt-3 cursor-pointer" id="back-to-login">已有账号，返回登录</div>
+    </div>
+  </div>
+</div>
+
+<!-- 忘记密码表单（默认为隐藏） -->
+<div id="forgot-password-form" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center backdrop-blur">
+  <div class="bg-[#262323] rounded-lg w-[545px] h-[380px] flex">
+    <!-- 左侧图片区域，占2/5 -->
+    <div class="w-[238px] h-full flex justify-center items-center">
+      <img src="../../src/assets/images/login-img.png" alt="haib" class="object-fill  w-full h-full" />
+    </div>
+
+    <!-- 右侧表单区域，占3/5 -->
+    <div id="forgot-password-right" class="w-[307px] h-full flex flex-col justify-between items-center text-white px-4 py-6">
+      <h2 class="text-lg font-medium">找回密码</h2>
+      <div class="text-center text-sm text-[#949494] mb-4">请输入注册邮箱来重置密码</div>
+
+      <!-- 邮箱输入框 -->
+      <div class="relative w-[220px] mb-3">
+        <img src="../../src/assets/images/user-icon.png" alt="邮箱图标" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4" />
+        <input
+          type="email"
+          placeholder="手机号/邮箱"
+          id="email"
+          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- 重置密码按钮 -->
+      <div
+        id="forgot-submit-button"
+        class="w-[220px] h-[40px] flex justify-center items-center cursor-pointer rounded-md bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
+      >
+        <span class="text-sm">修改密码</span>
+      </div>
+
+      <!-- 返回登录表单 -->
+      <div class="text-xs text-[#1D82EC] mt-3 cursor-pointer" id="back-to-login-from-forgot">返回登录</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    const forgotPasswordForm = document.getElementById('forgot-password-form');
+    const loginRight = document.getElementById('login-right');
+    const registerRight = document.getElementById('register-right');
+    const forgotPasswordRight = document.getElementById('forgot-password-right');
+
+    // 切换到注册表单
+    document.getElementById('show-register').addEventListener('click', () => {
+      loginForm.style.display = 'none';
+      registerForm.classList.remove('hidden');
+    });
+
+    // 切换到忘记密码表单
+    document.getElementById('show-forgot').addEventListener('click', () => {
+      loginForm.style.display = 'none';
+      forgotPasswordForm.classList.remove('hidden');
+    });
+
+    // 返回到登录表单
+    document.getElementById('back-to-login').addEventListener('click', () => {
+      registerForm.classList.add('hidden');
+      loginForm.style.display = 'flex';
+    });
+
+    // 返回到登录表单（忘记密码）
+    document.getElementById('back-to-login-from-forgot').addEventListener('click', () => {
+      forgotPasswordForm.classList.add('hidden');
+      loginForm.style.display = 'flex';
+    });
+  });
+</script>
+

@@ -1,0 +1,22 @@
+---
+// Login.astro
+const { show, onClose } = Astro.props;
+---
+
+<!-- 登录表单 -->
+<div class={`fixed inset-0 flex items-center justify-center ${show ? 'block' : 'hidden'}`}>
+  <div class="bg-white rounded-lg shadow-lg w-96 p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-semibold">弹窗标题</h2>
+      <button class="text-gray-500" on:click={onClose}>&#10005;</button>
+      <!-- 点击关闭按钮 -->
+    </div>
+    <div class="mb-4">
+      <slot />
+      <!-- 在这里插入 Dialog 内容 -->
+    </div>
+    <div class="flex justify-end">
+      <button class="bg-blue-500 text-white px-4 py-2 rounded-md" on:click={onClose}>关闭</button>
+    </div>
+  </div>
+</div>

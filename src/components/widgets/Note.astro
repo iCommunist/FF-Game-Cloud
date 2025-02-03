@@ -3,6 +3,7 @@
 import Problem from '~/components/problem.astro';
 import Partners from '~/components/partners.astro';
 import Feature from '../feature.astro';
+import Faceplate from '../faceplate.astro';
 const accordionItems = [
   { title: '折叠面板 1', content: '这里是第一个折叠面板的内容。' },
   { title: '折叠面板 2', content: '这里是第二个折叠面板的内容。' },
@@ -27,6 +28,7 @@ const accordionItems = [
       class=" py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto cursor-pointer"
     />
   </div>
+  <Faceplate/>
   <Partners />
   <Problem items={accordionItems} />
 </section>
