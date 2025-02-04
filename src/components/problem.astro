@@ -10,34 +10,42 @@ const items = [
 
 <div class="mx-auto max-w-7xl flex justify-between p-4 mt-6 ease-in-out motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
   <!-- 常见问题标题 -->
-  <div class="text-xl xl:text-2xl 2xl:text-3xl">常见问题</div>
+  <div class="text-xl xl:text-2xl 2xl:text-3xl ml-[63px]">常见问题</div>
   <!-- 按钮容器 -->
   <div class="flex space-x-2">
-  <!-- 提交工单按钮 -->
-<div class="flex items-center justify-center text-xs px-4 leading-4 md:leading-8 border border-gray-300 rounded-md cursor-pointer">
-  提交工单
-</div>
-  <!-- 文档中心按钮 -->
-<div class="flex items-center justify-center text-xs px-4 leading-4 md:leading-8 bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-md cursor-pointer">
-  文档中心
-</div>
+    <!-- 提交工单按钮 -->
+    <div class="flex items-center justify-center text-xs px-4 leading-4 md:leading-8 border border-gray-300 rounded-md cursor-pointer">
+      提交工单
+    </div>
+    <!-- 文档中心按钮 -->
+    <div class="flex items-center justify-center text-xs px-4 leading-4 md:leading-8 bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-md cursor-pointer">
+      文档中心
+    </div>
   </div>
 </div>
-<div class="w-full mx-auto max-w-7xl border rounded-sm  mb-10  ease-in-out  motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade" style="border-color:#9d8b7f">
+
+<div class="w-full mx-auto max-w-7xl border rounded-sm ease-in-out motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade" style="border: 1px solid rgba(252, 250, 250, 1);border-radius: 5px;background: rgba(13, 0, 0, 0.3);">
   {items.map((item, index) => (
-    <div class="border-b border-gray-300 " style="border-color: #5c5554;">
+    <div class="border-b border-gray-300" style="border-color: #5c5554;background:#1b1413;">
       <!-- 标题部分 -->
       <button
-        class="w-full text-left py-3 px-4 flex justify-between items-center bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition"
+        class="w-full text-left py-3 px-4 flex justify-between items-center pl-[30px] bg-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 transition"
         data-index={index}
+        style="height:83px;background: #0D0000"
       >
-        <span class="font-medium text-gray-900 dark:text-gray-100">{item.title}</span>
-        <span class="arrow transition-transform duration-300">▼</span>
+        <span class="flex items-center font-medium text-gray-900 dark:text-gray-100">
+          <!-- 初始为减号图标，点击后会切换 -->
+          <img src="/assets/images/加号.svg" alt="减号" width="20" height="20" class="toggle-icon mr-2" />
+          <span class="ml-[14px]">{item.title}</span>
+        </span>
+        <span class="arrow transition-transform duration-300">
+          <!-- 这里可以加入箭头图标，如果有需要 -->
+        </span>
       </button>
 
       <!-- 折叠内容 -->
-      <div class="content overflow-hidden max-h-0 transition-all duration-500 ease-in-out px-4">
-        <p class="text-gray-700 dark:text-gray-300 py-2">{item.content}</p>
+      <div class="content overflow-hidden max-h-0 transition-all duration-500 ease-in-out px-4" style="background: #FFFAFA50;;height:68px;line-height: 68px;">
+        <p class="text-gray-700 dark:text-gray-300 pl-[60px]" style="color: rgba(191, 187, 187, 0.8);">{item.content}</p>
       </div>
     </div>
   ))}
@@ -50,16 +58,20 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => {
       const content = button.nextElementSibling;
       const isOpen = content?.classList.contains("max-h-40");
+      const icon = button.querySelector(".toggle-icon");
 
       // 关闭所有已展开的面板
       document.querySelectorAll(".content").forEach((el) => el.classList.remove("max-h-40"));
-      document.querySelectorAll(".arrow").forEach((arrow) => arrow.classList.remove("rotate-180"));
+      document.querySelectorAll(".toggle-icon").forEach((icon) => {
+        icon.src = "/assets/images/加号.svg";  // 恢复为减号
+      });
 
       if (!isOpen) {
         content?.classList.add("max-h-40"); // 展开
-        button.querySelector(".arrow")?.classList.add("rotate-180"); // 旋转箭头
+        icon.src = "/assets/images/减号.svg"; // 切换为加号
       }
     });
   });
 });
 </script>
+

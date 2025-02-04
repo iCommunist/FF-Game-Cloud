@@ -26,7 +26,9 @@ export interface Props {
 const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
 ---
 
-<footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-800 not-prose']}>
+<footer class:list={[ 'relative border-t   border-gray-200 dark:border-slate-800 not-prose']} style="border-top: 1px solid transparent;
+  border-image: linear-gradient(to right, rgba(255, 255, 255, 0.15) 0%, rgba(242, 106, 22, 1) 51%, rgba(255, 255, 255, 0.15) 100%);
+  border-image-slice: 1;background: rgba(64, 60, 58, 0.25);">
   <div class="dark:bg-dark absolute inset-0 pointer-events-none pt-10" aria-hidden="true"></div>
   <div
     class="relative max-w-7xl mx-auto px-4 sm:px-6 dark:text-slate-300 intersect-once intersect-quarter intercept-no-queue motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
@@ -34,7 +36,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
   <div class="grid py-8 md:py-12 grid-cols-1 md:grid-cols-2 gap-6">
     <!-- 左侧内容 -->
     <div class="flex flex-col items-start">
-      <img src="../../src/assets/images/FFGameCloud-logo.png" alt="My Image" class="cursor-pointer mb-6"/>
+      <img src="/assets/images/FFGameCloud-logo.png" alt="My Image" class="cursor-pointer mb-6"/>
       <p class="w-[35ch] whitespace-normal">
         采用自研开放式STEAM自助游戏而板，专为服主精心打磨，
         便捷式网页操作，省去繁琐开服，让您轻松快速联机。
@@ -77,6 +79,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
                   class={`text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none  focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm inline-flex items-center border-r border-gray-300 p-0 py-2.5 last:border-r-0 `}
                   aria-label={ariaLabel}
                   href={href}
+                  style="color: rgba(148, 148, 148, 100);"
                 >
                   {ariaLabel} {socialLinks.length-1!==index && <span>丨</span>}
                   <Fragment set:html={text} />

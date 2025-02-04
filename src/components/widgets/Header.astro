@@ -1,12 +1,376 @@
 ---
 import Logo from '~/components/Logo.astro';
+import { Image } from 'astro:assets';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
 import { getHomePermalink } from '~/utils/permalinks';
-
-const { id = 'header', isSticky = false, isDark = false, position = 'center' } = Astro.props;
+import { ElMessage } from 'element-plus';
+import localwxImage from '/assets/images/微信.png';
+const { id = 'header', isSticky = false, isDark = true, position = 'center' } = Astro.props;
 ---
 
+<header
+  class:list={[
+    { sticky: isSticky, relative: !isSticky, dark: isDark },
+    'top-0 z-40 flex-none mx-auto w-full  border-gray-50/0 transition-[opacity] ease-in-out',
+  ]}
+  {...isSticky ? { 'data-aw-sticky-header': true } : {}}
+  {...id ? { id } : {}}
+>
+  <div class="absolute inset-0"></div>
+  <div
+    class:list={[
+      'relative text-default py-3 px-3 md:px-6 mx-auto w-full',
+      'w-[90%]',
+      { 'md:flex md:justify-between': position !== 'center' },
+      { 'md:grid md:grid-cols-2 md:items-center': position === 'center' },
+    ]}
+  >
+    <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex justify-between']}>
+      <a class="flex items-center" href={getHomePermalink()}>
+        <Logo />
+      </a>
+      <div class="flex items-center md:hidden">
+        <ToggleMenu />
+      </div>
+    </div>
+    <div
+      class:list={[
+        { 'ml-auto rtl:ml-0 rtl:mr-auto': position === 'left' },
+        'hidden md:self-center md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-1 md:p-0 md:justify-self-end',
+      ]}
+    >
+      <div class="items-center flex justify-between w-full md:w-auto">
+        <img src="/assets/images/login.png" alt="login" id="login-img" class="cursor-pointer" />
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 登录表单（默认为隐藏） -->
+<div
+  id="login-form"
+  class="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center hidden"
+  style="backdrop-filter: blur(5px);"
+>
+  <div class="bg-[#262323] rounded-lg w-[545px] h-[380px] flex relative">
+    <!-- 左侧图片区域，占2/5 -->
+    <div class="w-[238px] h-full flex justify-center items-center">
+      <img src="/assets/images/login-img.png" alt="" class="object-fill w-full h-full" />
+    </div>
+
+    <!-- 右侧表单区域，占3/5 -->
+    <div id="login-right" class="w-[307px] h-full flex flex-col justify-between items-center text-white px-4 py-6">
+      <h2 class="text-lg font-medium">账号登录</h2>
+      <div class="text-center text-sm text-[#949494] mb-4">推荐使用快捷登录，防止盗号风险</div>
+
+      <!-- 用户名输入框 -->
+      <div class="relative w-[220px] mb-3">
+        <img
+          src="/assets/images/user-icon.png"
+          alt="用户图标"
+          class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
+        />
+        <input
+          type="text"
+          placeholder="用户名"
+          id="username"
+          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- 密码输入框 -->
+      <div class="relative w-[220px] mb-3">
+        <img
+          src="/assets/images/password-icon.png"
+          alt="密码图标"
+          class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
+        />
+        <input
+          type="password"
+          placeholder="密码"
+          id="password"
+          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
+        />
+        <!-- 查看密码图标 -->
+        <img
+          src="/assets/images/eye-icon.png"
+          alt="查看密码"
+          class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-4 h-4"
+          id="toggle-password"
+        />
+      </div>
+
+      <!-- 登录按钮 -->
+      <div
+        id="submit-button"
+        class="w-[220px] h-[40px] flex justify-center items-center cursor-pointer rounded-md bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
+      >
+        <img src="/assets/images/loginicon.png" alt="" class="w-4 h-4 mr-2" />
+        <span class="text-sm">登录</span>
+      </div>
+
+      <!-- 忘记密码、注册表单切换 -->
+      <div class="flex justify-between gap-2 w-[220px] text-xs mt-3 text-[#1D82EC]">
+        <div id="show-register" class="cursor-pointer">账号注册</div>
+        <div id="show-forgot" class="cursor-pointer">忘记密码？</div>
+      </div>
+
+      <!-- 第三方登录 -->
+      <div class="flex justify-center gap-2 w-[220px] mt-4 text-xs">第三方快捷登录</div>
+      <div class="flex justify-center gap-2 w-[220px] mt-4">
+        <!-- <Image src={localwxImage} alt="微信登录" class="w-6 h-6 cursor-pointer" /> -->
+        <picture>
+          <img
+            src="/assets/images/微信.png"
+            decoding="async"
+            loading="lazy"
+            alt="我的图片描述"
+             class="w-6 h-6 cursor-pointer"
+          />
+        </picture>
+        <picture>
+          <img
+            src="/assets/images/QQ登录.png"
+            width="1600"
+            height="900"
+            decoding="async"
+            loading="lazy"
+            alt="我的图片描述"
+             class="w-6 h-6 cursor-pointer"
+          />
+        </picture>
+        <!-- <Image src="/assets/images/QQ登录.png" alt="QQ登录" class="w-6 h-6 cursor-pointer" /> -->
+      </div>
+    </div>
+
+    <!-- 关闭按钮 -->
+    <button
+      id="close-login-form"
+      class="absolute top-2 right-2 text-white text-2xl cursor-pointer"
+      onclick="document.getElementById('login-form').style.display = 'none';"
+    >
+      &times;
+    </button>
+  </div>
+</div>
+
+<!-- 注册表单（默认为隐藏） -->
+<div
+  id="register-form"
+  class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center backdrop-blur"
+>
+  <div class="bg-[#262323] rounded-lg w-[545px] h-[380px] flex">
+    <!-- 左侧图片区域，占2/5 -->
+    <div class="w-[238px] h-full flex justify-center items-center">
+      <img src="/assets/images/login-img.png" alt="haib" class="object-fill w-full h-full" />
+    </div>
+
+    <!-- 右侧表单区域，占3/5 -->
+    <div id="register-right" class="w-[307px] h-full flex flex-col justify-between items-center text-white px-4 py-6">
+      <h2 class="text-lg font-medium">注册账号</h2>
+      <div class="text-center text-sm text-[#949494] mb-4">请输入您的信息来创建账号</div>
+      <!-- 用户名输入框 -->
+      <div class="relative w-[220px] mb-3">
+        <img
+          src="/assets/images/user-icon.png"
+          alt="用户图标"
+          class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
+        />
+        <input
+          type="text"
+          placeholder="用户名"
+          id="register-username"
+          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+      <!-- 密码输入框 -->
+      <div class="relative w-[220px] mb-3">
+        <img
+          src="/assets/images/password-icon.png"
+          alt="密码图标"
+          class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
+        />
+        <input
+          type="password"
+          placeholder="密码"
+          id="register-password"
+          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
+        />
+        <!-- 查看密码图标 -->
+        <img
+          src="/assets/images/eye-icon.png"
+          alt="查看密码"
+          class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-5 h-5"
+          id="register-toggle-password"
+        />
+      </div>
+
+      <!-- 注册按钮 -->
+      <div
+        id="register-submit-button"
+        class="w-[220px] h-[40px] flex justify-center items-center cursor-pointer rounded-md bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
+      >
+        <span class="text-sm">注册</span>
+      </div>
+
+      <!-- 返回登录表单 -->
+      <div class="text-xs text-[#1D82EC] mt-3 cursor-pointer" id="back-to-login">已有账号，返回登录</div>
+    </div>
+  </div>
+</div>
+
+<!-- 忘记密码表单（默认为隐藏） -->
+<!-- 忘记密码表单（默认为隐藏） -->
+<div
+  id="forgot-password-form"
+  class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center backdrop-blur"
+>
+  <div class="bg-[#262323] rounded-lg w-[545px] h-[430px] flex">
+    <!-- 左侧图片区域，占2/5 -->
+    <div class="w-[238px] h-full flex justify-center items-center">
+      <img src="/assets/images/login-img.png" alt="haib" class="object-fill w-full h-full" />
+    </div>
+
+    <!-- 右侧表单区域，占3/5 -->
+    <div
+      id="forgot-password-right"
+      class="w-[307px] h-full flex flex-col justify-between items-center text-white px-4 py-6"
+    >
+      <h2 class="text-lg font-medium">找回密码</h2>
+      <div class="text-center text-sm text-[#949494] mb-4">请输入注册邮箱来重置密码</div>
+
+      <!-- 邮箱/手机号输入框 -->
+      <div class="relative w-[220px] mb-3 bg-[#262323]">
+        <img
+          src="/assets/images/user-icon.png"
+          alt="邮箱图标"
+          class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
+        />
+        <input
+          type="text"
+          placeholder="手机号/邮箱"
+          id="forgot-email"
+          class="w-full p-1 pl-10 border rounded-md bg-[#262323] text-white focus:outline-none focus:ring-2"
+        />
+      </div>
+
+      <!-- 验证码输入框 -->
+      <div class="relative w-[220px] mb-3 border rounded-md bg-[#262323]">
+        <img
+          src="/assets/images/verify-icon.png"
+          alt="验证码图标"
+          class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
+        />
+        <input
+          type="text"
+          placeholder="验证码"
+          id="forgot-verify-code"
+          class="peer w-[150px] p-1 pl-10 rounded-md bg-[#262323] text-white focus:outline-none focus:ring-0 peer-focus:bg-[#262323] peer-placeholder-shown:bg-[#262323]"
+        />
+        <button
+          id="send-code"
+          class="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs text-blue-400 cursor-pointer"
+        >
+          获取验证码
+        </button>
+      </div>
+
+      <!-- 新密码输入框 -->
+      <div class="relative w-[220px] mb-3">
+        <img
+          src="/assets/images/password-icon.png"
+          alt="密码图标"
+          class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
+        />
+        <input
+          type="password"
+          placeholder="新密码"
+          id="forgot-new-password"
+          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- 修改密码按钮 -->
+      <div
+        id="forgot-submit-button"
+        class="w-[220px] h-[40px] flex justify-center items-center cursor-pointer rounded-md bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
+      >
+        <span class="text-sm">修改密码</span>
+      </div>
+
+      <!-- 返回登录表单 -->
+      <div class="text-xs text-[#1D82EC] mt-3 cursor-pointer" id="back-to-login-from-forgot">返回登录</div>
+    </div>
+  </div>
+</div>
+
 <script>
+  function showMessage({ msg, duration = 2000, position = 'top-center', type = 'success', borderRadius = '5px' }) {
+    // 默认样式
+    let backgroundColor, textColor;
+
+    // 根据类型设置不同的背景色和文本色
+    if (type === 'success') {
+      backgroundColor = '#4CAF50'; // 成功的绿色
+      textColor = '#fff'; // 白色文本
+    } else if (type === 'error') {
+      backgroundColor = '#F44336'; // 错误的红色
+      textColor = '#fff'; // 白色文本
+    } else {
+      backgroundColor = '#333'; // 默认灰色
+      textColor = '#fff'; // 默认白色文本
+    }
+
+    // 创建消息容器
+    const message = document.createElement('div');
+    message.style.position = 'fixed';
+    message.style.zIndex = '9999'; // 确保消息浮在最上层
+
+    // 设置显示位置
+    if (position === 'top-center') {
+      message.style.top = '10px';
+      message.style.left = '50%';
+      message.style.transform = 'translateX(-50%)'; // 水平居中
+    } else if (position === 'bottom-right') {
+      message.style.bottom = '10px';
+      message.style.right = '10px';
+    } else if (position === 'bottom-left') {
+      message.style.bottom = '10px';
+      message.style.left = '10px';
+    } else if (position === 'top-left') {
+      message.style.top = '10px';
+      message.style.left = '10px';
+    } else if (position === 'top-right') {
+      message.style.top = '10px';
+      message.style.right = '10px';
+    }
+
+    // 样式设置
+    message.style.backgroundColor = backgroundColor;
+    message.style.color = textColor;
+    message.style.borderRadius = borderRadius;
+    message.style.padding = '10px';
+    message.style.fontSize = '14px';
+    message.style.fontWeight = 'normal';
+    message.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
+    message.style.transition = 'opacity 0.5s ease-out';
+    message.style.opacity = '1';
+
+    // 设置消息文本
+    message.textContent = msg;
+
+    // 将消息添加到文档
+    document.body.appendChild(message);
+
+    // 2秒后淡出并移除消息
+    setTimeout(() => {
+      message.style.opacity = '0'; // 添加淡出效果
+      setTimeout(() => {
+        document.body.removeChild(message);
+      }, 500); // 等待动画完成后移除
+    }, duration);
+  }
+
   // 获取元素
   document.addEventListener('DOMContentLoaded', () => {
     const loginImg = document.getElementById('login-img');
@@ -47,7 +411,12 @@ const { id = 'header', isSticky = false, isDark = false, position = 'center' } =
         .then((data) => {
           console.log('登录成功:', data);
           if (data.code === 200) {
-            alert('登录成功！');
+            // alert('登录成功！');
+            showMessage({
+              msg: '操作成功！',
+              duration: 3000, // 3秒后消失
+              type: 'success', // 成功类型
+            });
           } else {
             alert('登录失败！请检查用户名和密码');
           }
@@ -61,214 +430,6 @@ const { id = 'header', isSticky = false, isDark = false, position = 'center' } =
       loginForm.style.display = 'none';
     });
   });
-</script>
-
-<header
-  class:list={[
-    { sticky: isSticky, relative: !isSticky, dark: isDark },
-    'top-0 z-40 flex-none mx-auto w-full  border-gray-50/0 transition-[opacity] ease-in-out',
-  ]}
-  {...isSticky ? { 'data-aw-sticky-header': true } : {}}
-  {...id ? { id } : {}}
->
-  <div class="absolute inset-0"></div>
-  <div
-    class:list={[
-      'relative text-default py-3 px-3 md:px-6 mx-auto w-full',
-      'w-[90%]',
-      { 'md:flex md:justify-between': position !== 'center' },
-      { 'md:grid md:grid-cols-2 md:items-center': position === 'center' },
-    ]}
-  >
-    <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex justify-between']}>
-      <a class="flex items-center" href={getHomePermalink()}>
-        <Logo />
-      </a>
-      <div class="flex items-center md:hidden">
-        <ToggleMenu />
-      </div>
-    </div>
-    <div
-      class:list={[
-        { 'ml-auto rtl:ml-0 rtl:mr-auto': position === 'left' },
-        'hidden md:self-center md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-1 md:p-0 md:justify-self-end',
-      ]}
-    >
-      <div class="items-center flex justify-between w-full md:w-auto">
-        <img src="../../src/assets/images/login.png" alt="login" id="login-img" class="cursor-pointer" />
-      </div>
-    </div>
-  </div>
-</header>
-
-<!-- 登录表单（默认为显示） -->
-<div
-  id="login-form"
-  class="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center"
-  style="backdrop-filter: blur(5px);"
->
-  <div class="bg-[#262323] rounded-lg w-[545px] h-[380px] flex">
-    <!-- 左侧图片区域，占2/5 -->
-    <div class="w-[238px] h-full flex justify-center items-center">
-      <img src="../../src/assets/images/login-img.png" alt="" class="object-fill w-full h-full" />
-    </div>
-
-    <!-- 右侧表单区域，占3/5 -->
-    <div id="login-right" class="w-[307px] h-full flex flex-col justify-between items-center text-white px-4 py-6">
-      <h2 class="text-lg font-medium">账号登录</h2>
-      <div class="text-center text-sm text-[#949494] mb-4">推荐使用快捷登录，防止盗号风险</div>
-
-      <!-- 用户名输入框 -->
-      <div class="relative w-[220px] mb-3">
-        <img src="../../src/assets/images/user-icon.png" alt="用户图标" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4" />
-        <input
-          type="text"
-          placeholder="用户名"
-          id="username"
-          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
-
-      <!-- 密码输入框 -->
-      <div class="relative w-[220px] mb-3">
-        <img src="../../src/assets/images/password-icon.png" alt="密码图标" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4" />
-        <input
-          type="password"
-          placeholder="密码"
-          id="password"
-          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
-        />
-        <!-- 查看密码图标 -->
-        <img
-          src="../../src/assets/images/eye-icon.png"
-          alt="查看密码"
-          class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-4 h-4"
-          id="toggle-password"
-        />
-      </div>
-
-      <!-- 登录按钮 -->
-      <div
-        id="submit-button"
-        class="w-[220px] h-[40px] flex justify-center items-center cursor-pointer rounded-md bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
-      >
-        <img src="../../src/assets/images/loginicon.png" alt="" class="w-4 h-4 mr-2" />
-        <span class="text-sm">登录</span>
-      </div>
-
-      <!-- 忘记密码、注册表单切换 -->
-      <div class="flex justify-between gap-2 w-[220px] text-xs mt-3 text-[#1D82EC]">
-        <div id="show-register" class="cursor-pointer">账号注册</div>
-        <div id="show-forgot" class="cursor-pointer">忘记密码？</div>
-      </div>
-
-      <!-- 第三方登录 -->
-      <div class="flex justify-center gap-2 w-[220px] mt-4 text-xs">
-        第三方快捷登录
-      </div>
-      <div class="flex justify-center gap-2 w-[220px] mt-4">
-        <img src="../../src/assets/images/微信.png" alt="微信登录" class="w-6 h-6 cursor-pointer" />
-        <img src="../../src/assets/images/QQ登录.png" alt="QQ登录" class="w-6 h-6 cursor-pointer" />
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 注册表单（默认为隐藏） -->
-<div id="register-form" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center backdrop-blur">
-  <div class="bg-[#262323] rounded-lg w-[545px] h-[380px] flex">
-    <!-- 左侧图片区域，占2/5 -->
-    <div class="w-[238px] h-full flex justify-center items-center">
-      <img src="../../src/assets/images/login-img.png" alt="haib" class="object-fill  w-full h-full" />
-    </div>
-
-    <!-- 右侧表单区域，占3/5 -->
-    <div id="register-right" class="w-[307px] h-full flex flex-col justify-between items-center text-white px-4 py-6">
-      <h2 class="text-lg font-medium">注册账号</h2>
-      <div class="text-center text-sm text-[#949494] mb-4">请输入您的信息来创建账号</div>
-
-      <!-- 用户名输入框 -->
-      <div class="relative w-[220px] mb-3">
-        <img src="../../src/assets/images/user-icon.png" alt="用户图标" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4" />
-        <input
-          type="text"
-          placeholder="用户名"
-          id="register-username"
-          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
-
-      <!-- 密码输入框 -->
-      <div class="relative w-[220px] mb-3">
-        <img src="../../src/assets/images/password-icon.png" alt="密码图标" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4" />
-        <input
-          type="password"
-          placeholder="密码"
-          id="register-password"
-          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
-        />
-        <!-- 查看密码图标 -->
-        <img
-          src="../../src/assets/images/eye-icon.png"
-          alt="查看密码"
-          class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-5 h-5"
-          id="register-toggle-password"
-        />
-      </div>
-
-      <!-- 注册按钮 -->
-      <div
-        id="register-submit-button"
-        class="w-[220px] h-[40px] flex justify-center items-center cursor-pointer rounded-md bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
-      >
-        <span class="text-sm">注册</span>
-      </div>
-
-      <!-- 返回登录表单 -->
-      <div class="text-xs text-[#1D82EC] mt-3 cursor-pointer" id="back-to-login">已有账号，返回登录</div>
-    </div>
-  </div>
-</div>
-
-<!-- 忘记密码表单（默认为隐藏） -->
-<div id="forgot-password-form" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center backdrop-blur">
-  <div class="bg-[#262323] rounded-lg w-[545px] h-[380px] flex">
-    <!-- 左侧图片区域，占2/5 -->
-    <div class="w-[238px] h-full flex justify-center items-center">
-      <img src="../../src/assets/images/login-img.png" alt="haib" class="object-fill  w-full h-full" />
-    </div>
-
-    <!-- 右侧表单区域，占3/5 -->
-    <div id="forgot-password-right" class="w-[307px] h-full flex flex-col justify-between items-center text-white px-4 py-6">
-      <h2 class="text-lg font-medium">找回密码</h2>
-      <div class="text-center text-sm text-[#949494] mb-4">请输入注册邮箱来重置密码</div>
-
-      <!-- 邮箱输入框 -->
-      <div class="relative w-[220px] mb-3">
-        <img src="../../src/assets/images/user-icon.png" alt="邮箱图标" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4" />
-        <input
-          type="email"
-          placeholder="手机号/邮箱"
-          id="email"
-          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
-
-      <!-- 重置密码按钮 -->
-      <div
-        id="forgot-submit-button"
-        class="w-[220px] h-[40px] flex justify-center items-center cursor-pointer rounded-md bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
-      >
-        <span class="text-sm">修改密码</span>
-      </div>
-
-      <!-- 返回登录表单 -->
-      <div class="text-xs text-[#1D82EC] mt-3 cursor-pointer" id="back-to-login-from-forgot">返回登录</div>
-    </div>
-  </div>
-</div>
-
-<script>
   document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
     const registerForm = document.getElementById('register-form');
@@ -278,28 +439,113 @@ const { id = 'header', isSticky = false, isDark = false, position = 'center' } =
     const forgotPasswordRight = document.getElementById('forgot-password-right');
 
     // 切换到注册表单
-    document.getElementById('show-register').addEventListener('click', () => {
-      loginForm.style.display = 'none';
-      registerForm.classList.remove('hidden');
+    document.getElementById('show-register')!.addEventListener('click', () => {
+      loginForm!.style.display = 'none';
+      registerForm!.classList.remove('hidden');
     });
 
     // 切换到忘记密码表单
-    document.getElementById('show-forgot').addEventListener('click', () => {
-      loginForm.style.display = 'none';
-      forgotPasswordForm.classList.remove('hidden');
+    document.getElementById('show-forgot')!.addEventListener('click', () => {
+      loginForm!.style.display = 'none';
+      forgotPasswordForm!.classList.remove('hidden');
     });
 
     // 返回到登录表单
-    document.getElementById('back-to-login').addEventListener('click', () => {
+    document.getElementById('back-to-login')!.addEventListener('click', () => {
       registerForm.classList.add('hidden');
       loginForm.style.display = 'flex';
     });
 
     // 返回到登录表单（忘记密码）
-    document.getElementById('back-to-login-from-forgot').addEventListener('click', () => {
+    document.getElementById('back-to-login-from-forgot')!.addEventListener('click', () => {
       forgotPasswordForm.classList.add('hidden');
       loginForm.style.display = 'flex';
     });
   });
-</script>
+  // 获取验证码的倒计时
+  let countdown = 60;
+  let timer;
+  const sendCodeButton = document.getElementById('send-code');
 
+  function startCountdown() {
+    sendCodeButton.disabled = true;
+    sendCodeButton.textContent = `${countdown}s后重新获取`;
+
+    timer = setInterval(() => {
+      countdown--;
+      sendCodeButton.textContent = `${countdown}s后重新获取`;
+
+      if (countdown <= 0) {
+        clearInterval(timer);
+        sendCodeButton.disabled = false;
+        sendCodeButton.textContent = '获取验证码';
+        countdown = 60;
+      }
+    }, 1000);
+  }
+
+  // 点击获取验证码按钮时触发倒计时
+  sendCodeButton!.addEventListener('click', () => {
+    const email = document.getElementById('forgot-email')!.value;
+    if (email) {
+      startCountdown();
+      // 模拟发送验证码的逻辑
+      showMessage({
+        msg: '验证码已发送，请查收',
+        duration: 3000, // 3秒后消失
+        type: 'success', // 成功类型
+      });
+    } else {
+      // alert('请输入邮箱或手机号');
+      showMessage({
+        msg: '请输入邮箱或手机号',
+        duration: 3000, // 3秒后消失
+        type: 'error', // 成功类型
+      });
+    }
+  });
+
+  // 点击修改密码按钮提交
+  document.getElementById('forgot-submit-button')!.addEventListener('click', () => {
+    const email = document.getElementById('forgot-email')!.value;
+    const verifyCode = document.getElementById('forgot-verify-code')!.value;
+    const newPassword = document.getElementById('forgot-new-password')!.value;
+
+    if (!email || !verifyCode || !newPassword) {
+      alert('请完整填写表单');
+      return;
+    }
+
+    // 提交表单的逻辑
+    fetch('https://example.com/reset-password', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        verifyCode: verifyCode,
+        newPassword: newPassword,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          alert('密码修改成功');
+          // 可以在此处关闭忘记密码表单
+          document.getElementById('forgot-password-form')!.classList.add('hidden');
+        } else {
+          alert('密码修改失败，请重试');
+        }
+      })
+      .catch((error) => {
+        console.error('请求失败:', error);
+        alert('发生错误，请稍后再试');
+      });
+  });
+
+  // 返回登录表单
+  document.getElementById('back-to-login-from-forgot')!.addEventListener('click', () => {
+    document.getElementById('forgot-password-form')!.classList.add('hidden');
+  });
+</script>

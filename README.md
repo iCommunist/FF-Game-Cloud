@@ -238,7 +238,7 @@ ui:
 To customize Font families, Colors or more Elements refer to the following files:
 
 - `src/components/CustomStyles.astro`
-- `src/assets/styles/tailwind.css`
+- `public/assets/styles/tailwind.css`
 
 ### Deploy
 

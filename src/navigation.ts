@@ -123,7 +123,7 @@ export const footerData = {
     {
       title: '产品',
       links: [
-        { text: '游戏库', href: '#' },
+        { text: '游戏库', href: '/gameLibrary' },
         { text: '定制服务', href: '#' },
         { text: '服务监控', href: '#' },
       ],
