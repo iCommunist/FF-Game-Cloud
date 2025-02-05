@@ -24,7 +24,7 @@ const items = [
   </div>
 </div>
 
-<div class="w-full mx-auto max-w-7xl border rounded-sm ease-in-out motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade" style="border: 1px solid rgba(252, 250, 250, 1);border-radius: 5px;background: rgba(13, 0, 0, 0.3);">
+<div class="w-full mx-auto max-w-7xl border rounded-sm ease-in-out overflow-hidden" style="border: 1px solid rgba(252, 250, 250, 1); border-radius: 5px; background: rgba(13, 0, 0, 0.3);">
   {items.map((item, index) => (
     <div class="border-b border-gray-300" style="border-color: #5c5554;background:#1b1413;">
       <!-- 标题部分 -->
@@ -34,22 +34,20 @@ const items = [
         style="height:83px;background: #0D0000"
       >
         <span class="flex items-center font-medium text-gray-900 dark:text-gray-100">
-          <!-- 初始为减号图标，点击后会切换 -->
           <img src="/assets/images/加号.svg" alt="减号" width="20" height="20" class="toggle-icon mr-2" />
           <span class="ml-[14px]" style="color: #FFFFFF;">{item.title}</span>
         </span>
-        <span class="arrow transition-transform duration-300">
-          <!-- 这里可以加入箭头图标，如果有需要 -->
-        </span>
+        <span class="arrow transition-transform duration-300"></span>
       </button>
 
       <!-- 折叠内容 -->
-      <div class="content overflow-hidden max-h-0 transition-all duration-500 ease-in-out px-4" style="background: #FFFAFA50;;height:68px;line-height: 68px;">
+      <div class="content overflow-hidden max-h-0 transition-all duration-500 ease-in-out px-4" style="background: #FFFAFA50;height:68px;line-height: 68px;">
         <p class="text-gray-700 dark:text-gray-300 pl-[60px]" style="color: rgba(191, 187, 187, 0.8);">{item.content}</p>
       </div>
     </div>
   ))}
 </div>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {

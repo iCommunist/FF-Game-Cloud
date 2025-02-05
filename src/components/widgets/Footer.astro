@@ -26,58 +26,63 @@ export interface Props {
 const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
 ---
 
-<footer class:list={[ 'relative border-t   border-gray-200 dark:border-slate-800 not-prose']} style="border-top: 1px solid transparent;
-  border-image: linear-gradient(to right, rgba(255, 255, 255, 0.15) 0%, rgba(242, 106, 22, 1) 51%, rgba(255, 255, 255, 0.15) 100%);
-  border-image-slice: 1;background: rgba(64, 60, 58, 0.25);">
+<footer 
+  class="relative border-t border-gray-200 dark:border-slate-800 not-prose" 
+  style="
+    border-top: 1px solid transparent;
+    border-image: linear-gradient(to right, rgba(255, 255, 255, 0.15) 0%, rgba(242, 106, 22, 1) 51%, rgba(255, 255, 255, 0.15) 100%);
+    border-image-slice: 1;
+    background: radial-gradient(ellipse at left, rgba(255, 0, 0, 0.6) 0%, rgba(0, 0, 255, 0) 100%);
+  ">
   <div class="dark:bg-dark absolute inset-0 pointer-events-none pt-10" aria-hidden="true"></div>
   <div
-    class="relative max-w-7xl mx-auto px-4 sm:px-6 dark:text-slate-300 intersect-once intersect-quarter intercept-no-queue motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+  style="background: radial-gradient(ellipse 600px 300px at 300px 50%, rgba(230, 109, 16, 0.25) 0%, rgba(41, 37, 35, 0.8) 66%);"
+    class="relative px-48 dark:text-slate-300 intersect-once intersect-quarter intercept-no-queue motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
   >
-  <div class="grid py-8 md:py-12 grid-cols-1 md:grid-cols-2 gap-6">
-    <!-- 左侧内容 -->
-    <div class="flex flex-col items-start">
-      <img src="/assets/images/FFGameCloud-logo.png" alt="My Image" class="cursor-pointer mb-6"/>
-      <p class="w-[35ch] whitespace-normal" style="color: #949494;">
-        采用自研开放式STEAM自助游戏而板，专为服主精心打磨，
-        便捷式网页操作，省去繁琐开服，让您轻松快速联机。
-      </p>
+    <div class="grid py-8 md:py-12 grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- 左侧内容 -->
+      <div class="flex flex-col items-start">
+        <img src="/assets/images/FFGameCloud-logo.png" alt="My Image" class="cursor-pointer mb-6"/>
+        <p class="w-[35ch] whitespace-normal" style="color: #949494;">
+          采用自研开放式STEAM自助游戏而板，专为服主精心打磨，便捷式网页操作，省去繁琐开服，让您轻松快速联机。
+        </p>
+      </div>
+    
+      <!-- 右侧内容 -->
+      <div class="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3">
+        {links.map(({ title, links }) => (
+          <div class="w-full flex flex-col items-center md:items-end">
+            <div class="dark:text-gray-300 font-medium mb-4 text-left" style="width:54px;color:#fff">{title}</div>
+            {links && Array.isArray(links) && links.length > 0 && (
+              <ul class="text-sm text-left">
+                {links.map(({ text, href, ariaLabel }) => (
+                  <li class="mb-4">
+                    <a
+                      style="color: #949494;"
+                      class="block text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
+                      href={href}
+                      aria-label={ariaLabel}
+                    >
+                      <Fragment set:html={text} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
-  
-    <!-- 右侧内容 -->
-    <div class="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3" >
-      {links.map(({ title, links }) => (
-       <div class="w-full flex flex-col items-center md:items-end">
-          <div class="dark:text-gray-300 font-medium mb-4 text-left" style="width:54px;color:#fff">{title}</div>
-          {links && Array.isArray(links) && links.length > 0 && (
-            <ul class="text-sm text-left " >
-              {links.map(({ text, href, ariaLabel }) => (
-                <li class="mb-4">
-                  <a
-                  style="color: #949494;"
-                    class="block text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
-                    href={href}
-                    aria-label={ariaLabel}
-                  >
-                    <Fragment set:html={text} />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      ))}
-    </div>
-  </div>
-  
+    
     <!-- 网站信息 -->
-    <div class="md:flex md:items-center md:justify-between " style="color: #949494;">
+    <div class="md:flex md:items-center md:justify-between" style="color: #949494;">
       {
         socialLinks?.length ? (
-          <ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4 ">
+          <ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4">
             {socialLinks.map(({ ariaLabel, href, text, icon }, index) => (
               <li :key={index}>
                 <a
-                  class={`text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none  focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm inline-flex items-center border-r border-gray-300 p-0 py-2.5 last:border-r-0 `}
+                  class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm inline-flex items-center border-r border-gray-300 p-0 py-2.5 last:border-r-0"
                   aria-label={ariaLabel}
                   href={href}
                   style="color: rgba(148, 148, 148, 100);"
@@ -98,3 +103,4 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
     </div>
   </div>
 </footer>
+

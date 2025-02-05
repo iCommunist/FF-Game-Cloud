@@ -7,11 +7,14 @@ import { ElMessage } from 'element-plus';
 import localwxImage from '/assets/images/微信.png';
 const { id = 'header', isSticky = false, isDark = true, position = 'center' } = Astro.props;
 ---
+<!-- {...isSticky ? { 'data-aw-sticky-header': true } : {}} -->
+
 
 <header
+style="background: #FFFFFF20;"
   class:list={[
     { sticky: isSticky, relative: !isSticky, dark: isDark },
-    'top-0 z-40 flex-none mx-auto w-full  border-gray-50/0 transition-[opacity] ease-in-out',
+    'top-0 z-40 flex-none mx-auto w-full  border-gray-50/0 transition-[opacity] ease-in-out ',
   ]}
   {...isSticky ? { 'data-aw-sticky-header': true } : {}}
   {...id ? { id } : {}}
