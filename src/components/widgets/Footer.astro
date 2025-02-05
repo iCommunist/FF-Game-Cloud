@@ -37,7 +37,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
     <!-- 左侧内容 -->
     <div class="flex flex-col items-start">
       <img src="/assets/images/FFGameCloud-logo.png" alt="My Image" class="cursor-pointer mb-6"/>
-      <p class="w-[35ch] whitespace-normal">
+      <p class="w-[35ch] whitespace-normal" style="color: #949494;">
         采用自研开放式STEAM自助游戏而板，专为服主精心打磨，
         便捷式网页操作，省去繁琐开服，让您轻松快速联机。
       </p>
@@ -47,12 +47,13 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
     <div class="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3" >
       {links.map(({ title, links }) => (
        <div class="w-full flex flex-col items-center md:items-end">
-          <div class="dark:text-gray-300 font-medium mb-4 text-left" style="width:54px">{title}</div>
+          <div class="dark:text-gray-300 font-medium mb-4 text-left" style="width:54px;color:#fff">{title}</div>
           {links && Array.isArray(links) && links.length > 0 && (
             <ul class="text-sm text-left " >
               {links.map(({ text, href, ariaLabel }) => (
                 <li class="mb-4">
                   <a
+                  style="color: #949494;"
                     class="block text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
                     href={href}
                     aria-label={ariaLabel}
@@ -69,7 +70,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
   </div>
   
     <!-- 网站信息 -->
-    <div class="md:flex md:items-center md:justify-between ">
+    <div class="md:flex md:items-center md:justify-between " style="color: #949494;">
       {
         socialLinks?.length ? (
           <ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4 ">
