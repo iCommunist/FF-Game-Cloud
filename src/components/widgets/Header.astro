@@ -7,11 +7,10 @@ import { ElMessage } from 'element-plus';
 import localwxImage from '/assets/images/微信.png';
 const { id = 'header', isSticky = false, isDark = true, position = 'center' } = Astro.props;
 ---
+
 <!-- {...isSticky ? { 'data-aw-sticky-header': true } : {}} -->
-
-
 <header
-style="background: #FFFFFF20;"
+  style="background: #FFFFFF20;"
   class:list={[
     { sticky: isSticky, relative: !isSticky, dark: isDark },
     'top-0 z-40 flex-none mx-auto w-full  border-gray-50/0 transition-[opacity] ease-in-out ',
@@ -69,7 +68,7 @@ style="background: #FFFFFF20;"
       <!-- 用户名输入框 -->
       <div class="relative w-[220px] mb-3">
         <img
-          src="/assets/images/user-icon.png"
+          src="/assets/images/user.svg"
           alt="用户图标"
           class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
         />
@@ -84,7 +83,7 @@ style="background: #FFFFFF20;"
       <!-- 密码输入框 -->
       <div class="relative w-[220px] mb-3">
         <img
-          src="/assets/images/password-icon.png"
+          src="/assets/images/lock.svg"
           alt="密码图标"
           class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
         />
@@ -96,7 +95,7 @@ style="background: #FFFFFF20;"
         />
         <!-- 查看密码图标 -->
         <img
-          src="/assets/images/eye-icon.png"
+          src="/assets/images/eyes1.svg"
           alt="查看密码"
           class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-4 h-4"
           id="toggle-password"
@@ -108,7 +107,7 @@ style="background: #FFFFFF20;"
         id="submit-button"
         class="w-[220px] h-[40px] flex justify-center items-center cursor-pointer rounded-md bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
       >
-        <img src="/assets/images/loginicon.png" alt="" class="w-4 h-4 mr-2" />
+        <img src="/assets/images/登录.svg" alt="" class="w-4 h-4 mr-2" />
         <span class="text-sm">登录</span>
       </div>
 
@@ -121,14 +120,13 @@ style="background: #FFFFFF20;"
       <!-- 第三方登录 -->
       <div class="flex justify-center gap-2 w-[220px] mt-4 text-xs">第三方快捷登录</div>
       <div class="flex justify-center gap-2 w-[220px] mt-4">
-        <!-- <Image src={localwxImage} alt="微信登录" class="w-6 h-6 cursor-pointer" /> -->
         <picture>
           <img
             src="/assets/images/微信.png"
             decoding="async"
             loading="lazy"
             alt="我的图片描述"
-             class="w-6 h-6 cursor-pointer"
+            class="w-6 h-6 cursor-pointer"
           />
         </picture>
         <picture>
@@ -139,10 +137,9 @@ style="background: #FFFFFF20;"
             decoding="async"
             loading="lazy"
             alt="我的图片描述"
-             class="w-6 h-6 cursor-pointer"
+            class="w-6 h-6 cursor-pointer"
           />
         </picture>
-        <!-- <Image src="/assets/images/QQ登录.png" alt="QQ登录" class="w-6 h-6 cursor-pointer" /> -->
       </div>
     </div>
 
@@ -156,7 +153,6 @@ style="background: #FFFFFF20;"
     </button>
   </div>
 </div>
-
 <!-- 注册表单（默认为隐藏） -->
 <div
   id="register-form"
@@ -550,5 +546,20 @@ style="background: #FFFFFF20;"
   // 返回登录表单
   document.getElementById('back-to-login-from-forgot')!.addEventListener('click', () => {
     document.getElementById('forgot-password-form')!.classList.add('hidden');
+  });
+
+  // 监听 toggle-password 的点击事件
+  document.getElementById('toggle-password').addEventListener('click', function () {
+    const passwordField = document.getElementById('password');
+    const toggleIcon = document.getElementById('toggle-password');
+
+    // 判断密码框的 type，切换为 text 或 password
+    if (passwordField.type === 'password') {
+      passwordField.type = 'text'; // 显示密码
+      toggleIcon.src = '/assets/images/eyes2.svg'; // 切换为眼睛图标2（显示密码）
+    } else {
+      passwordField.type = 'password'; // 隐藏密码
+      toggleIcon.src = '/assets/images/eyes1.svg'; // 切换为眼睛图标1（隐藏密码）
+    }
   });
 </script>

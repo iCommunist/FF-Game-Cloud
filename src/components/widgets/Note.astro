@@ -4,6 +4,7 @@ import Problem from '~/components/problem.astro';
 import Partners from '~/components/partners.astro';
 import Feature from '../feature.astro';
 import Faceplate from '../faceplate.astro';
+
 const accordionItems = [
   { title: '折叠面板 1', content: '这里是第一个折叠面板的内容。' },
   { title: '折叠面板 2', content: '这里是第二个折叠面板的内容。' },
@@ -12,8 +13,8 @@ const accordionItems = [
 ---
 
 <section
-  class="not-prose ease-in-out  pb-[150px]"
-  style="background-image: url('/assets/images/212bg.png'); background-color: #211d1b; background-size: cover; background-position: center;"
+  class="not-prose ease-in-out pb-[150px]"
+  style="background-color: #211d1b; background-size: cover; background-position: center;"
 >
   <Feature />
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium mt-[58px]">
@@ -23,7 +24,7 @@ const accordionItems = [
       class="py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto cursor-pointer"
     />
   </div>
-  <Faceplate />
+  <div style="background-image: url('/assets/images/212bg.png') " class="py-40"><Faceplate /></div>
   <Partners />
   <Problem items={accordionItems} />
 </section>
