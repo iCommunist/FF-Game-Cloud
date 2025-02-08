@@ -21,15 +21,65 @@ const accordionItems = [
     <img src="/assets/images/热门游戏库.png" alt="" class="w-[61.61vw] h-[5.57vw]" />
   </div>
   <div
-    class="w-[80.99vw] h-[37.24vw] flex mx-auto opacity-30  p-[1.30vw] rounded-[0.26vw] border border-[rgba(176,162,158,0.5)] bg-gradient-to-b from-[rgba(176,162,158,0.5)] to-[rgba(0,0,0,0.8)]]"
+    class="background-overlay w-[80.99vw] h-[37.24vw] flex mx-auto p-[1.30vw] rounded-[0.26vw] border border-[rgba(176,162,158,0.5)] bg-gradient-to-b from-[rgba(176,162,158,0.5)] to-[rgba(0,0,0,0.8)]]"
   >
-  <div class="w-[25.63vw] h-[34.58vw] mr-[2.34vw]  border border-[rgba(176,162,158,1)] rounded-[0.26vw] flex justify-center items-center">
-    <img src="/assets/images/游戏库左1.png" alt="" class="w-[24.91vw] h-[34.0vw]">
+    <div
+      style="background: linear-gradient(270deg, rgba(240, 228, 221, 0.3) 0%, rgba(255, 255, 255, 0) 100%);"
+      class="w-[25.63vw] h-[34.58vw] mr-[2.34vw] border border-[rgba(176,162,158,1)] rounded-[0.26vw] flex justify-center items-center"
+    >
+      <img src="/assets/images/游戏库左1.png" alt="" class="w-[24.55vw] h-[33.64vw]" />
+    </div>
+    <div class="w-[26.25vw] h-[34.58vw] mr-[2.5vw] flex justify-between items-center flex-col">
+      <div
+        class="flex justify-center items-center p-[0.36vw]"
+        style="border: 1px solid rgba(176, 162, 158, 1); border-radius: 0.26vw; background: linear-gradient(270deg, rgba(240, 228, 221, 0.3) 0%, rgba(255, 255, 255, 0) 100%);"
+      >
+        <img src="/assets/images/中上.png" alt="" class="w-[25.19vw] h-[12.14vw]" />
+      </div>
+      <div
+        class="flex justify-center items-center p-[0.36vw]"
+        style="border: 1px solid rgba(176, 162, 158, 1); border-radius: 0.26vw; background: linear-gradient(270deg, rgba(240, 228, 221, 0.3) 0%, rgba(255, 255, 255, 0) 100%);"
+      >
+        <img src="/assets/images/中下.png" alt="" class="w-[25.16vw] h-[19.43vw]" />
+      </div>
+    </div>
+    <div class="flex items-center flex-col">
+      <div>
+        <img
+          src="/assets/images/查看更多游戏.png"
+          alt=""
+          class="mt-[1.3vw] mb-[1.3vw] cursor-pointer w-[13.75vw] h-[4.17vw]"
+        />
+      </div>
+      <div
+        class="mb-[1.2vw] flex justify-center items-center p-[0.36vw]"
+        style="border: 1px solid rgba(176, 162, 158, 1); border-radius: 0.26vw; background: linear-gradient(270deg, rgba(240, 228, 221, 0.3) 0%, rgba(255, 255, 255, 0) 100%);"
+      >
+        <img src="/assets/images/右中.png" alt="" class="w-[21.41vw] h-[12.14vw]" />
+      </div>
+      <div
+        class="flex justify-center items-center p-[0.36vw]"
+        style="border: 1px solid rgba(176, 162, 158, 1); border-radius: 0.26vw; background: linear-gradient(270deg, rgba(240, 228, 221, 0.3) 0%, rgba(255, 255, 255, 0) 100%);"
+      >
+        <img src="/assets/images/右下.png" alt="" class="w-[21.41vw] h-[12.14vw]" />
+      </div>
+    </div>
   </div>
-    <div class="w-[26.25vw] h-[34.58vw] mr-[2.5vw]" style="border: 1px solid rgba(176, 162, 158, 1);border-radius: 0.26vw;"></div>
-    <div class="w-[22.19vw] h-[34.58vw]" style="border: 1px solid rgba(176, 162, 158, 1);border-radius: 0.26vw;"></div>
+  <div class="pt-[16vw]" style="background-image: url('/assets/images/212bg.png');background-size: contain;background-repeat: no-repeat;   ">
+    <Faceplate />
+    <Partners />
+    <Problem items={accordionItems} />
   </div>
-  <div style="background-image: url('/assets/images/212bg.png') " class="py-40"><Faceplate /></div>
-  <Partners />
-  <Problem items={accordionItems} />
 </section>
+<style>
+  .background-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(176, 162, 158, 0.3);
+    z-index: -1;
+  }
+</style>
