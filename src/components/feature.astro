@@ -1,41 +1,76 @@
-<!-- <div
-  class="w-full mx-auto max-w-7xl ease-in-out motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade pt-[125px]"
->
-  <img src="/assets/images/分组32.png" alt="" />
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
-  <div>4</div>
-  <img />
-</div> -->
+---
+const leftItems = [
+  {
+    imgSrc: "/assets/images/在线客服.png",
+    title: "在线客服",
+    description: "专业的技术团队及时协助您，解决您遇到的任何服务器相关问题，助您无忧开服，轻松上手，畅玩游戏。",
+  },
+  {
+    imgSrc: "/assets/images/稳定路线.png",
+    title: "稳定线路",
+    description: "BGP游戏稳定线路，以及高防御DDOS策略，有效抵挡压测攻击，满足用户的在线体验",
+  },
+];
+
+const rightItems = [
+  {
+    imgSrc: "/assets/images/性能处理.png",
+    title: "性能处理",
+    description: "全系采用AMD高频性能处理器，NVME高速存储，轻松处理游戏服务端，为您提升游戏联机的流畅体验。",
+  },
+  {
+    imgSrc: "/assets/images/自研面板.png",
+    title: "自研面板",
+    description: "飞鱼游戏云独立自研精心打磨，独特实用，功能丰富的游戏控制面板，简单而快捷的管理，为您实现简单开服，好友联机的的乐趣。",
+  },
+];
+---
+<div class="w-full pt-[13.54vw] pb-[6.25vw] flex justify-center">
+  <img src="/assets/images/独家特色.png" alt="" class="w-[61.77vw] h-[5.21vw]" />
+</div>
 <div class="mx-auto w-full h-[22.29vw] flex justify-center">
+  <!-- 左侧 2 个模块 -->
   <div class="w-[21.53vw] flex flex-col justify-between items-center" style="border: 0.1vw solid #fff00000">
-    <div class="w-[21.53vw] h-[7.29vw] relative" style="border: 0.1vw solid #B0A29E; border-radius: 5px;">
-        <!-- 圆的位置 -->
-        <!-- <div class="absolute right-[-0.365vw] top-1/2 transform -translate-y-1/2 
-                    w-[0.73vw] h-[0.73vw] bg-[#B0A29E] rounded-full z-10"></div> -->
-        1
+    {leftItems.map((item, index) => (
+      <div class="w-[21.53vw] h-[7.29vw] relative" style="border: 0.1vw solid #B0A29E; border-radius: 0.26vw;" key={index}>
+        <div class="flex items-center h-full">
+          <div
+            class="w-[4.17vw] h-[4.17vw] flex ml-[0.63vw] mr-[1.25vw] justify-center items-center rounded-[0.3vw] border-[0.03vw] border-[rgba(133,114,106,1)]"
+            style="background: linear-gradient(90.93deg, rgba(173, 173, 173, 0.05) 20.83%, rgba(153, 143, 136, 0.5) 100%);"
+          >
+            <img src={item.imgSrc} alt="" class="w-[2.29vw] h-[2.29vw]" />
+          </div>
+          <div>
+            <div
+              class="font-medium bg-gradient-to-t from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,1)] text-transparent bg-clip-text"
+              style="font-size: 1.04vw; font-weight: 500;"
+            >
+              {item.title}
+            </div>
+            <div
+              class="w-[14.27vw]"
+              style="font-size: 0.73vw; font-weight: 400; letter-spacing: 0; line-height: 1.06vw; color: rgba(214, 205, 203, 1);"
+            >
+              {item.description}
+            </div>
+          </div>
+        </div>
       </div>
-      
-    <div class="w-[21.53vw] h-[7.29vw]" style="border: 0.1vw solid #B0A29E;border-radius: 5px;">3</div>
+    ))}
   </div>
+
+  <!-- 中间装饰 -->
   <div class="w-[39.3vw] flex items-center justify-center" style="border: 0.1vw solid #20d2df00">
     <div class="w-[7.6vw] h-[15.6vw] relative border-[0.1vw] border-[#4A3E32] border-l-[#20d2df00]">
-      <!-- A圆 - 左上角 -->
       <div
-        class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')]  bg-no-repeat bg-center bg-cover rounded-full top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 z-10"
-      >
-      </div>
-      <!-- B圆 - 右边框顶部四分之一处 -->
+        class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')] bg-no-repeat bg-center bg-cover rounded-full top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 z-10"
+      ></div>
       <div
-        class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')]  bg-no-repeat bg-center bg-cover rounded-full top-[25%] right-0 transform translate-x-1/2 -translate-y-1/2 z-10"
-      >
-      </div>
-      <!-- C圆 - 底部边框二分之一处 -->
+        class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')] bg-no-repeat bg-center bg-cover rounded-full top-[25%] right-0 transform translate-x-1/2 -translate-y-1/2 z-10"
+      ></div>
       <div
-        class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')]  bg-no-repeat bg-center bg-cover rounded-full rounded-full bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-10"
-      >
-      </div>
+        class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')] bg-no-repeat bg-center bg-cover rounded-full bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-10"
+      ></div>
     </div>
     <div class="w-[24.1vw] h-[15.6vw] relative">
       <!-- 横线 -->
@@ -48,27 +83,42 @@
       />
     </div>
     <div class="w-[7.6vw] h-[15.6vw] relative" style="border: 0.1vw solid #4A3E32;border-right-color: #20d2df00 ;">
-        <div class="w-[7.6vw] h-[15.6vw] relative border-[0.1vw] border-[#4A3E32] border-r-[#20d2df00]">
-            <!-- A圆 - 左上角 -->
-            <div
-              class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')]  bg-no-repeat bg-center bg-cover rounded-full top-0 right-0 transform translate-x-1/2 -translate-y-1/2 z-10"
-            >
-            </div>
-            <!-- B圆 - 右边框顶部四分之一处 -->
-            <div
-              class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')]  bg-no-repeat bg-center bg-cover rounded-full top-[50%] left-0 transform -translate-x-1/2 -translate-y-1/2 z-10"
-            >
-            </div>
-            <!-- C圆 - 底部边框二分之一处 -->
-            <div
-              class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')]  bg-no-repeat bg-center bg-cover rounded-full rounded-full bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-10"
-            >
-            </div>
-          </div>
+      <div class="w-[7.6vw] h-[15.6vw] relative border-[0.1vw] border-[#4A3E32] border-r-[#20d2df00]">
+        <div
+          class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')] bg-no-repeat bg-center bg-cover rounded-full top-0 right-0 transform translate-x-1/2 -translate-y-1/2 z-10"
+        ></div>
+        <div
+          class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')] bg-no-repeat bg-center bg-cover rounded-full top-[50%] left-0 transform -translate-x-1/2 -translate-y-1/2 z-10"
+        ></div>
+        <div
+          class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')] bg-no-repeat bg-center bg-cover rounded-full bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-10"
+        ></div>
+      </div>
     </div>
   </div>
+
+  <!-- 右侧 2 个模块 -->
   <div class="w-[21.53vw] flex flex-col justify-between items-center" style="border: 0.1vw solid #fff00000">
-    <div class="w-[21.53vw] h-[7.29vw]" style="border: 0.1vw solid #B0A29E;border-radius: 5px;">2</div>
-    <div class="w-[21.53vw] h-[7.29vw]" style="border: 0.1vw solid #B0A29E;border-radius: 5px;">4</div>
+    {rightItems.map((item, index) => (
+      <div class="w-[21.53vw] h-[7.29vw] relative" style="border: 0.1vw solid #B0A29E; border-radius: 0.26vw;" key={index}>
+        <div class="flex items-center h-full">
+          <div
+            class="w-[4.17vw] h-[4.17vw] flex ml-[0.63vw] mr-[1.25vw] justify-center items-center rounded-[0.3vw] border-[0.03vw] border-[rgba(133,114,106,1)]"
+            style="background: linear-gradient(90.93deg, rgba(173, 173, 173, 0.05) 20.83%, rgba(153, 143, 136, 0.5) 100%);"
+          >
+            <img src={item.imgSrc} alt="" class="w-[2.29vw] h-[2.29vw]" />
+          </div>
+          <div>
+            <div class="font-medium bg-gradient-to-t from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,1)] text-transparent bg-clip-text"
+              style="font-size: 1.04vw; font-weight: 500;">
+              {item.title}
+            </div>
+            <div class="w-[14.27vw] text-gray-300" style="font-size: 0.73vw; line-height: 1.06vw;">
+              {item.description}
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
   </div>
 </div>

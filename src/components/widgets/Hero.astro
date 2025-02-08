@@ -39,25 +39,25 @@ const {
             <img
               src="/assets/images/ffClould.png"
               alt=""
-              class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto"
+              class="mt-[] w-[17.87vw] h-[4.17vw]"
             />
           </div>
           <div>
             <img
               src="/assets/images/ffClouldDesc.png"
               alt=""
-              class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto"
+              class="mt-[] w-[46.51vw] h-[4.17vw]"
             />
           </div>
 
           <div>
-            <a href="/gameLibrary">
+            <a id="gameLibraryLink"  class="w-[12.19vw] h-[3.84vw] mt-[2.71vw] cursor-pointer block">
               <img
                 src="/assets/images/yxkbtn.png"
                 alt=""
-                class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto cursor-pointer"
+                class="w-full h-full"
               />
-            </a>
+            </a>            
           </div>
         </div>
       </div>
@@ -65,3 +65,17 @@ const {
     <div class=" w-full absolute bottom-0" style="height:90px; opacity: 0.7; background: linear-gradient(to bottom, transparent 0%,  #221D1B 56.36%, #000000 100%);"></div>
   </div>
 </section>
+<script>
+ document.addEventListener("DOMContentLoaded", function () {
+    var link = document.getElementById("gameLibraryLink");
+
+    if (link) {
+      link.addEventListener("click", function (event) {
+        // 延迟执行，确保能够处理所有设备
+        setTimeout(function () {
+          window.location.href = "/gameLibrary";
+        }, 10); // 延迟10ms避免阻止默认跳转的冲突
+      });
+    }
+  });
+</script>
