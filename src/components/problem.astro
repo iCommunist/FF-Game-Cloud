@@ -8,46 +8,48 @@ const items = [
 ];
 ---
 
-<div class="mx-auto max-w-7xl flex justify-between p-4 mt-6 ease-in-out motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+<div class="w-[81.02vw] mx-auto mt-[13.02vw] flex justify-between  ease-in-out motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
   <!-- 常见问题标题 -->
-  <div class="text-xl xl:text-2xl 2xl:text-3xl ml-[63px] " style="color:#FFFFFF">常见问题</div>
+  <div class="w-[9.48vw] h-[2.92vw] ml-[3.33vw] mb-[1.35vw] " style="color:#FFFFFF;font-size: 1.98vw;">常见问题</div>
   <!-- 按钮容器 -->
   <div class="flex space-x-2">
     <!-- 提交工单按钮 -->
-    <div style="color:#FFFFFF" class="flex items-center justify-center text-xs px-4 leading-4 md:leading-8 border border-gray-300 rounded-md cursor-pointer">
+    <div style="color:#FFFFFF;font-size: 1.04vw; " class="w-[7.81vw] h-[2.60vw] flex items-center justify-center  border border-gray-300  cursor-pointer">
       提交工单
     </div>
     <!-- 文档中心按钮 -->
-    <div class="flex items-center justify-center text-xs px-4 leading-4 md:leading-8 bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-md cursor-pointer">
+    <div class="w-[7.81vw] h-[2.60vw] flex items-center justify-center  bg-gradient-to-r from-blue-500 to-cyan-400 text-white  cursor-pointer" style="font-size: 1.04vw;">
       文档中心
     </div>
   </div>
 </div>
 
-<div class="w-full mx-auto max-w-7xl border rounded-sm ease-in-out overflow-hidden" style="border: 1px solid rgba(252, 250, 250, 1); border-radius: 5px; background: rgba(13, 0, 0, 0.3);">
+<div class="w-[81.02vw] mx-auto   border rounded-sm ease-in-out overflow-hidden" style="border: 1px solid rgba(252, 250, 250, 1); border-radius: 0.26vw; background: rgba(13, 0, 0, 0.3);">
   {items.map((item, index) => (
     <div class="border-b border-gray-300" style="border-color: #5c5554;background:#1b1413;">
       <!-- 标题部分 -->
       <button
-        class="w-full text-left py-3 px-4 flex justify-between items-center pl-[30px] bg-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+        class="w-full h-[4.48vw] text-left  flex justify-between items-center bg-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 transition"
         data-index={index}
-        style="height:83px;background: #0D0000"
+        style="background: #0D0000"
       >
         <span class="flex items-center font-medium text-gray-900 dark:text-gray-100">
-          <img src="/assets/images/加号.svg" alt="减号" width="20" height="20" class="toggle-icon mr-2" />
-          <span class="ml-[14px]" style="color: #FFFFFF;">{item.title}</span>
+          <img src="/assets/images/加号.svg" alt="减号"  class="toggle-icon  w-[1.04vw] h-[1.04vw] ml-[1.67vw] mr-[1.25vw]" />
+          <span class="ml-[0.73vw]" style="color: #FFFFFF;font-size:0.94vw ;">{item.title}</span>
         </span>
         <span class="arrow transition-transform duration-300"></span>
       </button>
 
       <!-- 折叠内容 -->
-      <div class="content overflow-hidden max-h-0 transition-all duration-500 ease-in-out px-4" style="background: #FFFAFA50;height:68px;line-height: 68px;">
-        <p class="text-gray-700 dark:text-gray-300 pl-[60px]" style="color: rgba(191, 187, 187, 0.8);">{item.content}</p>
-      </div>
+      <div class="content overflow-hidden max-h-0 transition-all duration-500 ease-in-out px-0.83vw" style="background: #FFFAFA50; height: 3.54vw; line-height: 3.54vw;">
+    <p class="text-gray-700 dark:text-gray-300 pl-[4.7vw]" style="color: rgba(191, 187, 187, 0.8);font-size: 0.83vw;">
+        {item.content}
+    </p>
+</div>
     </div>
   ))}
 </div>
-
+<div class="w-full h-[16.15vw]"></div>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -72,4 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+<style>
+  .px-0.83vw { padding-left: 0.83vw; padding-right: 0.83vw; }
+.pl-3.125vw { padding-left: 3.125vw; }
 
+</style>

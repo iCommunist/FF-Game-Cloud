@@ -52,81 +52,88 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
 <div
   id="login-form"
   class="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center hidden"
-  style="backdrop-filter: blur(5px);"
+  style="backdrop-filter: blur(0.26vw);"
 >
-  <div class="bg-[#262323] rounded-lg w-[545px] h-[380px] flex relative">
+  <div class="bg-[#262323] rounded-lg w-[62.03vw] h-[34.38vw] flex relative">
     <!-- 左侧图片区域，占2/5 -->
-    <div class="w-[238px] h-full flex justify-center items-center">
+    <div class="w-[24.84vw] h-[34.38vw] flex justify-center items-center">
       <img src="/assets/images/login-img.png" alt="" class="object-fill w-full h-full" />
     </div>
 
     <!-- 右侧表单区域，占3/5 -->
-    <div id="login-right" class="w-[307px] h-full flex flex-col justify-between items-center text-white px-4 py-6">
-      <h2 class="text-lg font-medium">账号登录</h2>
-      <div class="text-center text-sm text-[#949494] mb-4">推荐使用快捷登录，防止盗号风险</div>
+    <div id="login-right" class="w-[37.19vw] h-[34.38vw] flex flex-col items-center text-white">
+      <h2 class="font-medium mt-[2.71vw]" style="font-size: 1.56vw;">账号登录</h2>
+      <div class="text-center text-[#949494] mt-[0.3]" style="font-size: 0.83vw">推荐使用快捷登录，防止盗号风险</div>
 
       <!-- 用户名输入框 -->
-      <div class="relative w-[220px] mb-3">
+      <div class="relative w-[22.92vw] h-[3.02vw] mt-[2.08vw] flex items-center">
         <img
           src="/assets/images/user.svg"
           alt="用户图标"
-          class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
+          class="absolute left-[1.04vw] top-1/2 transform -translate-y-1/2 w-[0.83vw] h-[0.83vw]"
         />
         <input
           type="text"
           placeholder="用户名"
           id="username"
-          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
+          style="border-radius: 0.26vw;"
+          class="w-[22.92vw] h-[3.02vw] pl-8 border bg-[#262323] focus:ring-2 focus:ring-blue-500 placeholder-sm"
         />
       </div>
 
       <!-- 密码输入框 -->
-      <div class="relative w-[220px] mb-3">
+      <div class="relative w-[22.92vw] h-[3.02vw] mt-[1.25vw] flex items-center">
         <img
           src="/assets/images/lock.svg"
           alt="密码图标"
-          class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
+          class="absolute left-[1.04vw] top-1/2 transform -translate-y-1/2 w-[0.83vw] h-[0.83vw]"
         />
         <input
           type="password"
           placeholder="密码"
           id="password"
-          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
+          style="border-radius: 0.26vw;"
+          class="w-[22.92vw] h-[3.02vw] pl-8 border bg-[#262323] focus:ring-2 focus:ring-blue-500 placeholder-sm"
         />
         <!-- 查看密码图标 -->
         <img
           src="/assets/images/eyes1.svg"
           alt="查看密码"
-          class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-4 h-4"
+          class="absolute right-[1.04vw] top-1/2 transform -translate-y-1/2 cursor-pointer w-[0.83vw] h-[0.83vw]"
           id="toggle-password"
         />
       </div>
 
-      <!-- 登录按钮 -->
-      <div
-        id="submit-button"
-        class="w-[220px] h-[40px] flex justify-center items-center cursor-pointer rounded-md bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
-      >
-        <img src="/assets/images/登录.svg" alt="" class="w-4 h-4 mr-2" />
-        <span class="text-sm">登录</span>
+      <!-- 忘记密码、注册表单切换 -->
+      <div class="w-[22.92vw] h-[3.02vw] flex justify-between gap-2 mt-[1.25vw] px-1 text-[#1D82EC]">
+        <div id="show-register" class="cursor-pointer" style="font-size: 0.83vw;">账号注册</div>
+        <div id="show-forgot" class="cursor-pointer" style="font-size: 0.83vw;">忘记密码？</div>
       </div>
 
-      <!-- 忘记密码、注册表单切换 -->
-      <div class="flex justify-between gap-2 w-[220px] text-xs mt-3 text-[#1D82EC]">
-        <div id="show-register" class="cursor-pointer">账号注册</div>
-        <div id="show-forgot" class="cursor-pointer">忘记密码？</div>
+      <!-- 登录按钮 -->
+      <div
+        style="border-radius: 0.26vw;"
+        id="submit-button"
+        class="w-[22.92vw] h-[3.02vw] flex justify-center items-center cursor-pointer bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
+      >
+        <div class="flex justify-center items-center">
+          <img src="/assets/images/登录.svg" alt="" class="w-[0.83vw] h-[ 0.83vw] mr-[0.73vw]" />
+          <span class="" style="font-size: 0.83vw;">登录</span>
+        </div>
       </div>
 
       <!-- 第三方登录 -->
-      <div class="flex justify-center gap-2 w-[220px] mt-4 text-xs">第三方快捷登录</div>
-      <div class="flex justify-center gap-2 w-[220px] mt-4">
+      <div class="flex justify-center gap-2 w-[22.92vw] h-[3.02vw] mt-[2.60vw]" style="font-size: 0.83vw;">
+        第三方快捷登录
+      </div>
+      <div class="flex justify-center gap-2 w-[22.92vw] h-[3.02vw] mt-[1.67vw]">
         <picture>
           <img
             src="/assets/images/微信.png"
             decoding="async"
             loading="lazy"
             alt="我的图片描述"
-            class="w-6 h-6 cursor-pointer"
+            class="w-[2.60vw] h-[2.60vw] cursor-pointer"
           />
         </picture>
         <picture>
@@ -137,7 +144,7 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
             decoding="async"
             loading="lazy"
             alt="我的图片描述"
-            class="w-6 h-6 cursor-pointer"
+            class="w-[2.60vw] h-[2.60vw] cursor-pointer"
           />
         </picture>
       </div>
@@ -146,7 +153,8 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
     <!-- 关闭按钮 -->
     <button
       id="close-login-form"
-      class="absolute top-2 right-2 text-white text-2xl cursor-pointer"
+      class="absolute top-2 right-2 text-white cursor-pointer"
+      style="font-size: 0.83vw;"
       onclick="document.getElementById('login-form').style.display = 'none';"
     >
       &times;
@@ -169,31 +177,33 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
       <h2 class="text-lg font-medium">注册账号</h2>
       <div class="text-center text-sm text-[#949494] mb-4">请输入您的信息来创建账号</div>
       <!-- 用户名输入框 -->
-      <div class="relative w-[220px] mb-3">
+      <div class="relative w-[22.92vw] h-[3.02vw] mb-3">
         <img
           src="/assets/images/user-icon.png"
           alt="用户图标"
-          class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
+          class="absolute left-[1.04vw] top-1/2 transform -translate-y-1/2 w-[0.83vw] h-[0.83vw]"
         />
         <input
           type="text"
           placeholder="用户名"
           id="register-username"
-          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
+          style="border-radius: 0.26vw;"
+          class="w-full p-1 pl-10 border bg-[#262323] focus:ring-2 focus:ring-blue-500"
         />
       </div>
       <!-- 密码输入框 -->
-      <div class="relative w-[220px] mb-3">
+      <div class="relative w-[22.92vw] h-[3.02vw] mb-3">
         <img
           src="/assets/images/password-icon.png"
           alt="密码图标"
-          class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
+          class="absolute left-[1.04vw] top-1/2 transform -translate-y-1/2 w-[0.83vw] h-[0.83vw]"
         />
         <input
           type="password"
           placeholder="密码"
           id="register-password"
-          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
+          style="border-radius: 0.26vw;"
+          class="w-full p-1 pl-10 border bg-[#262323] focus:ring-2 focus:ring-blue-500"
         />
         <!-- 查看密码图标 -->
         <img
@@ -207,7 +217,8 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
       <!-- 注册按钮 -->
       <div
         id="register-submit-button"
-        class="w-[220px] h-[40px] flex justify-center items-center cursor-pointer rounded-md bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
+        style="border-radius: 0.26vw;"
+        class="w-[220px] h-[40px] flex justify-center items-center cursor-pointer bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
       >
         <span class="text-sm">注册</span>
       </div>
@@ -219,86 +230,92 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
 </div>
 
 <!-- 忘记密码表单（默认为隐藏） -->
-<!-- 忘记密码表单（默认为隐藏） -->
 <div
   id="forgot-password-form"
   class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center backdrop-blur"
 >
-  <div class="bg-[#262323] rounded-lg w-[545px] h-[430px] flex">
+  <div class="bg-[#262323] rounded-lg w-[62.03vw] h-[34.38vw] flex">
     <!-- 左侧图片区域，占2/5 -->
-    <div class="w-[238px] h-full flex justify-center items-center">
+    <div class="w-[24.84vw] h-[34.38vw] flex justify-center items-center">
       <img src="/assets/images/login-img.png" alt="haib" class="object-fill w-full h-full" />
     </div>
 
     <!-- 右侧表单区域，占3/5 -->
-    <div
-      id="forgot-password-right"
-      class="w-[307px] h-full flex flex-col justify-between items-center text-white px-4 py-6"
-    >
-      <h2 class="text-lg font-medium">找回密码</h2>
-      <div class="text-center text-sm text-[#949494] mb-4">请输入注册邮箱来重置密码</div>
-
+    <div id="forgot-password-right" class="w-[37.19vw] h-[34.38vw] flex flex-col items-center text-white">
+      <div class="font-medium mt-[2.92vw] mb-[4.27vw]" style="font-size: 1.56vw;">找回密码</div>
       <!-- 邮箱/手机号输入框 -->
-      <div class="relative w-[220px] mb-3 bg-[#262323]">
-        <img
-          src="/assets/images/user-icon.png"
-          alt="邮箱图标"
-          class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
-        />
-        <input
-          type="text"
-          placeholder="手机号/邮箱"
-          id="forgot-email"
-          class="w-full p-1 pl-10 border rounded-md bg-[#262323] text-white focus:outline-none focus:ring-2"
-        />
-      </div>
+      <div class="w-[22.92vw] h-[13.02vw]">
+        <div class="relative w-[22.92vw] h-[3.02vw] bg-[#262323] flex items-center">
+          <img
+            src="/assets/images/user-icon.png"
+            alt="邮箱图标"
+            class="absolute left-[1.04vw] top-1/2 transform -translate-y-1/2 w-[0.83vw] h-[0.83vw]"
+          />
+          <input
+            style="border-radius: 0.26vw;"
+            type="text"
+            placeholder="手机号/邮箱"
+            id="forgot-email"
+            class="placeholder-sm w-full h-[3.02vw] pl-10 border bg-[#262323] text-white focus:outline-none focus:ring-2"
+          />
+        </div>
 
-      <!-- 验证码输入框 -->
-      <div class="relative w-[220px] mb-3 border rounded-md bg-[#262323]">
-        <img
-          src="/assets/images/verify-icon.png"
-          alt="验证码图标"
-          class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
-        />
-        <input
-          type="text"
-          placeholder="验证码"
-          id="forgot-verify-code"
-          class="peer w-[150px] p-1 pl-10 rounded-md bg-[#262323] text-white focus:outline-none focus:ring-0 peer-focus:bg-[#262323] peer-placeholder-shown:bg-[#262323]"
-        />
-        <button
-          id="send-code"
-          class="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs text-blue-400 cursor-pointer"
+        <!-- 验证码输入框 -->
+        <div
+          class="relative w-[22.92vw] h-[3.02vw] mt-[1.46vw] border bg-[#262323] flex items-center"
+          style="border-radius: 0.26vw;"
         >
-          获取验证码
-        </button>
-      </div>
+          <img
+            src="/assets/images/verify-icon.png"
+            alt="验证码图标"
+            class="absolute left-[1.04vw] top-1/2 transform -translate-y-1/2 w-[0.83vw] h-[0.83vw]"
+          />
+          <input
+            type="text"
+            placeholder="验证码"
+            id="forgot-verify-code"
+            style="border-radius: 0.26vw;"
+            class="peer placeholder-sm pl-10 bg-[#262323] text-white focus:outline-none focus:ring-0 peer-focus:bg-[#262323] peer-placeholder-shown:bg-[#262323]"
+          />
+          <button
+            id="send-code"
+            class="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs text-blue-400 cursor-pointer"
+          >
+            获取验证码
+          </button>
+        </div>
 
-      <!-- 新密码输入框 -->
-      <div class="relative w-[220px] mb-3">
-        <img
-          src="/assets/images/password-icon.png"
-          alt="密码图标"
-          class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
-        />
-        <input
-          type="password"
-          placeholder="新密码"
-          id="forgot-new-password"
-          class="w-full p-1 pl-10 border rounded-md bg-[#262323] focus:ring-2 focus:ring-blue-500"
-        />
+        <!-- 新密码输入框 -->
+        <div class="relative w-[22.92vw] h-[3.02vw] mt-[1.46vw] flex items-center">
+          <img
+            src="/assets/images/password-icon.png"
+            alt="密码图标"
+            class="absolute left-[1.04vw] top-1/2 transform -translate-y-1/2 w-[0.83vw] h-[0.83vw]"
+          />
+          <input
+            type="password"
+            placeholder="新密码"
+            id="forgot-new-password"
+            style="border-radius: 0.26vw;"
+            class="placeholder-sm w-full h-[3.02vw] pl-10 border bg-[#262323] focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+      </div>
+      <div class="w-[22.92vw] text-xs text-[#1D82EC] cursor-pointer text-left">
+        <span id="back-to-login-from-forgot">返回登录</span>
       </div>
 
       <!-- 修改密码按钮 -->
       <div
+        style="border-radius: 0.26vw;"
         id="forgot-submit-button"
-        class="w-[220px] h-[40px] flex justify-center items-center cursor-pointer rounded-md bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
+        class="w-[22.92vw] h-[3.02vw] flex mt-[2.5vw] justify-center items-center cursor-pointer bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
       >
+        <img src="/assets/images/修改密码.svg" alt="" class="w-[0.83vw] h-[ 0.83vw] mr-[0.73vw]" />
         <span class="text-sm">修改密码</span>
       </div>
 
       <!-- 返回登录表单 -->
-      <div class="text-xs text-[#1D82EC] mt-3 cursor-pointer" id="back-to-login-from-forgot">返回登录</div>
     </div>
   </div>
 </div>
@@ -563,3 +580,8 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
     }
   });
 </script>
+<style>
+  .placeholder-sm::placeholder {
+    font-size: 0.73vw; /* 14px -> 0.73vw */
+  }
+</style>
