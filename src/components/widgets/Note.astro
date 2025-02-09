@@ -46,6 +46,7 @@ const accordionItems = [
     <div class="flex items-center flex-col">
       <div>
         <img
+          id="gameLibraryLinkBtn"
           src="/assets/images/查看更多游戏.png"
           alt=""
           class="mt-[1.3vw] mb-[1.3vw] cursor-pointer w-[13.75vw] h-[4.17vw]"
@@ -65,12 +66,28 @@ const accordionItems = [
       </div>
     </div>
   </div>
-  <div class="pt-[16vw]" style="background-image: url('/assets/images/212bg.png');background-size: contain;background-repeat: no-repeat;   ">
+  <div
+    class="pt-[16vw]"
+    style="background-image: url('/assets/images/212bg.png');background-size: contain;background-repeat: no-repeat;   "
+  >
     <Faceplate />
     <Partners />
     <Problem items={accordionItems} />
   </div>
 </section>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var link = document.getElementById('gameLibraryLinkBtn');
+    if (link) {
+      link.addEventListener('click', function (event) {
+        // 延迟执行，确保能够处理所有设备
+        setTimeout(function () {
+          window.location.href = '/gameLibrary';
+        }, 10); // 延迟10ms避免阻止默认跳转的冲突
+      });
+    }
+  });
+</script>
 <style>
   .background-overlay::before {
     content: '';
