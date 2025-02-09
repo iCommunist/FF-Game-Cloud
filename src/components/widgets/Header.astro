@@ -51,7 +51,7 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
 <!-- 登录表单（默认为隐藏） -->
 <div
   id="login-form"
-  class="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center hidden"
+  class="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center hidden backdrop-blur"
   style="backdrop-filter: blur(0.26vw);"
 >
   <div class="bg-[#262323] rounded-lg w-[62.03vw] h-[34.38vw] flex relative">
@@ -73,6 +73,7 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
           class="absolute left-[1.04vw] top-1/2 transform -translate-y-1/2 w-[0.83vw] h-[0.83vw]"
         />
         <input
+          autocomplete="off"
           type="text"
           placeholder="用户名"
           id="username"
@@ -90,6 +91,8 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
         />
         <input
           type="password"
+          autocomplete="new-password"
+          autocomplete="off"
           placeholder="密码"
           id="password"
           style="border-radius: 0.26vw;"
@@ -166,65 +169,99 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
   id="register-form"
   class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center backdrop-blur"
 >
-  <div class="bg-[#262323] rounded-lg w-[545px] h-[380px] flex">
+  <div class="bg-[#262323] rounded-lg w-[62.03vw] h-[34.38vw] flex">
     <!-- 左侧图片区域，占2/5 -->
-    <div class="w-[238px] h-full flex justify-center items-center">
+    <div class="w-[24.84vw] h-[34.38vw] flex justify-center items-center">
       <img src="/assets/images/login-img.png" alt="haib" class="object-fill w-full h-full" />
     </div>
 
     <!-- 右侧表单区域，占3/5 -->
-    <div id="register-right" class="w-[307px] h-full flex flex-col justify-between items-center text-white px-4 py-6">
-      <h2 class="text-lg font-medium">注册账号</h2>
-      <div class="text-center text-sm text-[#949494] mb-4">请输入您的信息来创建账号</div>
-      <!-- 用户名输入框 -->
-      <div class="relative w-[22.92vw] h-[3.02vw] mb-3">
-        <img
-          src="/assets/images/user-icon.png"
-          alt="用户图标"
-          class="absolute left-[1.04vw] top-1/2 transform -translate-y-1/2 w-[0.83vw] h-[0.83vw]"
-        />
-        <input
-          type="text"
-          placeholder="用户名"
-          id="register-username"
-          style="border-radius: 0.26vw;"
-          class="w-full p-1 pl-10 border bg-[#262323] focus:ring-2 focus:ring-blue-500"
-        />
+    <div id="register-right" class="w-[37.19vw] h-[34.38vw] flex flex-col items-center text-white px-4">
+      <div class="font-medium mt-[2.92vw]" style="font-size: 1.56vw;">注册账号</div>
+      <div class="text-center text-[#949494] mt-[0.26vw]" style="font-size: 0.83vw;">请输入您的信息来创建账号</div>
+      <div class="w-[22.92vw] h-[11.72vw] mt-[2.08vw]">
+        <!-- 用户名输入框 -->
+        <div class="relative w-[22.92vw] h-[3.02vw] mb-[1.30vw]">
+          <img
+            src="/assets/images/user-icon.png"
+            alt="用户图标"
+            class="absolute left-[1.04vw] top-1/2 transform -translate-y-1/2 w-[0.83vw] h-[0.83vw]"
+          />
+          <input
+            type="text"
+            autocomplete="off"
+            placeholder="手机号/邮箱"
+            id="register-username"
+            style="border-radius: 0.26vw;"
+            class="w-[22.92vw] h-[3.02vw] pl-10 border bg-[#262323] focus:ring-2 focus:ring-blue-500 placeholder-sm"
+          />
+        </div>
+        <div class="relative w-[22.92vw] h-[3.02vw] mb-[1.30vw] flex justify-between">
+          <div class="w-[13.02vw]">
+            <img
+              src="/assets/images/user-icon.png"
+              alt="用户图标"
+              class="absolute left-[1.04vw] top-1/2 transform -translate-y-1/2 w-[0.83vw] h-[0.83vw]"
+            />
+            <input
+              type="text"
+              autocomplete="off"
+              placeholder="请输入验证码"
+              id="register-username"
+              style="border-radius: 0.26vw;"
+              class="w-[13.02vw] h-[3.02vw] pl-10 border bg-[#262323] focus:ring-2 focus:ring-blue-500 placeholder-sm"
+            />
+          </div>
+          <div
+            class="w-[8.54vw] h-[3.02vw] leading-[3.02vw] cursor-pointer bg-gradient-to-r from-[#1C80EB] to-[#40C6FF] text-white text-center"
+            style="font-size: 0.83vw;border-radius: 0.26vw;"
+          >
+            获取验证码
+          </div>
+        </div>
+        <!-- 密码输入框 -->
+        <div class="relative w-[22.92vw] h-[3.02vw]">
+          <img
+            src="/assets/images/password-icon.png"
+            alt="密码图标"
+            class="absolute left-[1.04vw] top-1/2 transform -translate-y-1/2 w-[0.83vw] h-[0.83vw]"
+          />
+          <input
+            autocomplete="off"
+            autocomplete="new-password"
+            type="password"
+            placeholder="密码"
+            id="register-password"
+            style="border-radius: 0.26vw;"
+            class="w-[22.92vw] h-[3.02vw] p-1 pl-10 border bg-[#262323] focus:ring-2 focus:ring-blue-500 placeholder-sm"
+          />
+          <!-- 查看密码图标 -->
+          <img
+            src="/assets/images/eyes1.svg"
+            alt="查看密码"
+            class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-[0.83vw] h-[0.83vw]"
+            id="register-toggle-password"
+          />
+        </div>
       </div>
-      <!-- 密码输入框 -->
-      <div class="relative w-[22.92vw] h-[3.02vw] mb-3">
-        <img
-          src="/assets/images/password-icon.png"
-          alt="密码图标"
-          class="absolute left-[1.04vw] top-1/2 transform -translate-y-1/2 w-[0.83vw] h-[0.83vw]"
-        />
-        <input
-          type="password"
-          placeholder="密码"
-          id="register-password"
-          style="border-radius: 0.26vw;"
-          class="w-full p-1 pl-10 border bg-[#262323] focus:ring-2 focus:ring-blue-500"
-        />
-        <!-- 查看密码图标 -->
-        <img
-          src="/assets/images/eye-icon.png"
-          alt="查看密码"
-          class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-5 h-5"
-          id="register-toggle-password"
-        />
+      <div class="w-[22.92vw] mt-[1.04vw] flex justify-between">
+        <div class="flex items-center">
+          <img src="/assets/images/no_select.svg" alt="" class="w-[0.83vw] h-[0.83vw] mr-[0.52vw] cursor-pointer" />
+          <span style="font-size: 0.83vw; color:rgba(148, 148, 148, 1);">同意《用户协议》和《隐私协议》</span>
+        </div>
+        <!-- 返回登录表单 -->
+        <div id="back-to-login" class="cursor-pointer" style="font-size: 0.83vw; color:rgba(29, 130, 236, 1);">
+          账号登录
+        </div>
       </div>
-
       <!-- 注册按钮 -->
       <div
         id="register-submit-button"
         style="border-radius: 0.26vw;"
-        class="w-[220px] h-[40px] flex justify-center items-center cursor-pointer bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
+        class="w-[22.92vw] h-[3.02vw] mt-[3.23vw] flex justify-center items-center cursor-pointer bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
       >
         <span class="text-sm">注册</span>
       </div>
-
-      <!-- 返回登录表单 -->
-      <div class="text-xs text-[#1D82EC] mt-3 cursor-pointer" id="back-to-login">已有账号，返回登录</div>
     </div>
   </div>
 </div>
@@ -254,6 +291,7 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
           <input
             style="border-radius: 0.26vw;"
             type="text"
+            autocomplete="off"
             placeholder="手机号/邮箱"
             id="forgot-email"
             class="placeholder-sm w-full h-[3.02vw] pl-10 border bg-[#262323] text-white focus:outline-none focus:ring-2"
@@ -273,6 +311,7 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
           <input
             type="text"
             placeholder="验证码"
+            autocomplete="off"
             id="forgot-verify-code"
             style="border-radius: 0.26vw;"
             class="peer placeholder-sm pl-10 bg-[#262323] text-white focus:outline-none focus:ring-0 peer-focus:bg-[#262323] peer-placeholder-shown:bg-[#262323]"
@@ -288,16 +327,24 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
         <!-- 新密码输入框 -->
         <div class="relative w-[22.92vw] h-[3.02vw] mt-[1.46vw] flex items-center">
           <img
-            src="/assets/images/password-icon.png"
+            src="/assets/images/lock_icon.svg"
             alt="密码图标"
             class="absolute left-[1.04vw] top-1/2 transform -translate-y-1/2 w-[0.83vw] h-[0.83vw]"
           />
           <input
             type="password"
+            autocomplete="new-password"
             placeholder="新密码"
+            autocomplete="off"
             id="forgot-new-password"
             style="border-radius: 0.26vw;"
             class="placeholder-sm w-full h-[3.02vw] pl-10 border bg-[#262323] focus:ring-2 focus:ring-blue-500"
+          />
+          <img
+            src="/assets/images/eyes1.svg"
+            alt="查看密码"
+            class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-[0.83vw] h-[0.83vw]"
+            id="forgot-new-password-icon"
           />
         </div>
       </div>
@@ -569,6 +616,36 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
   document.getElementById('toggle-password').addEventListener('click', function () {
     const passwordField = document.getElementById('password');
     const toggleIcon = document.getElementById('toggle-password');
+
+    // 判断密码框的 type，切换为 text 或 password
+    if (passwordField.type === 'password') {
+      passwordField.type = 'text'; // 显示密码
+      toggleIcon.src = '/assets/images/eyes2.svg'; // 切换为眼睛图标2（显示密码）
+    } else {
+      passwordField.type = 'password'; // 隐藏密码
+      toggleIcon.src = '/assets/images/eyes1.svg'; // 切换为眼睛图标1（隐藏密码）
+    }
+  });
+
+  // 监听 注册查看密码 register-toggle-password 的点击事件
+  document.getElementById('register-toggle-password').addEventListener('click', function () {
+    const passwordField = document.getElementById('register-password');
+    const toggleIcon = document.getElementById('register-toggle-password');
+
+    // 判断密码框的 type，切换为 text 或 password
+    if (passwordField.type === 'password') {
+      passwordField.type = 'text'; // 显示密码
+      toggleIcon.src = '/assets/images/eyes2.svg'; // 切换为眼睛图标2（显示密码）
+    } else {
+      passwordField.type = 'password'; // 隐藏密码
+      toggleIcon.src = '/assets/images/eyes1.svg'; // 切换为眼睛图标1（隐藏密码）
+    }
+  });
+
+  // 监听 忘记密码 register-toggle-password 的点击事件
+  document.getElementById('forgot-new-password-icon').addEventListener('click', function () {
+    const passwordField = document.getElementById('forgot-new-password');
+    const toggleIcon = document.getElementById('forgot-new-password-icon');
 
     // 判断密码框的 type，切换为 text 或 password
     if (passwordField.type === 'password') {
