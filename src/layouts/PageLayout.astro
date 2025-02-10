@@ -12,20 +12,22 @@ export interface Props {
   metadata?: MetaData;
 }
 
-const { metadata } = Astro.props;
+const { showHeader = true,  metadata, showFooter=true} = Astro.props;
 ---
 
 <Layout metadata={metadata}>
   <!-- <slot name="announcement">
     <Announcement />
   </slot> -->
-  <slot name="header">
-    <Header {...headerData} isSticky showRssFeed showToggleTheme />
-  </slot>
+  {showHeader && (
+    <slot name="header">
+      <Header {...Astro.props.headerData} isSticky showRssFeed showToggleTheme />
+    </slot>
+  )}
   <main>
     <slot />
   </main>
-  <slot name="footer">
+  {showFooter && (<slot name="footer">
     <Footer {...footerData} />
-  </slot>
+  </slot>)}
 </Layout>
