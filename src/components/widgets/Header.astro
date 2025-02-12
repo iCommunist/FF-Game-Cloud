@@ -260,7 +260,10 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
         style="border-radius: 0.26vw;"
         class="w-[22.92vw] h-[3.02vw] mt-[3.23vw] flex justify-center items-center cursor-pointer bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
       >
-        <span class="text-sm">注册</span>
+        <img src="/assets/images/注册.svg" alt="" srcset="" /><span
+          class=""
+          style="font-size: 0.8333vw;text-align: center;">注册</span
+        >
       </div>
     </div>
   </div>
@@ -294,7 +297,7 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
             autocomplete="off"
             placeholder="手机号/邮箱"
             id="forgot-email"
-            class="placeholder-sm w-full h-[3.02vw] pl-10 border bg-[#262323] text-white focus:outline-none focus:ring-2"
+            class="placeholder-sm input w-full h-[3.02vw] pl-10 border bg-[#262323] text-white focus:outline-none focus:ring-2"
           />
         </div>
 
@@ -314,11 +317,12 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
             autocomplete="off"
             id="forgot-verify-code"
             style="border-radius: 0.26vw;"
-            class="peer placeholder-sm pl-10 bg-[#262323] text-white focus:outline-none focus:ring-0 peer-focus:bg-[#262323] peer-placeholder-shown:bg-[#262323]"
+            class=" input peer placeholder-sm pl-10 bg-[#262323] text-white focus:outline-none focus:ring-0 peer-focus:bg-[#262323] peer-placeholder-shown:bg-[#262323]"
           />
           <button
             id="send-code"
-            class="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs text-blue-400 cursor-pointer"
+            class="absolute right-3 top-1/2 transform -translate-y-1/2 text-blue-400 cursor-pointer"
+            style="font-size: 0.73vw;;"
           >
             获取验证码
           </button>
@@ -338,7 +342,7 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
             autocomplete="off"
             id="forgot-new-password"
             style="border-radius: 0.26vw;"
-            class="placeholder-sm w-full h-[3.02vw] pl-10 border bg-[#262323] focus:ring-2 focus:ring-blue-500"
+            class=" input placeholder-sm w-full h-[3.02vw] pl-10 border bg-[#262323] focus:ring-2 focus:ring-blue-500"
           />
           <img
             src="/assets/images/eyes1.svg"
@@ -349,7 +353,7 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
         </div>
       </div>
       <div class="w-[22.92vw] text-xs text-[#1D82EC] cursor-pointer text-left">
-        <span id="back-to-login-from-forgot">返回登录</span>
+        <span id="back-to-login-from-forgot" style="font-size: 0.8333vw;">账号登录</span>
       </div>
 
       <!-- 修改密码按钮 -->
@@ -359,7 +363,7 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
         class="w-[22.92vw] h-[3.02vw] flex mt-[2.5vw] justify-center items-center cursor-pointer bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
       >
         <img src="/assets/images/修改密码.svg" alt="" class="w-[0.83vw] h-[ 0.83vw] mr-[0.73vw]" />
-        <span class="text-sm">修改密码</span>
+        <span class="" style="font-size: 0.8333vw; color:#ffffff">修改密码</span>
       </div>
 
       <!-- 返回登录表单 -->
@@ -661,4 +665,39 @@ const { id = 'header', isSticky = false, isDark = true, position = 'center' } = 
   .placeholder-sm::placeholder {
     font-size: 0.73vw; /* 14px -> 0.73vw */
   }
+  .input {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0.2083vw 0.83vw; /* padding: 4px 11px */
+  width: 100%;
+  height: 3.3635vw; /* height: 64.44px */
+  font-size: 0.7292vw; /* font-size: 14px */
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 1);
+  background-color:#262323;
+  background-image: none;
+  border: 0.0521vw solid #262323; /* border: 1px solid #d9d9d9 */
+  border-radius: 0.1042vw; /* border-radius: 2px */
+  transition: all 0.3s;
+}
+
+.input:focus {
+  border-color: #40a9ff;
+  border-right-width: 0.0521vw !important; /* border-right-width: 1px */
+  outline: 0;
+  box-shadow: 0 0 0 0.1042vw rgba(24, 144, 255, 0.2); /* box-shadow: 0 0 0 2px */
+}
+
+/* 禁用的时候 */
+.input:disabled {
+  background-color: #262323;
+  border-color: #262323;
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
+
+.input:disabled:hover {
+  border-color: #262323;
+}
+
 </style>
