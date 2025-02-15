@@ -1,12 +1,47 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 // import Footer from '~/components/widgets/Footer.astro';
+const gameList = [
+  {
+    id: 1,
+    name: '幻兽帕鲁',
+    tags: ['休闲游戏', '卡牌游戏', '手游游戏'],
+    gameLogo: '/assets/images/gamelogo.png',
+    price: 20,
+    descTxt:
+      '在广阔的世界中收集神奇的生物“帕鲁”，派他们进行战斗、建造、做农活，工业生产等，这是一款支持多人游戏模式的全新开放世界生存制作游戏。',
+    bImage: '/assets/images/幻音帕鲁.png',
+    sImage: '/assets/images/幻音帕鲁-左.png',
+  },
+  {
+    id: 2,
+    name: '我的世界',
+    tags: ['休闲游戏', '卡牌游戏', '手游游戏'],
+    gameLogo: '/assets/images/gamelogo.png',
+    price: 20,
+    descTxt:
+      '在广阔的世界中收集神奇的生物“帕鲁”，派他们进行战斗、建造、做农活，工业生产等，这是一款支持多人游戏模式的全新开放世界生存制作游戏。',
+    bImage: '/assets/images/幻音帕鲁.png',
+    sImage: '/assets/images/幻音帕鲁-左.png',
+  },
+  {
+    id: 3,
+    name: '腐蚀 : Rust',
+    tags: ['休闲游戏', '卡牌游戏', '手游游戏'],
+    gameLogo: '/assets/images/gamelogo.png',
+    price: 20,
+    descTxt:
+      '在广阔的世界中收集神奇的生物“帕鲁”，派他们进行战斗、建造、做农活，工业生产等，这是一款支持多人游戏模式的全新开放世界生存制作游戏。',
+    bImage: '/assets/images/幻音帕鲁.png',
+    sImage: '/assets/images/幻音帕鲁-左.png',
+  },
+];
 ---
 
-<Layout showHeader={false} showFooter={true}>
+<Layout showHeader={false} showFooter={false}>
   <div
     class="relative w-full"
-    style="padding-top: 56.25%;background: linear-gradient(180deg, rgba(33, 29, 27, 1) 47.47%, rgba(255, 255, 255, 0) 100%, rgba(105, 101, 100, 0.5) 100%);"
+    style="padding-top: 56.25%;background: linear-gradient(0deg, rgba(33, 29, 27, 0) 47.47%, rgba(255, 255, 255, 1) 100%, rgba(105, 101, 100, 0.5) 100%);"
   >
     <!-- 背景图层，应用背景模糊 -->
     <div
@@ -18,7 +53,7 @@ import Layout from '~/layouts/PageLayout.astro';
     <!-- 吸附在顶部的导航栏 -->
     <div
       class="fixed flex justify-between items-center top-0 left-0 w-full h-[4.17vw] pr-[8.3333vw] pl-[7.1875vw] bg-white bg-opacity-30 z-50"
-      style="background:rgba(105, 101, 100, 0.5)"
+      style="background:rgba(0, 0, 0, 0.7)"
     >
       <div><img src="/assets/images/FFGameCloud-logo.png" class="w-[8.75vw] h-[2.08vw]" alt="" /></div>
       <div
@@ -100,147 +135,109 @@ import Layout from '~/layouts/PageLayout.astro';
       </div>
       <!-- 游戏 -->
       <div class="w-[87.04vw] h-[30.89vw] ml-[4.43vw]">
-        <div class="w-[87.04vw] h-[3.03vw] pl-[64.8vw]">
-          <span style="color:rgba(255, 255, 255, 1) ;font-size: 0.88vw ;">游戏：</span><span
-            style="color: rgba(148, 148, 148, 100);font-size: 0.88vw ;">你想开服的游戏是？</span
-          >
-        </div>
-        <div class="w-[87.04vw] flex justify-between">
-          <div class="w-[62.5vw] h-[23.13vw] flex mr-[2.31vw]">
-            <div class="w-[17.29vw] h-[23.13vw] relative" style="border-radius: 0.26vw 0px 0px 0.26vw;">
-              <img src="/assets/images/幻音帕鲁-左.png" alt="" srcset="" class="w-[17.29vw] h-[23.13vw] absolute z-0" />
-              <div class="w-[17.29vw] h-[23.13vw] absolute z-10 bg-[#0D010110] backdrop-blur-[1vw]">
-                <div
-                  class="h-[1.71875vw] w-[2.03125vw] ml-[1.8229vw] p-[0.2604vw] bg-[#F26A16]"
-                  style="border-radius: 0vw 0vw 0.2604vw 0.2604vw;font-size: 0.7292vw;color:#FFFFFF;"
-                >
-                  推荐
+        <div class="w-[87.04vw] flex justify-between bg-[#b1e49300]">
+          <div>
+            {gameList.map(game => (
+              //堆叠
+              <div class="w-[62.5vw] h-[26.3vw] pt-[3.13vw] flex mr-[2.31vw]" key={game.id}>
+                <div class="w-[17.29vw] h-[24.65vw] relative" style="border-radius: 0.26vw 0px 0px 0.26vw;">
+                  <img src={game.sImage} alt="" srcset="" class="w-[17.29vw] h-[24.65vw] absolute z-0" />
+                  <div class="w-[17.29vw] h-[24.65vw] absolute z-10 bg-[#0D010110] backdrop-blur-[1vw]">
+                    <div
+                      class="h-[1.71875vw] w-[2.03125vw] ml-[1.8229vw] p-[0.2604vw] bg-[#F26A16]"
+                      style="border-radius: 0vw 0vw 0.2604vw 0.2604vw;font-size: 0.7292vw;color:#FFFFFF;"
+                    >
+                      推荐
+                    </div>
+                    <div class="ml-[1.8229vw] mt-[1.40625vw]" style="font-size: 1.5625vw;font-weight: 400;color:#FFFFFF;">
+                      {game.name}
+                    </div>
+                    <div
+                      class="mt-[0.2083vw] ml-[12.08vw] text-white w-[3.6458vw] h-[1.5625vw] flex justify-center items-center cursor-pointer border-[0.0521vw] border-[#FFFFFF] rounded-[0.2604vw] transition-all hover:border-[#f56a1f] hover:text-[#f56a1f]"
+                      style="font-size: 0.625vw;"
+                    >
+                      下载游戏
+                    </div>
+          
+                    <div
+                      class="w-[13.94vw] h-[4.89vw] ml-[1.8229vw] mt-[1.5625vw]"
+                      style="font-size: 0.625vw;line-height:0.90625vw;color:#FFFFFF;"
+                    >
+                      {game.descTxt}
+                    </div>
+                    <div class="mt-[1.5vw] ml-[1.8229vw]" style="font-size: 0.7292vw; color:#f56a1f;line-height: 20.27px;">
+                      开服价：{game.price}元/月起
+                    </div>
+                    <div class="mt-[1.9792vw] ml-[1.8229vw]" style="font-size: 0.625vw;color:#FFFFFF;">操作方式</div>
+                    <div class="flex items-center mt-[0.52vw]">
+                      <img
+                        src="/assets/images/pc-icon.svg"
+                        alt=""
+                        class="ml-[3.28125vw] w-[1.46vw] h-[1.67vw] cursor-pointer"
+                      />
+                      <img src="/assets/images/手机.svg" alt="" class="ml-[1.5vw] w-[1.41vw] h-[1.56vw] cursor-pointer" />
+                      <img
+                        src="/assets/images/switch-filled.svg"
+                        alt=""
+                        class="ml-[1.5vw] w-[1.6667vw] h-[1.71875vw] cursor-pointer"
+                      />
+                      <img src="/assets/images/steam2.svg" alt="" class="ml-[1.93vw] w-[1.3vw] h-[1.3vw] cursor-pointer" />
+                    </div>
+                  </div>
                 </div>
-                <div class="ml-[1.8229vw] mt-[1.40625vw]" style="font-size: 1.5625vw;font-weight: 400;color:#FFFFFF;">
-                  幻兽帕鲁
-                </div>
-                <div
-                  class="mt-[0.2083vw] ml-[12.08vw] text-white w-[3.6458vw] h-[1.5625vw] flex justify-center items-center cursor-pointer border-[0.0521vw] border-[#FFFFFF] rounded-[0.2604vw] transition-all hover:border-[#f56a1f] hover:text-[#f56a1f]"
-                  style="font-size: 0.625vw;"
-                >
-                  下载游戏
-                </div>
-
-                <div
-                  class="w-[13.94vw] h-[4.89vw] ml-[1.8229vw] mt-[1.5625vw]"
-                  style="font-size: 0.625vw;line-height:0.90625vw;color:#FFFFFF;"
-                >
-                  在广阔的世界中收集神奇的生物“帕鲁”，派他们进行战斗、建造、做农活，工业生产等，这是一款支持多人游戏模式的全新开放世界生存制作游戏。
-                </div>
-                <div class="mt-[1.5vw] ml-[1.8229vw]" style="font-size: 0.7292vw; color:#949494;line-height: 20.27px;">
-                  开服价：20元/月起
-                </div>
-                <div class="mt-[1.9792vw] ml-[1.8229vw]" style="font-size: 0.625vw;color:#FFFFFF;">操作方式</div>
-                <div class="flex items-center mt-[0.52vw]">
-                  <img
-                    src="/assets/images/pc-icon.svg"
-                    alt=""
-                    class="ml-[3.28125vw] w-[1.46vw] h-[1.67vw] cursor-pointer"
-                  />
-                  <img src="/assets/images/手机.svg" alt="" class="ml-[1.5vw] w-[1.41vw] h-[1.56vw] cursor-pointer" />
-                  <img
-                    src="/assets/images/switch-filled.svg"
-                    alt=""
-                    class="ml-[1.5vw] w-[1.6667vw] h-[1.71875vw] cursor-pointer"
-                  />
-                  <img src="/assets/images/steam2.svg" alt="" class="ml-[1.93vw] w-[1.3vw] h-[1.3vw] cursor-pointer" />
+                <div class="w-[45.21vw] h-[24.65vw]" style="border-radius: 0px 0.26vw 0.26vw 0px;">
+                  <img src={game.bImage} alt="" srcset="" class="w-[45.21vw] h-[24.65vw]" />
                 </div>
               </div>
-            </div>
-            <div class="w-[45.21vw] h-[23.13vw]" style="border-radius: 0px 0.26vw 0.26vw 0px;">
-              <img src="/assets/images/幻音帕鲁.png" alt="" srcset="" class="w-[45.21vw] h-[23.13vw]" />
-            </div>
+            ))}
           </div>
-          <div class="w-[22.2vw] h-[23.13vw] flex flex-col justify-between">
-            <div
-              class="w-[22.2vw] h-[5.1vw] pl-[2vw] pr-[1.1vw] flex justify-between items-center cursor-pointer"
-              style="background: linear-gradient(270deg, #00000030 36.62%, #403D3D60 100%);border: 0.05208vw solid #B0A29E;border-radius: 0.26vw;"
-            >
-              <div>
-                <div style="font-size: 0.89vw; color:#FFFFFF" class="mb-[0.678vw]">幻兽帕鲁</div>
-                <div style="font-size: 0.57vw; " class="flex">
-                  <div
-                    class="w-[3.23vw] h-[1.04vw] text-center leading-[1.04vw] rounded-full text-[#F26A16] bg-[#2E2522] mr-[0.5208vw] flex items-center justify-center"
-                  >
-                    休闲游戏
-                  </div>
-                  <div
-                    class="w-[3.23vw] h-[1.04vw] text-center leading-[1.04vw] rounded-full text-[#949494] bg-[#2E2522] mr-[0.5208vw] flex items-center justify-center"
-                  >
-                    卡牌游戏
-                  </div>
-                  <div
-                    class="w-[3.23vw] h-[1.04vw] text-center leading-[1.04vw] rounded-full text-[#949494] bg-[#2E2522] mr-[0.5208vw] flex items-center justify-center"
-                  >
-                    手游游戏
-                  </div>
-                </div>
-              </div><img src="/assets/images/gamelogo.png" class="w-[3vw] h-[3vw]" alt="" srcset="" />
-            </div>
-            <div
-              class="w-[22.2vw] h-[5.1vw] pl-[2vw] pr-[1.1vw] flex justify-between items-center cursor-pointer"
-              style="background: linear-gradient(270deg, #00000030 36.62%, #403D3D30 100%);border: 0.05208vw solid #B0A29E;border-radius: 0.26vw;"
-            >
-              <div>
-                <div style="font-size: 0.89vw; color:#FFFFFF" class="mb-[0.678vw]">我的世界</div>
-                <div style="font-size: 0.57vw; " class="flex">
-                  <div
-                    class="w-[3.23vw] h-[1.04vw] text-center leading-[1.04vw] rounded-full text-[#F26A16] bg-[#2E2522] mr-[0.5208vw] flex items-center justify-center"
-                  >
-                    休闲游戏
-                  </div>
-                  <div
-                    class="w-[3.23vw] h-[1.04vw] text-center leading-[1.04vw] rounded-full text-[#949494] bg-[#2E2522] mr-[0.5208vw] flex items-center justify-center"
-                  >
-                    卡牌游戏
-                  </div>
-                  <div
-                    class="w-[3.23vw] h-[1.04vw] text-center leading-[1.04vw] rounded-full text-[#949494] bg-[#2E2522] mr-[0.5208vw] flex items-center justify-center"
-                  >
-                    手游游戏
-                  </div>
-                </div>
-              </div><img src="/assets/images/gamelogo.png" class="w-[3vw] h-[3vw]" alt="" srcset="" />
-            </div>
-            <div
-              class="w-[22.2vw] h-[5.1vw] pl-[2vw] pr-[1.1vw] flex justify-between items-center cursor-pointer"
-              style="background: linear-gradient(270deg, #00000030 36.62%, #403D3D30 100%);border: 0.05208vw solid #B0A29E;border-radius: 0.26vw;"
-            >
-              <div>
-                <div style="font-size: 0.89vw; color:#FFFFFF" class="mb-[0.678vw]">腐蚀 : Rust</div>
-                <div style="font-size: 0.57vw; " class="flex">
-                  <div
-                    class="w-[3.23vw] h-[1.04vw] text-center leading-[1.04vw] rounded-full text-[#F26A16] bg-[#2E2522] mr-[0.5208vw] flex items-center justify-center"
-                  >
-                    休闲游戏
-                  </div>
-                  <div
-                    class="w-[3.23vw] h-[1.04vw] text-center leading-[1.04vw] rounded-full text-[#949494] bg-[#2E2522] mr-[0.5208vw] flex items-center justify-center"
-                  >
-                    卡牌游戏
-                  </div>
-                  <div
-                    class="w-[3.23vw] h-[1.04vw] text-center leading-[1.04vw] rounded-full text-[#949494] bg-[#2E2522] mr-[0.5208vw] flex items-center justify-center"
-                  >
-                    手游游戏
-                  </div>
-                </div>
-              </div><img src="/assets/images/gamelogo.png" class="w-[3vw] h-[3vw]" alt="" srcset="" />
-            </div>
-            <div
-              class="w-[22.2vw] h-[5.1vw] pl-[2vw] pr-[1.1vw] flex justify-between items-center cursor-pointer"
-              style="border: 0.05208vw solid #B0A29E00;border-radius: 0.26vw;background: rgba(82, 66, 66, 1);"
-            >
-              <div>
-                <div>需要协助选择游戏?</div>
-                <div>了解不同服务器型号和性能的区别。</div>
+          <div class="w-[22.2vw] h-[26.3vw] ">
+            <!-- 开服游戏列表 -->
+            <div>
+              <div class="h-[3.17vw]">
+                <span style="color:rgba(255, 255, 255, 1); font-size: 0.88vw;">游戏：</span>
+                <span style="color: rgba(148, 148, 148, 100); font-size: 0.88vw;">你想开服的游戏是？</span>
               </div>
-              <img src="/assets/images/gamelogo.png" class="w-[3vw] h-[3vw]" alt="" srcset="" />
+
+              {
+                gameList.map((game, index) => (
+                  <div
+                    key={index}
+                    class="w-[22.2vw] h-[5.1vw] pl-[2vw] pr-[1.1vw] flex justify-between items-center cursor-pointer mb-[1.354vw]"
+                    style="background: linear-gradient(270deg, #00000030 36.62%, #403D3D30 100%); border: 0.05208vw solid #B0A29E; border-radius: 0.26vw;"
+                  >
+                    <div>
+                      <div style="font-size: 0.89vw; color:#FFFFFF" class="mb-[0.678vw]">
+                        {game.name}
+                      </div>
+                      <div style="font-size: 0.57vw;" class="flex">
+                        {game.tags.map((tag, tagIndex) => (
+                          <div
+                            key={tagIndex}
+                            class="w-[3.23vw] h-[1.04vw] text-center leading-[1.04vw] rounded-full text-[#F26A16] bg-[#2E2522] mr-[0.5208vw] flex items-center justify-center"
+                          >
+                            {tag}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <img src={game.gameLogo} class="w-[3vw] h-[3vw]" alt={`${game.name} logo`} />
+                  </div>
+                ))
+              }
+            </div>
+            <!-- 协助区域 -->
+            <div>
+              <div
+                class="w-[22.2vw] h-[5.1vw] pl-[2vw] pr-[1.1vw] flex justify-between items-center cursor-pointer mt-[1.354vw]"
+                style="border: 0.05208vw solid #B0A29E00;border-radius: 0.26vw;background: rgba(82, 66, 66, 1);"
+              >
+                <div>
+                  <div style="font-size: 0.89vw;color:#FFFFFF;margin-bottom: 0.31vw;">需要协助选择游戏?</div>
+                  <div style="font-size: 0.57vw;color:#FFFFFF;">了解不同服务器型号和性能的区别。</div>
+                </div>
+                <img src="/assets/images/gamelogo.png" class="w-[3vw] h-[3vw]" alt="" srcset="" />
+              </div>
             </div>
           </div>
         </div>
