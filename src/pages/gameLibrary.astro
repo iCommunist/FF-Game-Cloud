@@ -18,22 +18,22 @@ const gameList = [
     name: '我的世界',
     tags: ['休闲游戏', '卡牌游戏', '手游游戏'],
     gameLogo: '/assets/images/gamelogo.png',
-    price: 20,
+    price: 40,
     descTxt:
-      '在广阔的世界中收集神奇的生物“帕鲁”，派他们进行战斗、建造、做农活，工业生产等，这是一款支持多人游戏模式的全新开放世界生存制作游戏。',
-    bImage: '/assets/images/幻音帕鲁.png',
-    sImage: '/assets/images/幻音帕鲁-左.png',
+      '我的世界-----在广阔的世界中收集神奇的生物“帕鲁”，派他们进行战斗、建造、做农活，工业生产等，这是一款支持多人游戏模式的全新开放世界生存制作游戏。',
+    bImage: '/assets/images/我的世界.png',
+    sImage: '/assets/images/我的世界.png',
   },
   {
     id: 3,
     name: '腐蚀 : Rust',
     tags: ['休闲游戏', '卡牌游戏', '手游游戏'],
     gameLogo: '/assets/images/gamelogo.png',
-    price: 20,
+    price: 60,
     descTxt:
-      '在广阔的世界中收集神奇的生物“帕鲁”，派他们进行战斗、建造、做农活，工业生产等，这是一款支持多人游戏模式的全新开放世界生存制作游戏。',
-    bImage: '/assets/images/幻音帕鲁.png',
-    sImage: '/assets/images/幻音帕鲁-左.png',
+      '腐蚀-----在广阔的世界中收集神奇的生物“帕鲁”，派他们进行战斗、建造、做农活，工业生产等，这是一款支持多人游戏模式的全新开放世界生存制作游戏。',
+    bImage: '/assets/images/腐蚀.png',
+    sImage: '/assets/images/腐蚀.png',
   },
 ];
 ---
@@ -136,62 +136,92 @@ const gameList = [
       <!-- 游戏 -->
       <div class="w-[87.04vw] h-[30.89vw] ml-[4.43vw]">
         <div class="w-[87.04vw] flex justify-between bg-[#b1e49300]">
-          <div>
-            {gameList.map(game => (
-              //堆叠
-              <div class="w-[62.5vw] h-[26.3vw] pt-[3.13vw] flex mr-[2.31vw]" key={game.id}>
-                <div class="w-[17.29vw] h-[24.65vw] relative" style="border-radius: 0.26vw 0px 0px 0.26vw;">
-                  <img src={game.sImage} alt="" srcset="" class="w-[17.29vw] h-[24.65vw] absolute z-0" />
-                  <div class="w-[17.29vw] h-[24.65vw] absolute z-10 bg-[#0D010110] backdrop-blur-[1vw]">
-                    <div
-                      class="h-[1.71875vw] w-[2.03125vw] ml-[1.8229vw] p-[0.2604vw] bg-[#F26A16]"
-                      style="border-radius: 0vw 0vw 0.2604vw 0.2604vw;font-size: 0.7292vw;color:#FFFFFF;"
-                    >
-                      推荐
+          <div class="card-stack-container" style="position: relative; width: 62.5vw; height: 26.3vw;">
+            {
+              gameList.map((game) => (
+                //堆叠
+                <div
+                  class="card-stack"
+                  id="cardStack"
+                  data-id={game.id}
+                  style="position: absolute; 
+             top: 0; 
+             left: 0; 
+             width: 100%; 
+             height: 100%;
+             transition: all 0.3s ease;"
+                >
+                  <div class="w-[62.5vw] h-[26.3vw] pt-[3.13vw] flex mr-[2.31vw]" key={game.id} style="">
+                    <div class="w-[17.29vw] h-[24.65vw] relative" style="border-radius: 0.26vw 0px 0px 0.26vw;">
+                      <img src={game.sImage} alt="" srcset="" class="w-[17.29vw] h-[24.65vw] absolute z-0" />
+                      <div class="w-[17.29vw] h-[24.65vw] absolute z-10 bg-[#0D010110] backdrop-blur-[1vw]">
+                        <div
+                          class="h-[1.71875vw] w-[2.03125vw] ml-[1.8229vw] p-[0.2604vw] bg-[#F26A16]"
+                          style="border-radius: 0vw 0vw 0.2604vw 0.2604vw;font-size: 0.7292vw;color:#FFFFFF;"
+                        >
+                          推荐
+                        </div>
+                        <div
+                          class="ml-[1.8229vw] mt-[1.40625vw]"
+                          style="font-size: 1.5625vw;font-weight: 400;color:#FFFFFF;"
+                        >
+                          {game.name}
+                        </div>
+                        <div
+                          class="mt-[0.2083vw] ml-[12.08vw] text-white w-[3.6458vw] h-[1.5625vw] flex justify-center items-center cursor-pointer border-[0.0521vw] border-[#FFFFFF] rounded-[0.2604vw] transition-all hover:border-[#f56a1f] hover:text-[#f56a1f]"
+                          style="font-size: 0.625vw;"
+                        >
+                          下载游戏
+                        </div>
+
+                        <div
+                          class="w-[13.94vw] h-[4.89vw] ml-[1.8229vw] mt-[1.5625vw]"
+                          style="font-size: 0.625vw;line-height:0.90625vw;color:#FFFFFF;"
+                        >
+                          {game.descTxt}
+                        </div>
+                        <div
+                          class="mt-[1.5vw] ml-[1.8229vw]"
+                          style="font-size: 0.7292vw; color:#f56a1f;line-height: 20.27px;"
+                        >
+                          开服价：{game.price}元/月起
+                        </div>
+                        <div class="mt-[1.9792vw] ml-[1.8229vw]" style="font-size: 0.625vw;color:#FFFFFF;">
+                          操作方式
+                        </div>
+                        <div class="flex items-center mt-[0.52vw]">
+                          <img
+                            src="/assets/images/pc-icon.svg"
+                            alt=""
+                            class="ml-[3.28125vw] w-[1.46vw] h-[1.67vw] cursor-pointer"
+                          />
+                          <img
+                            src="/assets/images/手机.svg"
+                            alt=""
+                            class="ml-[1.5vw] w-[1.41vw] h-[1.56vw] cursor-pointer"
+                          />
+                          <img
+                            src="/assets/images/switch-filled.svg"
+                            alt=""
+                            class="ml-[1.5vw] w-[1.6667vw] h-[1.71875vw] cursor-pointer"
+                          />
+                          <img
+                            src="/assets/images/steam2.svg"
+                            alt=""
+                            class="ml-[1.93vw] w-[1.3vw] h-[1.3vw] cursor-pointer"
+                          />
+                        </div>
+                      </div>
                     </div>
-                    <div class="ml-[1.8229vw] mt-[1.40625vw]" style="font-size: 1.5625vw;font-weight: 400;color:#FFFFFF;">
-                      {game.name}
-                    </div>
-                    <div
-                      class="mt-[0.2083vw] ml-[12.08vw] text-white w-[3.6458vw] h-[1.5625vw] flex justify-center items-center cursor-pointer border-[0.0521vw] border-[#FFFFFF] rounded-[0.2604vw] transition-all hover:border-[#f56a1f] hover:text-[#f56a1f]"
-                      style="font-size: 0.625vw;"
-                    >
-                      下载游戏
-                    </div>
-          
-                    <div
-                      class="w-[13.94vw] h-[4.89vw] ml-[1.8229vw] mt-[1.5625vw]"
-                      style="font-size: 0.625vw;line-height:0.90625vw;color:#FFFFFF;"
-                    >
-                      {game.descTxt}
-                    </div>
-                    <div class="mt-[1.5vw] ml-[1.8229vw]" style="font-size: 0.7292vw; color:#f56a1f;line-height: 20.27px;">
-                      开服价：{game.price}元/月起
-                    </div>
-                    <div class="mt-[1.9792vw] ml-[1.8229vw]" style="font-size: 0.625vw;color:#FFFFFF;">操作方式</div>
-                    <div class="flex items-center mt-[0.52vw]">
-                      <img
-                        src="/assets/images/pc-icon.svg"
-                        alt=""
-                        class="ml-[3.28125vw] w-[1.46vw] h-[1.67vw] cursor-pointer"
-                      />
-                      <img src="/assets/images/手机.svg" alt="" class="ml-[1.5vw] w-[1.41vw] h-[1.56vw] cursor-pointer" />
-                      <img
-                        src="/assets/images/switch-filled.svg"
-                        alt=""
-                        class="ml-[1.5vw] w-[1.6667vw] h-[1.71875vw] cursor-pointer"
-                      />
-                      <img src="/assets/images/steam2.svg" alt="" class="ml-[1.93vw] w-[1.3vw] h-[1.3vw] cursor-pointer" />
+                    <div class="w-[45.21vw] h-[24.65vw]" style="border-radius: 0px 0.26vw 0.26vw 0px;">
+                      <img src={game.bImage} alt="" srcset="" class="w-[45.21vw] h-[24.65vw]" />
                     </div>
                   </div>
                 </div>
-                <div class="w-[45.21vw] h-[24.65vw]" style="border-radius: 0px 0.26vw 0.26vw 0px;">
-                  <img src={game.bImage} alt="" srcset="" class="w-[45.21vw] h-[24.65vw]" />
-                </div>
-              </div>
-            ))}
+              ))
+            }
           </div>
-          <div class="w-[22.2vw] h-[26.3vw] ">
+          <div class="w-[22.2vw] h-[26.3vw]">
             <!-- 开服游戏列表 -->
             <div>
               <div class="h-[3.17vw]">
@@ -203,7 +233,14 @@ const gameList = [
                 gameList.map((game, index) => (
                   <div
                     key={index}
-                    class="w-[22.2vw] h-[5.1vw] pl-[2vw] pr-[1.1vw] flex justify-between items-center cursor-pointer mb-[1.354vw]"
+                    key={game.id}
+                    data-id={game.id}
+                    data-name={game.name}
+                    data-desc={game.descTxt}
+                    data-price={game.price}
+                    data-bImage={game.bImage}
+                    data-sImage={game.sImage}
+                    class="game-item w-[22.2vw] h-[5.1vw] pl-[2vw] pr-[1.1vw] flex justify-between items-center cursor-pointer mb-[1.354vw]"
                     style="background: linear-gradient(270deg, #00000030 36.62%, #403D3D30 100%); border: 0.05208vw solid #B0A29E; border-radius: 0.26vw;"
                   >
                     <div>
@@ -245,3 +282,72 @@ const gameList = [
     </div>
   </div>
 </Layout>
+<script>
+  const gameItems = document.querySelectorAll('.game-item');
+  gameItems.forEach((item) => {
+    item.addEventListener('click', (event) => {
+      const gameData = event.currentTarget.dataset;
+      // 获取点击元素的 data-* 属性值
+      const gameName = gameData.name;
+      const gameDesc = gameData.desc;
+      const gamePrice = gameData.price;
+      const gameImage = gameData.bImage;
+      console.log(gameName, gameDesc, gamePrice, gameImage);
+      // 更新右侧显示的游戏信息
+      // document.getElementById('game-name').textContent = gameName;
+      // document.getElementById('game-desc').textContent = gameDesc;
+      // document.getElementById('game-price').textContent = `开服价：${gamePrice}元/月起`;
+      // document.getElementById('game-image').src = gameImage;
+
+      // 高亮显示当前选中的游戏项
+      gameItems.forEach((item) => item.classList.remove('selected'));
+      event.currentTarget.classList.add('selected');
+    });
+  });
+
+  const cardContainer = document.querySelector('.card-stack-container');
+
+  gameItems.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      const gameId = e.currentTarget.dataset.id;
+      const targetCard = document.querySelector(`.card-stack[data-id="${gameId}"]`);
+
+      // 移动卡片到容器末尾实现置顶
+      if (targetCard) {
+        cardContainer.appendChild(targetCard);
+      }
+
+      // 处理选中状态
+      gameItems.forEach((i) => i.classList.remove('selected'));
+      e.currentTarget.classList.add('selected');
+    });
+  });
+</script>
+
+<style>
+  .game-item.selected {
+    background-color: #f56a1f;
+    color: white;
+  }
+  .card-stack {
+    position: relative;
+    width: 62.5vw;
+    height: 26.3vw;
+  }
+
+  .card {
+    position: absolute;
+    width: 100%;
+    height: 180px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+</style>
