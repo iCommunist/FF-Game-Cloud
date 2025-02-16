@@ -1,41 +1,22 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 // import Footer from '~/components/widgets/Footer.astro';
-const gameList = [
-  {
-    id: 1,
-    name: '幻兽帕鲁',
-    tags: ['休闲游戏', '卡牌游戏', '手游游戏'],
-    gameLogo: '/assets/images/gamelogo.png',
-    price: 20,
-    descTxt:
-      '在广阔的世界中收集神奇的生物“帕鲁”，派他们进行战斗、建造、做农活，工业生产等，这是一款支持多人游戏模式的全新开放世界生存制作游戏。',
-    bImage: '/assets/images/幻音帕鲁.png',
-    sImage: '/assets/images/幻音帕鲁-左.png',
-  },
-  {
-    id: 2,
-    name: '我的世界',
-    tags: ['休闲游戏', '卡牌游戏', '手游游戏'],
-    gameLogo: '/assets/images/gamelogo.png',
-    price: 40,
-    descTxt:
-      '我的世界-----在广阔的世界中收集神奇的生物“帕鲁”，派他们进行战斗、建造、做农活，工业生产等，这是一款支持多人游戏模式的全新开放世界生存制作游戏。',
-    bImage: '/assets/images/我的世界.png',
-    sImage: '/assets/images/我的世界.png',
-  },
-  {
-    id: 3,
-    name: '腐蚀 : Rust',
-    tags: ['休闲游戏', '卡牌游戏', '手游游戏'],
-    gameLogo: '/assets/images/gamelogo.png',
-    price: 60,
-    descTxt:
-      '腐蚀-----在广阔的世界中收集神奇的生物“帕鲁”，派他们进行战斗、建造、做农活，工业生产等，这是一款支持多人游戏模式的全新开放世界生存制作游戏。',
-    bImage: '/assets/images/腐蚀.png',
-    sImage: '/assets/images/腐蚀.png',
-  },
-];
+// 使用 Astro 的 fetch 方法（服务端）
+const gameListRes = await fetch('https://apifoxmock.com/m1/5804244-5489264-default/gameList');
+const gameListResult = await gameListRes.json();
+const gameList = gameListResult.data || [];
+
+const mirrorListRes = await fetch('https://apifoxmock.com/m1/5804244-5489264-default/mirror');
+const mirrorListResult = await mirrorListRes.json();
+const mirrorList = mirrorListResult.data || [];
+
+const peopleListRes = await fetch('https://apifoxmock.com/m1/5804244-5489264-default/peopleNum');
+const peopleListResult = await peopleListRes.json();
+const peopleList = peopleListResult.data || [];
+
+const morePeopleListRes = await fetch('https://apifoxmock.com/m1/5804244-5489264-default/morePeople');
+const morePeopleListResult = await morePeopleListRes.json();
+const morePeopleList = morePeopleListResult.data || [];
 ---
 
 <Layout showHeader={false} showFooter={false}>
@@ -138,18 +119,15 @@ const gameList = [
         <div class="w-[87.04vw] flex justify-between bg-[#b1e49300]">
           <div class="card-stack-container" style="position: relative; width: 62.5vw; height: 26.3vw;">
             {
-              gameList.map((game) => (
+              gameList.map((game, index) => (
                 //堆叠
                 <div
                   class="card-stack"
                   id="cardStack"
                   data-id={game.id}
-                  style="position: absolute; 
-             top: 0; 
-             left: 0; 
-             width: 100%; 
-             height: 100%;
-             transition: all 0.3s ease;"
+                  style={`position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+                       transform: translateY(${index * 5}px); 
+                       transition: all 0.3s ease; z-index: ${gameList.length - index}; transform: scale(${1 - index * 0.001})`}
                 >
                   <div class="w-[62.5vw] h-[26.3vw] pt-[3.13vw] flex mr-[2.31vw]" key={game.id} style="">
                     <div class="w-[17.29vw] h-[24.65vw] relative" style="border-radius: 0.26vw 0px 0px 0.26vw;">
@@ -276,59 +254,227 @@ const gameList = [
                 <img src="/assets/images/gamelogo.png" class="w-[3vw] h-[3vw]" alt="" srcset="" />
               </div>
             </div>
+            <!-- 镜像区域 -->
+            <div class="mt-[2.239vw]">
+              <div class="h-[3.17vw]">
+                <span style="color:rgba(255, 255, 255, 1); font-size: 0.88vw;">镜像：</span>
+                <span style="color: rgba(148, 148, 148, 100); font-size: 0.88vw;">你想镜像的类型是？</span>
+              </div>
+              {
+                mirrorList?.map((mirror, mirrorIndex) => (
+                  <div
+                    data-id={mirror.id}
+                    class="mirror-item w-[22.2vw] h-[5.1vw] pl-[2vw] pr-[1.1vw] flex justify-between items-center cursor-pointer mb-[1.354vw]"
+                    style="background: linear-gradient(270deg, #000000 36.62%, #403D3D 100%); border: 0.05208vw solid #B0A29E; border-radius: 0.26vw;"
+                  >
+                    <div style="">
+                      <div class="mb-[0.678vw]">
+                        <span style="font-size: 0.89vw; color:#FFFFFF">
+                          {mirror.name}
+                          {mirror.server}
+                        </span>
+                      </div>
+                      <div style="font-size: 0.57vw;" class="flex">
+                        {mirror.tags.map((tag, tagIndex) => (
+                          <div
+                            key={tagIndex}
+                            className={`w-[3.23vw] h-[1.04vw] text-center leading-[1.04vw] rounded-full mr-[0.5208vw] flex items-center justify-center
+      ${tagIndex === 0 ? 'bg-[#2E2522] text-[#BA7245]' : 'bg-[#302B29] text-[#706C6B]'}`}
+                          >
+                            {tag}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div class=" text-[#FF8D1A] " style="font-size: 0.73vw;">
+                      {mirror.price}R/月起
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+            <!-- 人数套餐区域 -->
+            <div class="mt-[2.239vw]">
+              <div class="h-[3.17vw]">
+                <span style="color:rgba(255, 255, 255, 1); font-size: 0.88vw;">人数：</span>
+                <span style="color: rgba(148, 148, 148, 100); font-size: 0.88vw;">你想游玩的人数？</span>
+              </div>
+              {
+                peopleList?.map((people) => (
+                  <div
+                    data-id={people.id}
+                    class="people-item w-[22.2vw] h-[5.1vw] pl-[2vw] pr-[1.1vw] flex justify-between items-center cursor-pointer mb-[1.354vw]"
+                    style="background: linear-gradient(270deg, #000000 36.62%, #403D3D 100%); border: 0.05208vw solid #B0A29E; border-radius: 0.26vw;"
+                  >
+                    <div style="">
+                      <div class="mb-[0.678vw]">
+                        <span style="font-size: 0.89vw; color:#FFFFFF">{people.num}人组队</span>
+                      </div>
+                    </div>
+                    <div class=" text-[#FF8D1A] " style="font-size: 0.73vw;">
+                      {people.price}R/月起
+                    </div>
+                  </div>
+                ))
+              }
+              <div
+                class="more-people-item w-[22.2vw] h-[5.1vw] pl-[2vw] pr-[1.1vw] flex justify-between items-center cursor-pointer mb-[1.354vw]"
+                style="background: linear-gradient(270deg, #000000 36.62%, #403D3D 100%); border: 0.05208vw solid #B0A29E; border-radius: 0.26vw;"
+              >
+                <div style="">
+                  <div class="mb-[0.678vw]">
+                    <span style="font-size: 0.89vw; color:#FFFFFF"> 更多套餐 </span>
+                  </div>
+                </div>
+                <div class="text-[#FF8D1A]" style="font-size: 0.73vw;">
+                  <div class="select-container">
+                    <select class="custom-select" id="teamSizeSelect">
+                      <option value="" disabled selected>组队人数</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </Layout>
-<script>
-  const gameItems = document.querySelectorAll('.game-item');
-  gameItems.forEach((item) => {
-    item.addEventListener('click', (event) => {
-      const gameData = event.currentTarget.dataset;
-      // 获取点击元素的 data-* 属性值
-      const gameName = gameData.name;
-      const gameDesc = gameData.desc;
-      const gamePrice = gameData.price;
-      const gameImage = gameData.bImage;
-      console.log(gameName, gameDesc, gamePrice, gameImage);
-      // 更新右侧显示的游戏信息
-      // document.getElementById('game-name').textContent = gameName;
-      // document.getElementById('game-desc').textContent = gameDesc;
-      // document.getElementById('game-price').textContent = `开服价：${gamePrice}元/月起`;
-      // document.getElementById('game-image').src = gameImage;
+<script define:vars={{ gameList, mirrorList, peopleList, morePeopleList }}>
+  console.log('服务端>游戏列表数据:', gameList);
+  console.log('服务端>镜像列表数据:', mirrorList);
+  console.log('服务端>人数列表数据:', peopleList);
+  console.log('服务端>(更多)人数列表数据:', morePeopleList);
 
-      // 高亮显示当前选中的游戏项
-      gameItems.forEach((item) => item.classList.remove('selected'));
-      event.currentTarget.classList.add('selected');
-    });
-  });
-
+  //游戏项选中部分
+  let pickGameItem = {}; //选中的游戏列表项
+  const gameItems = document.querySelectorAll('.game-item'); //获取游戏列表
   const cardContainer = document.querySelector('.card-stack-container');
-
-  gameItems.forEach((item) => {
+  gameItems.forEach((item, itemIndex) => {
     item.addEventListener('click', (e) => {
       const gameId = e.currentTarget.dataset.id;
-      const targetCard = document.querySelector(`.card-stack[data-id="${gameId}"]`);
+      const targetCard = document.querySelector(`[data-id="${gameId}"]`);
+      console.log(gameId, '已选');
+      pickGameItem = gameList.filter((i) => i.id == gameId)[0];
+      console.log('已选游戏', pickGameItem);
 
-      // 移动卡片到容器末尾实现置顶
+      // 移动卡片到顶层
       if (targetCard) {
-        cardContainer.appendChild(targetCard);
+        // 更新 z-index 和位置
+        const currentZIndex = parseInt(window.getComputedStyle(targetCard).zIndex) || 0;
+        targetCard.style.zIndex = gameList.length + currentZIndex;
+        targetCard.style.transform = 'translateY(0) scale(1)'; // 重置目标卡片的大小和位置
+
+        // 更新其他卡片位置和大小
+        cardContainer.querySelectorAll('.card-stack').forEach((card, index) => {
+          if (card !== targetCard) {
+            const scale = 1 - (index + 1) * 0.05; // 每层缩小 0.05
+            const offsetY = (index + 1) * 20; // 每层向下偏移 20px
+            card.style.transform = `translateY(${offsetY}px) scale(${scale})`;
+            card.style.zIndex = gameList.length - index;
+          }
+        });
       }
 
-      // 处理选中状态
-      gameItems.forEach((i) => i.classList.remove('selected'));
+      gameItems.forEach((i) => {
+        i.classList.remove('selected');
+        i.style.borderColor = '#B0A29E';
+        i.style.borderImage = 'none'; // 移除之前的渐变边框
+      });
+
       e.currentTarget.classList.add('selected');
+      e.currentTarget.style.borderColor = 'transparent'; // 设置透明的边框颜色
+      e.currentTarget.style.borderImage = 'linear-gradient(to right, #40C6FF 0%, #1C80EB 100%) 1'; // 设置渐变边框
+    });
+
+    // 循环完毕后，默认触发第一个卡片的点击事件
+    if (itemIndex === gameItems.length - 1) {
+      gameItems[0].click(); // 触发第一个卡片的点击事件
+    }
+  });
+
+  // 镜像项选中部分
+  let pickMirrorItem = {}; // 选中的镜像列表项
+  const mirrorItems = document.querySelectorAll('.mirror-item'); // 获取镜像列表
+  mirrorItems.forEach((item, ) => {
+    item.addEventListener('click', (e) => {
+      let currMirrorId = e.currentTarget.dataset.id; // 获取当前点击项的 ID
+      pickMirrorItem = mirrorList.filter((i) => i.id == currMirrorId)[0]; // 过滤出选中的镜像项
+      console.log('已选镜像', pickMirrorItem); // 打印已选镜像
+      // 处理选中状态
+      mirrorItems.forEach((i) => {
+        i.classList.remove('selected');
+        i.style.borderColor = '#B0A29E';
+        i.style.borderImage = 'none'; // 移除之前的渐变边框
+      });
+
+      e.currentTarget.classList.add('selected');
+      e.currentTarget.style.borderColor = 'transparent'; // 设置透明的边框颜色
+      e.currentTarget.style.borderImage = 'linear-gradient(to right, #40C6FF 0%, #1C80EB 100%) 1'; // 设置渐变边框
     });
   });
+
+  // 人数项选中部分
+  let pickPeopleItem = {}; // 选中的人数列表项
+  const peopleItems = document.querySelectorAll('.people-item'); // 获取人数列表
+  peopleItems.forEach((item,) => {
+    item.addEventListener('click', (e) => {
+      pickPeopleItem = peopleList.filter((i) => i.id == e.currentTarget.dataset.id)[0]; // 过滤出选中的人数项
+      console.log('已选人数', pickPeopleItem); // 打印已选人数
+      // 处理选中状态
+      peopleItems.forEach((i) => {
+        i.classList.remove('selected');
+        i.style.borderColor = '#B0A29E';
+        i.style.borderImage = 'none'; // 移除之前的渐变边框
+      });
+      e.currentTarget.classList.add('selected');
+      e.currentTarget.style.borderColor = 'transparent'; // 设置透明的边框颜色
+      e.currentTarget.style.borderImage = 'linear-gradient(to right, #40C6FF 0%, #1C80EB 100%) 1'; // 设置渐变边框
+      morePeopleItem.style.borderImage = 'linear-gradient(to right, #40C6FF00 0%, #1C80EB00 100%) 1'; // 设置渐变边框
+      morePeopleItem.style.borderColor = '#B0A29E'; // 
+    });
+  });
+
+  //选择更多套餐
+  const selectElement = document.getElementById('teamSizeSelect');
+  const morePeopleItem = document.querySelector('.more-people-item');
+  // 初始化下拉框选项
+  morePeopleList.forEach((item) => {
+    const option = document.createElement('option');
+    option.value = item.num;
+    option.textContent = `${item.num}人  ${item.price}元/月`;
+    selectElement.appendChild(option);
+  });
+
+  // 更新价格显示
+  function updatePriceDisplay(selectedNum) {
+    const selectedItem = morePeopleList.find((item) => item.num === Number(selectedNum));
+    pickPeopleItem = selectedItem;
+    morePeopleItem.classList.add('selected');
+    morePeopleItem.style.borderColor = 'transparent'; // 设置透明的边框颜色
+    morePeopleItem.style.borderImage = 'linear-gradient(to right, #40C6FF 0%, #1C80EB 100%) 1'; // 设置渐变边框
+    peopleItems.forEach((i) => {
+        i.classList.remove('selected');
+        i.style.borderColor = '#B0A29E';
+        i.style.borderImage = 'none'; // 移除之前的渐变边框
+      });
+    console.log(pickPeopleItem, '已选更多套餐');
+  }
+
+  // 添加选中事件监听
+  selectElement.addEventListener('change', function (e) {
+    // 阻止事件冒泡到父元素
+    e.stopPropagation();
+    const selectedNum = this.value;
+    updatePriceDisplay(selectedNum);
+  });
+
+  // 初始化默认显示
+  // updatePriceDisplay('');
 </script>
 
 <style>
-  .game-item.selected {
-    background-color: #f56a1f;
-    color: white;
-  }
   .card-stack {
     position: relative;
     width: 62.5vw;
@@ -350,4 +496,125 @@ const gameList = [
     color: #333;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
+  /* 更多套餐 */
+  .select-container {
+    position: relative;
+    width: fit-content;
+  }
+
+  .custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 5.20vw;
+    padding: 0.2vw 0.5vw;
+    border-radius: 0.26vw;
+    background-color: #ffffff00;
+    cursor: pointer;
+    font-size: 0.73vw;
+    color: #fff;
+    border-bottom: 1px solid #363332;
+  }
+
+  .custom-select:focus {
+    outline: none;
+    /* box-shadow: 0 0 0.5vw rgba(64, 198, 255, 0.5); */
+  }
+
+  /* 自定义下拉箭头 */
+  .custom-select::-ms-expand {
+    display: none;
+  }
+
+  .custom-select {
+    position: relative;
+  }
+
+  .custom-select::after {
+    content: '▼';
+    position: absolute;
+    right: 0.5vw;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff8d1a;
+    pointer-events: none;
+  }
+  /* 定义下拉框容器样式 */
+.select-container {
+  position: relative;
+  width: fit-content;
+}
+ 
+/* 定义下拉框样式 */
+.custom-select {
+  /* 移除默认样式 */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  /* 设置大小 */
+  width: 100px;
+  height: 22px;
+  
+  /* 设置背景颜色 */
+  background-color: #2C2C2C;
+  
+  /* 设置边框和圆角 */
+  border: none;
+  border-radius: 4px;
+  
+  /* 设置字体和颜色 */
+  font-size: 0.73vw;
+  color: white;
+  
+  /* 添加内边距 */
+  padding: 0 25px 0 10px;
+  
+  /* 添加下拉箭头 */
+  position: relative;
+}
+ 
+/* 定义选项样式 */
+.custom-select option {
+  /* 设置选项背景颜色 */
+  background-color: #2C2C2C;
+  
+  /* 设置选项文字颜色 */
+  color: white;
+}
+ 
+/* 定义悬停时的选项样式 */
+.custom-select option:hover {
+  /* 设置悬停背景颜色 */
+  background-color: rgba(255, 255, 255, 0.3);
+}
+ 
+/* 定义下拉箭头样式 */
+.custom-select::after {
+  content: '▼';
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  pointer-events: none;
+}
+ 
+/* 定义下拉框展开时的滚动条样式 */
+.custom-select[size]:not([size="1"])::-webkit-scrollbar {
+  width: 6px;
+}
+ 
+.custom-select[size]:not([size="1"])::-webkit-scrollbar-track {
+  background: #2C2C2C;
+}
+ 
+.custom-select[size]:not([size="1"])::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+ 
+.custom-select[size]:not([size="1"])::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
 </style>
