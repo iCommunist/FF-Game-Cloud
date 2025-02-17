@@ -19,19 +19,19 @@ const morePeopleListResult = await morePeopleListRes.json();
 const morePeopleList = morePeopleListResult.data || [];
 ---
 
-<Layout showHeader={false} showFooter={false}>
+<Layout showHeader={false} showFooter={true}>
   <div
-    class="relative w-full"
+    class="w-full"
     style="padding-top: 56.25%;background: linear-gradient(0deg, rgba(33, 29, 27, 0) 47.47%, rgba(255, 255, 255, 1) 100%, rgba(105, 101, 100, 0.5) 100%);"
   >
     <!-- 背景图层，应用背景模糊 -->
     <div
-      class="absolute inset-0 bg-[url('/assets/images/默认选购.png')] bg-cover bg-no-repeat bg-center"
+      class="absolute inset-0 bg-[url('/assets/images/默认选购.png')] bg-cover bg-no-repeat bg-center z-[-1]"
       style="filter: blur(0.52vw);"
     >
     </div>
 
-    <!-- 吸附在顶部的导航栏 -->
+    <!-- 吸附在顶部的导航栏  h-[51.5vw] -->
     <div
       class="fixed flex justify-between items-center top-0 left-0 w-full h-[4.17vw] pr-[8.3333vw] pl-[7.1875vw] bg-white bg-opacity-30 z-50"
       style="background:rgba(0, 0, 0, 0.7)"
@@ -98,7 +98,7 @@ const morePeopleList = morePeopleListResult.data || [];
         </div>
       </div>
     </div>
-    <div class="absolute z-10 top-[4.17vw] h-[51.5vw] w-full">
+    <div class="absolute z-10 top-[4.17vw] max-h-fit w-full">
       <div
         class="mt-[6.98vw] ml-[8.39vw] w-[15.1vw] h-[1.8vw] rounded-full flex items-center pl-[0.52vw] cursor-pointer transition-all duration-[1000ms] ease-[cubic-bezier(0.4, 0, 1, 1)] hover:ml-[10.39vw]"
         style="font-size: 0.52vw; background-color: rgba(5, 0, 0, 0.3);"
@@ -199,7 +199,7 @@ const morePeopleList = morePeopleListResult.data || [];
               ))
             }
           </div>
-          <div class="w-[22.2vw] h-[26.3vw]">
+          <div class="w-[22.2vw] h-[37vw] overflow-y-scroll overflow-hidden custom-scrollbar-hidden">
             <!-- 开服游戏列表 -->
             <div>
               <div class="h-[3.17vw]">
@@ -340,6 +340,176 @@ const morePeopleList = morePeopleListResult.data || [];
       </div>
     </div>
   </div>
+  <div class="w-[100vw] h-[12.08vw] flex justify-center items-center">
+    <div class="w-[78.07vw] h-[12.08vw]">
+      <div class="h-[2.862vw]" style="font-size: 0.9375vw;">
+        <span class="text-[#FFFFFF]">NAT或升级独立IP模式：</span><span class="text-[#949494]">你想选择的是？</span>
+      </div>
+      <div class="flex justify-between">
+        <!-- 是否升级独立IP -->
+        <div class="w-[47.44vw] h-[9.218vw] flex justify-between">
+          <!-- 升级独立IP -->
+          <div
+            id="upIpAddr"
+            class="w-[22.39vw] h-[9.218vw] bg-[#211d1b] px-[0.83vw] cursor-pointer"
+            style="border-radius: 0.169vw;"
+          >
+            <div
+              class="h-[2.68vw] text-[#949494] flex items-center justify-center mb-[0.859vw]"
+              style="border-bottom: 0.052vw solid #474141;font-size: 0.78vw;"
+            >
+              升级独立IP
+            </div>
+            <div class="h-[6.538vw] text-[#949494]" style="font-size: 0.52vw;">
+              <p style="line-height: 0.78vw;margin-bottom: 0.39vw;">
+                1.
+                升级独立IP地址即为服务器开通单独IP，单独IP具有一定的防御攻击能力，以及可以直接用IP进行公网访问，适用于网站等各种业务
+              </p>
+              <p style="line-height: 0.78vw;margin-bottom: 0.39vw;">2. 购买后可随时按需要加购或删除不同类型的IP</p>
+              <p style="line-height: 0.78vw;margin-bottom: 0.39vw;">
+                3.
+                如不升级独立IP（NAT模式）则默认为共享IP，该模式下如需访问公网，可使用NAT功能对外映射端口，适用于内网穿透，游戏开服，研究学习等业务，后续有需要可增购IP地址。
+              </p>
+            </div>
+          </div>
+          <!-- 不升级独立IP -->
+          <div
+            id="noUpIpAddr"
+            class="w-[22.39vw] h-[9.218vw] flex items-center justify-center bg-[#211d1b] cursor-pointer text-[#FFFFFF]"
+            style="border-radius: 0.169vw;font-size: 0.78vw;"
+          >
+            不升级独立IP
+          </div>
+        </div>
+        <!-- 如何升级IP -->
+        <div class="w-[25.99vw] h-[9.218vw] cursor-pointer flex" style="border-radius: 0.169vw;background: #524242;">
+          <div class="w-[10.76vw] h-[9.218vw]" style="background-color: #FFFFFF30;border-radius: 0.169vw;"></div>
+          <div class="w-[15.23vw] h-[9.218vw] pt-[0.885vw] flex justify-around" style="background-color: #FFFFFF00;">
+            <div class="w-[9.16vw] h-[2.44vw]">
+              <div style="color: #FFFFFF;font-size: 0.78vw;margin-bottom: 0.468vw;">如何进行升级ip?</div>
+              <div style="color: #ADA5A3;font-size: 0.57vw;">了解不同服务器型号和性能的区别。</div>
+            </div>
+            <div>
+              <img src="/assets/images/加号.svg" class="w-[0.729vw] h-[0.729vw] rotate-add-icon" alt="" srcset="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="mt-[18.33vw] mb-[49.11vw] w-[77.4vw] h-[32.03vw] bg-[#211d1b] mx-auto flex"
+    style="border:1px solid #000000;border-radius: 0.52vw;"
+  >
+    <div class="w-[33.125vw] h-[31.926vw]" style="border-radius:  0.52vw 0 0  0.52vw;">
+      <div class="w-[33.125vw] h-[10.836vw] text-[#FFFFFF] flex justify-center items-center" style="font-size: 1.82vw;">
+        <div class="w-[18.22vw] text-center">一键开服，畅快开黑， 自动部署，开箱即用。</div>
+      </div>
+      <div class="h-[21.09vw] w-[33.125vw] relative" style="border-radius:0  0.52vw 0  0.52vw ;">
+        <img
+          src="/assets/images/默认选购.png"
+          class="h-[21.09vw] w-[33.125vw]"
+          style="border-radius:0  0.52vw 0  0.52vw ;"
+          id="currPickBigImg"
+        />
+        <div
+          class="absolute bg-[#00000060] text-[#FFFFFF] h-[2.86vw] right-0 bottom-[1.15vw] px-[1.718vw] py-[0.885vw] flex justify-between items-center"
+          style="min-width: 14.53vw; backdrop-filter: blur(0.26vw);border-radius: 0.26vw 0px 0px 0.26vw;font-size: 0.729vw;"
+        >
+          <span id="currPickGame" class="mr-[2.29vw]">幻鲁帕兽幻鲁帕兽</span>
+          <span id="currPickMirror" class="mr-[2.29vw]">纯净服纯净服纯净服纯净服纯净服</span>
+          <span id="currPickPeople">8人</span>
+        </div>
+      </div>
+    </div>
+    <div class="w-[23.02vw] h-[31.926vw] pt-[0.83vw] pl-[2.239vw] pr-[2.913vw] flex flex-col items-center">
+      <div class="relative">
+        <img
+          src="https://img.js.design/assets/img/677931ca19abf04c14afb242.jpg#42e81b8418873d43f430893f2d85b759"
+          class="w-[17.86vw] h-[9.11vw] rounded-[0.289vw]"
+          alt=""
+          id="currPickSmallImg"
+        />
+        <div
+          class="absolute inset-0 flex items-center justify-center flex-col text-[#CFCCCC] font-semibold"
+          style="font-size: 0.729vw;"
+        >
+          <span style="font-size:0.83vw ;color:#ffffff;margin-bottom:2vw">购买说明</span><span>购买后3分钟内可用</span
+          ><span>需要协助或有疑问可联系官方客服</span>
+        </div>
+        <div class="w-[17.86vw] h-[9.11vw] rounded-[0.289vw] absolute bg-[#8b8b8b80] top-0"></div>
+      </div>
+      <div
+        class="h-[13.125vw] w-[13.80vw] mt-[3.90vw] flex items-center justify-center flex-col"
+        style="border-bottom: 0.052vw solid #474141;border-top: 0.052vw solid #474141;"
+      >
+        <div class="w-[13.75vw] h-[4.01vw] mb-[1.822vw]">
+          <div style="font-size: 0.833vw; color:#BAB3B3">周期</div>
+          <div
+            class="w-[13.75vw] h-[2.395vw] bg-[#3B3130] px-[1.362vw] py-[0.572vw] flex items-center justify-between"
+            style="border: 0.052vw solid #61504E;font-size: 0.833vw;color:#ffffff"
+          >
+            <div>1月</div>
+            <img src="/assets/images/三角形箭头.svg" alt="" srcset="" class="w-[0.64vw] h-[0.52vw]" />
+          </div>
+        </div>
+        <div class="w-[13.75vw] h-[4.01vw]">
+          <div style="font-size: 0.833vw; color:#BAB3B3">优惠码</div>
+          <div
+            class="w-[13.75vw] h-[2.395vw] flex justify-between items-center bg-[#3B3130]"
+            style="border: 0.052vw solid #61504E;"
+          >
+            <div style="font-size: 0.833vw; color:#fff;" class="pl-[1.362vw]">验证码内容</div>
+            <div
+              class="w-[3.90vw] h-[1.04vw] flex justify-center items-center"
+              style="border-left: 0.052vw solid #61504E;font-size: 0.833vw; color:#fff;"
+            >
+              验证
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-[21.225vw] h-[31.926vw] flex flex-col items-center">
+      <div class="h-[8.80vw] w-[17.5vw] pt-[2.256vw]" style="border-bottom:0.052vw solid #474141">
+        <div class="text-[#BAB3B3] mb-[0.989vw]" style="font-size: 0.83vw;">价格</div>
+        <div class="text-[#F26A16] w-[17.5vw] flex justify-center items-baseline" style="font-weight: 700;">
+          <span style="font-size: 1.25vw;margin-right:0.25vw">¥</span><span style="font-size: 2.39vw;">98</span>
+        </div>
+      </div>
+      <div class="mt-[3.80vw] w-[19.0vw]">
+        <div class="w-[18.33vw] h-[3.07vw] p-[0.52vw] flex items-center justify-between">
+          <div class="flex items-center">
+            <img src="/assets/images/ali_pay.svg" alt="" srcset="" class="w-[1.979vw] h-[1.979vw]" />
+            <div class="ml-[1.093vw]">支付宝</div>
+          </div>
+          <img src="/assets/images/select_pay_type.svg" alt="" srcset="" class="w-[1.25vw] h-[1.25vw]" />
+        </div>
+        <div class="w-[18.33vw] h-[3.07vw] p-[0.52vw] flex items-center justify-between">
+          <div class="flex items-center">
+            <img src="/assets/images/wx_pay.svg" alt="" srcset="" class="w-[1.979vw] h-[1.979vw]" />
+            <div class="ml-[1.093vw]">微信支付</div>
+          </div>
+          <img src="/assets/images/no_select_pay_type.svg" alt="" srcset="" class="w-[1.25vw] h-[1.25vw]" />
+        </div>
+        <div class="w-[18.33vw] h-[3.07vw] p-[0.52vw] flex items-center justify-between">
+          <div class="flex items-center">
+            <img src="/assets/images/balance_pay.svg" alt="" srcset="" class="w-[1.979vw] h-[1.979vw]" />
+            <div class="ml-[1.093vw]">余额</div>
+          </div>
+          <img src="/assets/images/no_select_pay_type.svg" alt="" srcset="" class="w-[1.25vw] h-[1.25vw]" />
+        </div>
+      </div>
+      <div
+        class="w-[17.39vw] mt-[4vw] h-[4.479vw] flex justify-center items-center text-white cursor-pointer
+        transition-colors duration-1000 ease-in-out
+        rounded-[0.461vw]
+        bg-gradient-to-r from-[#1C80EB] to-[#40C6FF] hover:bg-gradient-to-r hover:from-[#008df7] hover:to-[#40C6FF]"
+      >
+        立即付款
+      </div>
+    </div>
+  </div>
 </Layout>
 <script define:vars={{ gameList, mirrorList, peopleList, morePeopleList }}>
   console.log('服务端>游戏列表数据:', gameList);
@@ -397,7 +567,7 @@ const morePeopleList = morePeopleListResult.data || [];
   // 镜像项选中部分
   let pickMirrorItem = {}; // 选中的镜像列表项
   const mirrorItems = document.querySelectorAll('.mirror-item'); // 获取镜像列表
-  mirrorItems.forEach((item, ) => {
+  mirrorItems.forEach((item) => {
     item.addEventListener('click', (e) => {
       let currMirrorId = e.currentTarget.dataset.id; // 获取当前点击项的 ID
       pickMirrorItem = mirrorList.filter((i) => i.id == currMirrorId)[0]; // 过滤出选中的镜像项
@@ -418,7 +588,7 @@ const morePeopleList = morePeopleListResult.data || [];
   // 人数项选中部分
   let pickPeopleItem = {}; // 选中的人数列表项
   const peopleItems = document.querySelectorAll('.people-item'); // 获取人数列表
-  peopleItems.forEach((item,) => {
+  peopleItems.forEach((item) => {
     item.addEventListener('click', (e) => {
       pickPeopleItem = peopleList.filter((i) => i.id == e.currentTarget.dataset.id)[0]; // 过滤出选中的人数项
       console.log('已选人数', pickPeopleItem); // 打印已选人数
@@ -432,7 +602,7 @@ const morePeopleList = morePeopleListResult.data || [];
       e.currentTarget.style.borderColor = 'transparent'; // 设置透明的边框颜色
       e.currentTarget.style.borderImage = 'linear-gradient(to right, #40C6FF 0%, #1C80EB 100%) 1'; // 设置渐变边框
       morePeopleItem.style.borderImage = 'linear-gradient(to right, #40C6FF00 0%, #1C80EB00 100%) 1'; // 设置渐变边框
-      morePeopleItem.style.borderColor = '#B0A29E'; // 
+      morePeopleItem.style.borderColor = '#B0A29E'; //
     });
   });
 
@@ -455,10 +625,10 @@ const morePeopleList = morePeopleListResult.data || [];
     morePeopleItem.style.borderColor = 'transparent'; // 设置透明的边框颜色
     morePeopleItem.style.borderImage = 'linear-gradient(to right, #40C6FF 0%, #1C80EB 100%) 1'; // 设置渐变边框
     peopleItems.forEach((i) => {
-        i.classList.remove('selected');
-        i.style.borderColor = '#B0A29E';
-        i.style.borderImage = 'none'; // 移除之前的渐变边框
-      });
+      i.classList.remove('selected');
+      i.style.borderColor = '#B0A29E';
+      i.style.borderImage = 'none'; // 移除之前的渐变边框
+    });
     console.log(pickPeopleItem, '已选更多套餐');
   }
 
@@ -472,6 +642,37 @@ const morePeopleList = morePeopleListResult.data || [];
 
   // 初始化默认显示
   // updatePriceDisplay('');
+
+  const upIpAddr = document.getElementById('upIpAddr'); //升级独立IP元素
+  const noUpIpAddr = document.getElementById('noUpIpAddr'); //不升级独立IP元素
+  let isUpIp = false;
+  // 点击升级独立IP
+  upIpAddr.addEventListener('click', function (e) {
+    isUpIp = true;
+    console.log('升级独立IP', isUpIp);
+    upIpAddr.classList.add('selected');
+    upIpAddr.style.borderStyle = 'solid'; // 设置为 solid
+    upIpAddr.style.borderWidth = '0.104vw'; // 确保边框宽度大于 0
+    upIpAddr.style.borderColor = 'transparent';
+    upIpAddr.style.borderImage = 'linear-gradient(to right, #40C6FF 0%, #1C80EB 100%) 1';
+
+    // 清除不升级独立IP的样式
+    noUpIpAddr.classList.remove('selected');
+    noUpIpAddr.style.borderImage = ''; // 清除渐变边框
+  });
+
+  noUpIpAddr.addEventListener('click', function (e) {
+    isUpIp = false;
+    console.log('不升级独立IP', isUpIp);
+    noUpIpAddr.classList.add('selected');
+    noUpIpAddr.style.borderStyle = 'solid'; // 设置为 solid
+    noUpIpAddr.style.borderWidth = '0.104vw'; // 确保边框宽度大于 0
+    noUpIpAddr.style.borderColor = 'transparent';
+    noUpIpAddr.style.borderImage = 'linear-gradient(to right, #40C6FF 0%, #1C80EB 100%) 1';
+    // 清除升级独立IP的样式
+    upIpAddr.classList.remove('selected');
+    upIpAddr.style.borderImage = ''; // 清除渐变边框
+  });
 </script>
 
 <style>
@@ -506,7 +707,7 @@ const morePeopleList = morePeopleListResult.data || [];
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    width: 5.20vw;
+    width: 5.2vw;
     padding: 0.2vw 0.5vw;
     border-radius: 0.26vw;
     background-color: #ffffff00;
@@ -540,81 +741,105 @@ const morePeopleList = morePeopleListResult.data || [];
     pointer-events: none;
   }
   /* 定义下拉框容器样式 */
-.select-container {
-  position: relative;
-  width: fit-content;
-}
- 
-/* 定义下拉框样式 */
-.custom-select {
-  /* 移除默认样式 */
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  
-  /* 设置大小 */
-  width: 100px;
-  height: 22px;
-  
-  /* 设置背景颜色 */
-  background-color: #2C2C2C;
-  
-  /* 设置边框和圆角 */
-  border: none;
-  border-radius: 4px;
-  
-  /* 设置字体和颜色 */
-  font-size: 0.73vw;
-  color: white;
-  
-  /* 添加内边距 */
-  padding: 0 25px 0 10px;
-  
-  /* 添加下拉箭头 */
-  position: relative;
-}
- 
-/* 定义选项样式 */
-.custom-select option {
-  /* 设置选项背景颜色 */
-  background-color: #2C2C2C;
-  
-  /* 设置选项文字颜色 */
-  color: white;
-}
- 
-/* 定义悬停时的选项样式 */
-.custom-select option:hover {
-  /* 设置悬停背景颜色 */
-  background-color: rgba(255, 255, 255, 0.3);
-}
- 
-/* 定义下拉箭头样式 */
-.custom-select::after {
-  content: '▼';
-  position: absolute;
-  right: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: white;
-  pointer-events: none;
-}
- 
-/* 定义下拉框展开时的滚动条样式 */
-.custom-select[size]:not([size="1"])::-webkit-scrollbar {
-  width: 6px;
-}
- 
-.custom-select[size]:not([size="1"])::-webkit-scrollbar-track {
-  background: #2C2C2C;
-}
- 
-.custom-select[size]:not([size="1"])::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 3px;
-}
- 
-.custom-select[size]:not([size="1"])::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
-}
+  .select-container {
+    position: relative;
+    width: fit-content;
+  }
+
+  /* 定义下拉框样式 */
+  .custom-select {
+    /* 移除默认样式 */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    /* 设置大小 */
+    width: 100px;
+    height: 22px;
+
+    /* 设置背景颜色 */
+    background-color: #2c2c2c;
+
+    /* 设置边框和圆角 */
+    border: none;
+    border-radius: 4px;
+
+    /* 设置字体和颜色 */
+    font-size: 0.73vw;
+    color: white;
+
+    /* 添加内边距 */
+    padding: 0 25px 0 10px;
+
+    /* 添加下拉箭头 */
+    position: relative;
+  }
+
+  /* 定义选项样式 */
+  .custom-select option {
+    /* 设置选项背景颜色 */
+    background-color: #2c2c2c;
+
+    /* 设置选项文字颜色 */
+    color: white;
+  }
+
+  /* 定义悬停时的选项样式 */
+  .custom-select option:hover {
+    /* 设置悬停背景颜色 */
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  /* 定义下拉箭头样式 */
+  .custom-select::after {
+    content: '▼';
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    pointer-events: none;
+  }
+
+  /* 定义下拉框展开时的滚动条样式 */
+  .custom-select[size]:not([size='1'])::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-select[size]:not([size='1'])::-webkit-scrollbar-track {
+    background: #2c2c2c;
+  }
+
+  .custom-select[size]:not([size='1'])::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+  }
+
+  .custom-select[size]:not([size='1'])::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+  /* 隐藏滚动条 */
+  .custom-scrollbar-hidden {
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .custom-scrollbar-hidden {
+    scroll-behavior: smooth;
+  }
+  .rotate-add-icon {
+    transition: transform 1s ease-in-out; /* 1秒过渡效果 */
+  }
+
+  .rotate-add-icon:hover {
+    transform: rotate(90deg); /* hover时顺时针旋转一圈 */
+  }
+
+  .rotate-add-icon:not(:hover) {
+    transform: rotate(-90deg); /* 离开时逆时针旋转回原位 */
+  }
 </style>
