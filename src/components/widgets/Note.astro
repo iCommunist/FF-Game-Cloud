@@ -21,40 +21,34 @@ const accordionItems = [
     <img src="/assets/images/热门游戏库.png" alt="" class="w-[61.61vw] h-[5.57vw]" />
   </div>
   <div
-    class="background-overlay w-[80.99vw] h-[37.24vw] flex mx-auto p-[1.30vw] rounded-[0.26vw] border border-[rgba(176,162,158,0.5)] bg-gradient-to-b from-[rgba(176,162,158,0.5)] to-[rgba(0,0,0,0.8)]]"
+    class="background-overlay gameDB w-[80.99vw] h-[37.24vw] flex mx-auto p-[1.30vw] rounded-[0.26vw] border border-[rgba(176,162,158,0.5)] bg-gradient-to-b from-[rgba(176,162,158,0.5)] to-[rgba(0,0,0,0.8)]]"
   >
     <div
       style="background: linear-gradient(270deg, rgba(240, 228, 221, 0.3) 0%, rgba(255, 255, 255, 0) 100%);"
       class="w-[25.63vw] h-[34.58vw] mr-[2.34vw] border border-[rgba(176,162,158,1)] rounded-[0.26vw] flex justify-center items-center"
     >
-      <img src="/assets/images/游戏库左1.png" alt="" class="w-[24.55vw] h-[33.64vw]" />
+      <img src="/assets/images/游戏库左1.png" alt="" class="w-[23.65vw] h-[33.64vw] gameDBImg" />
     </div>
     <div class="w-[26.25vw] h-[34.58vw] mr-[2.5vw] flex justify-between items-center flex-col">
       <div
         class="flex justify-center items-center p-[0.36vw]"
         style="border: 1px solid rgba(176, 162, 158, 1); border-radius: 0.26vw; background: linear-gradient(270deg, rgba(240, 228, 221, 0.3) 0%, rgba(255, 255, 255, 0) 100%);"
       >
-        <img src="/assets/images/中上.png" alt="" class="w-[25.19vw] h-[12.14vw]" />
+        <img src="/assets/images/中上.png" alt="" class="w-[25.19vw] h-[12.14vw] gameDBImg" />
       </div>
       <div
         class="flex justify-center items-center p-[0.36vw]"
         style="border: 1px solid rgba(176, 162, 158, 1); border-radius: 0.26vw; background: linear-gradient(270deg, rgba(240, 228, 221, 0.3) 0%, rgba(255, 255, 255, 0) 100%);"
       >
-        <img src="/assets/images/中下.png" alt="" class="w-[25.16vw] h-[19.43vw]" />
+        <img src="/assets/images/中下.png" alt="" class="w-[25.16vw] h-[19.43vw] gameDBImg" />
       </div>
     </div>
     <div class="flex items-center flex-col">
       <div>
-        <!-- <img
-          id="gameLibraryLinkBtn"
-          src="/assets/images/查看更多游戏.png"
-          alt=""
-          class="mt-[1.3vw] mb-[1.3vw] cursor-pointer w-[13.75vw] h-[4.17vw]"
-        /> -->
         <div
           id="gameLibraryLinkBtn"
           style="background-size: 200% 100%; transition: background-position 0.5s ease-in-out, transform 0.5s ease-in-out;font-size: 1.3542vw;"
-          class="mt-[1.3vw] mb-[1.3vw] text-center cursor-pointer w-[13.75vw] h-[4.17vw] text-white leading-[4.17vw]  rounded-[0.3125vw] bg-gradient-to-r from-[#40C6FF] to-[#1C80EB] transition-all duration-500 ease-in-out hover:scale-105"
+          class="mt-[1.3vw] mb-[1.3vw] text-center cursor-pointer w-[13.75vw] h-[4.17vw] text-white leading-[4.17vw] rounded-[0.3125vw] bg-gradient-to-r from-[#40C6FF] to-[#1C80EB] transition-all duration-500 ease-in-out hover:scale-105"
         >
           查看更多游戏
         </div>
@@ -63,13 +57,13 @@ const accordionItems = [
         class="mb-[1.2vw] flex justify-center items-center p-[0.36vw]"
         style="border: 1px solid rgba(176, 162, 158, 1); border-radius: 0.26vw; background: linear-gradient(270deg, rgba(240, 228, 221, 0.3) 0%, rgba(255, 255, 255, 0) 100%);"
       >
-        <img src="/assets/images/右中.png" alt="" class="w-[21.41vw] h-[12.14vw]" />
+        <img src="/assets/images/右中.png" alt="" class="w-[21.41vw] h-[12.14vw] gameDBImg" />
       </div>
       <div
         class="flex justify-center items-center p-[0.36vw]"
         style="border: 1px solid rgba(176, 162, 158, 1); border-radius: 0.26vw; background: linear-gradient(270deg, rgba(240, 228, 221, 0.3) 0%, rgba(255, 255, 255, 0) 100%);"
       >
-        <img src="/assets/images/右下.png" alt="" class="w-[21.41vw] h-[12.14vw]" />
+        <img src="/assets/images/右下.png" alt="" class="w-[21.41vw] h-[12.14vw] gameDBImg" />
       </div>
     </div>
   </div>
@@ -106,4 +100,38 @@ const accordionItems = [
     background: rgba(176, 162, 158, 0.3);
     z-index: -1;
   }
+
+.gameDB {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.gameDBImg {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  filter: blur(0); /* 默认状态下，图片不模糊 */
+  transform: scale(1); /* 默认图片大小 */
+}
+
+/* 当鼠标悬停在某个图片上时，其他图片模糊 */
+.gameDB .gameDBImg:hover {
+  transform: scale(1.05); /* 当前图片放大 */
+}
+
+/* 当鼠标悬停在父容器 gameDB 上时，所有图片保持清晰 */
+.gameDB:hover .gameDBImg {
+  filter: blur(0); /* 取消模糊效果 */
+  transform: scale(1); /* 恢复原始大小 */
+}
+
+/* 当父容器 .gameDB 被 hover 时，其他没有被 hover 的图片模糊并缩小 */
+.gameDB:hover .gameDBImg:not(:hover) {
+  filter: blur(5px); /* 其他图片模糊 */
+  transform: scale(0.9); /* 其他图片缩小 */
+}
+
+
 </style>

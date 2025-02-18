@@ -1,62 +1,115 @@
 ---
 const leftItems = [
   {
-    imgSrc: "/assets/images/在线客服.png",
-    title: "在线客服",
-    description: "专业的技术团队及时协助您，解决您遇到的任何服务器相关问题，助您无忧开服，轻松上手，畅玩游戏。",
+    imgSrc: '/assets/images/在线客服.svg',
+    title: '在线客服',
+    description: '专业的技术团队及时协助您，解决您遇到的任何服务器相关问题，助您无忧开服，轻松上手，畅玩游戏。',
   },
   {
-    imgSrc: "/assets/images/稳定路线.png",
-    title: "稳定线路",
-    description: "BGP游戏稳定线路，以及高防御DDOS策略，有效抵挡压测攻击，满足用户的在线体验",
+    imgSrc: '/assets/images/稳定线路.svg',
+    title: '稳定线路',
+    description: 'BGP游戏稳定线路，以及高防御DDOS策略，有效抵挡压测攻击，满足用户的在线体验',
   },
 ];
 
 const rightItems = [
   {
-    imgSrc: "/assets/images/性能处理.png",
-    title: "性能处理",
-    description: "全系采用AMD高频性能处理器，NVME高速存储，轻松处理游戏服务端，为您提升游戏联机的流畅体验。",
+    imgSrc: '/assets/images/性能处理.svg',
+    title: '性能处理',
+    description: '全系采用AMD高频性能处理器，NVME高速存储，轻松处理游戏服务端，为您提升游戏联机的流畅体验。',
   },
   {
-    imgSrc: "/assets/images/自研面板.png",
-    title: "自研面板",
-    description: "飞鱼游戏云独立自研精心打磨，独特实用，功能丰富的游戏控制面板，简单而快捷的管理，为您实现简单开服，好友联机的的乐趣。",
+    imgSrc: '/assets/images/自研面板.svg',
+    title: '自研面板',
+    description:
+      '飞鱼游戏云独立自研精心打磨，独特实用，功能丰富的游戏控制面板，简单而快捷的管理，为您实现简单开服，好友联机的的乐趣。',
   },
 ];
 ---
-<div class="w-full pt-[13.54vw] pb-[6.25vw] flex justify-center">
-  <img src="/assets/images/独家特色.png" alt="" class="w-[61.77vw] h-[5.21vw]" />
+
+<div class="mb-[6.25vw] pt-[14.79vw] w-[61.61vw] h-[20vw] mx-auto">
+  <!-- <img src="/assets/images/独家特色.png" alt="" class="w-[61.77vw] h-[5.21vw]" /> -->
+  <!-- 纯代码实现独家特色标题 -->
+  <div class="flex">
+    <div class="h-[1.458vw] w-[23.02vw]">
+      <div class="h-[1.458vw] w-[23.02vw]" style="border-bottom: 0.052vw solid rgba(255, 173, 148, 0.18);">
+        <div class="h-[1.458vw] w-[23.02vw] relative" style="border-bottom: 0.052vw solid rgba(255, 173, 148, 0.18);">
+          <div class="absolute bottom-0 left-0 transform translate-x-[-100%] translate-y-[50%]">
+            <div class="circle-ring">
+              <div class="outer-circle"></div>
+              <div class="middle-circle"></div>
+              <div class="inner-circle"></div>
+            </div>
+          </div>
+          <div class="w-[0.26vw] h-[0.26vw] bg-[#FFAD9430] absolute bottom-0 right-0 transform translate-x-[100%] translate-y-[50%] " style="border-radius: 50%;" ></div>
+        </div>
+      </div>
+      <div class="h-[1.458vw] w-[23.02vw]"></div>
+    </div>
+    <div class="w-[7.916vw] h-[2.916vw] flex justify-center mx-auto" style="font-size: 1.979vw;font-weight: 700;">
+      <span class="text-[#F26A16]">独家</span>
+      <span class="text-[#FFFFFF]">特色</span>
+    </div>
+    <div class="h-[1.458vw] w-[23.02vw]">
+      <div class="h-[1.458vw] w-[23.02vw] relative" style="border-bottom: 0.052vw solid rgba(255, 173, 148, 0.18);">
+        <div class="absolute bottom-0 right-0 transform translate-x-[100%] translate-y-[50%]">
+          <div class="circle-ring">
+            <div class="outer-circle"></div>
+            <div class="middle-circle"></div>
+            <div class="inner-circle"></div>
+          </div>
+        </div>
+        <div class="w-[0.26vw] h-[0.26vw] bg-[#FFAD9430] absolute bottom-0 left-0 transform translate-x-[-100%] translate-y-[50%] " style="border-radius: 50%;" ></div>
+      </div>
+      <div class="h-[1.458vw] w-[23.02vw]"></div>
+    </div>
+  </div>
+  <div class="flex justify-center items-center flex-col">
+    <div
+      class="w-[22.08vw] h-[0.052vw] mb-[1.04vw]"
+      style="background: linear-gradient(to right, rgba(242, 106, 22, 0) 0%, rgba(242, 106, 22, 1) 50%, rgba(242, 106, 22, 0) 100%); height: 0.078vw;"
+    >
+    </div>
+    <div class="text-[#949494]" style="width: fit-content;font-size: 0.833vw;">
+      提供丰富的功能来增加您游戏的体验并以细心的服务，高端的硬件，提供稳定支持
+    </div>
+  </div>
 </div>
 <div class="mx-auto w-full h-[22.29vw] flex justify-center">
   <!-- 左侧 2 个模块 -->
   <div class="w-[21.53vw] flex flex-col justify-between items-center" style="border: 0.1vw solid #fff00000">
-    {leftItems.map((item, index) => (
-      <div class="w-[21.53vw] h-[7.29vw] relative" style="border: 0.1vw solid #B0A29E; border-radius: 0.26vw;" key={index}>
-        <div class="flex items-center h-full">
-          <div
-            class="w-[4.17vw] h-[4.17vw] flex ml-[0.63vw] mr-[1.25vw] justify-center items-center rounded-[0.3vw] border-[0.03vw] border-[rgba(133,114,106,1)]"
-            style="background: linear-gradient(90.93deg, rgba(173, 173, 173, 0.05) 20.83%, rgba(153, 143, 136, 0.5) 100%);"
-          >
-            <img src={item.imgSrc} alt="" class="w-[2.29vw] h-[2.29vw]" />
-          </div>
-          <div>
+    {
+      leftItems.map((item, index) => (
+        <div
+          class="w-[21.53vw] h-[7.29vw] relative"
+          style="border: 0.1vw solid #B0A29E; border-radius: 0.26vw;"
+          key={index}
+        >
+          <div class="flex items-center h-full">
             <div
-              class="font-medium bg-gradient-to-t from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,1)] text-transparent bg-clip-text"
-              style="font-size: 1.04vw; font-weight: 500;"
+              class="w-[4.17vw] h-[4.17vw] flex ml-[0.63vw] mr-[1.25vw] justify-center items-center rounded-[0.3vw] border-[0.03vw] border-[rgba(133,114,106,1)]"
+              style="background: linear-gradient(90.93deg, rgba(173, 173, 173, 0.05) 20.83%, rgba(153, 143, 136, 0.5) 100%);"
             >
-              {item.title}
+              <img src={item.imgSrc} alt="" class="w-[2.29vw] h-[2.29vw]" />
             </div>
-            <div
-              class="w-[14.27vw]"
-              style="font-size: 0.73vw; font-weight: 400; letter-spacing: 0; line-height: 1.06vw; color: rgba(214, 205, 203, 1);"
-            >
-              {item.description}
+            <div>
+              <div
+                class="font-medium bg-gradient-to-t from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,1)] text-transparent bg-clip-text"
+                style="font-size: 1.04vw; font-weight: 500;"
+              >
+                {item.title}
+              </div>
+              <div
+                class="w-[14.27vw]"
+                style="font-size: 0.73vw; font-weight: 400; letter-spacing: 0; line-height: 1.06vw; color: rgba(214, 205, 203, 1);"
+              >
+                {item.description}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    ))}
+      ))
+    }
   </div>
 
   <!-- 中间装饰 -->
@@ -64,13 +117,16 @@ const rightItems = [
     <div class="w-[7.6vw] h-[15.6vw] relative border-[0.1vw] border-[#4A3E32] border-l-[#20d2df00]">
       <div
         class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')] bg-no-repeat bg-center bg-cover rounded-full top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 z-10"
-      ></div>
+      >
+      </div>
       <div
         class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')] bg-no-repeat bg-center bg-cover rounded-full top-[25%] right-0 transform translate-x-1/2 -translate-y-1/2 z-10"
-      ></div>
+      >
+      </div>
       <div
         class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')] bg-no-repeat bg-center bg-cover rounded-full bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-10"
-      ></div>
+      >
+      </div>
     </div>
     <div class="w-[24.1vw] h-[15.6vw] relative">
       <!-- 横线 -->
@@ -79,46 +135,101 @@ const rightItems = [
       <img
         src="/assets/images/圆.png"
         alt="芯"
-        class="w-[8.5vw] h-[8.5vw] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+        class="w-[8.5vw] h-[8.5vw] bg-[#211d1b] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
       />
     </div>
     <div class="w-[7.6vw] h-[15.6vw] relative" style="border: 0.1vw solid #4A3E32;border-right-color: #20d2df00 ;">
       <div class="w-[7.6vw] h-[15.6vw] relative border-[0.1vw] border-[#4A3E32] border-r-[#20d2df00]">
         <div
           class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')] bg-no-repeat bg-center bg-cover rounded-full top-0 right-0 transform translate-x-1/2 -translate-y-1/2 z-10"
-        ></div>
+        >
+        </div>
         <div
           class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')] bg-no-repeat bg-center bg-cover rounded-full top-[50%] left-0 transform -translate-x-1/2 -translate-y-1/2 z-10"
-        ></div>
+        >
+        </div>
         <div
           class="absolute w-[1vw] h-[1vw] bg-[url('/assets/images/圆点.png')] bg-no-repeat bg-center bg-cover rounded-full bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-10"
-        ></div>
+        >
+        </div>
       </div>
     </div>
   </div>
 
   <!-- 右侧 2 个模块 -->
   <div class="w-[21.53vw] flex flex-col justify-between items-center" style="border: 0.1vw solid #fff00000">
-    {rightItems.map((item, index) => (
-      <div class="w-[21.53vw] h-[7.29vw] relative" style="border: 0.1vw solid #B0A29E; border-radius: 0.26vw;" key={index}>
-        <div class="flex items-center h-full">
-          <div
-            class="w-[4.17vw] h-[4.17vw] flex ml-[0.63vw] mr-[1.25vw] justify-center items-center rounded-[0.3vw] border-[0.03vw] border-[rgba(133,114,106,1)]"
-            style="background: linear-gradient(90.93deg, rgba(173, 173, 173, 0.05) 20.83%, rgba(153, 143, 136, 0.5) 100%);"
-          >
-            <img src={item.imgSrc} alt="" class="w-[2.29vw] h-[2.29vw]" />
-          </div>
-          <div>
-            <div class="font-medium bg-gradient-to-t from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,1)] text-transparent bg-clip-text"
-              style="font-size: 1.04vw; font-weight: 500;">
-              {item.title}
+    {
+      rightItems.map((item, index) => (
+        <div
+          class="w-[21.53vw] h-[7.29vw] relative"
+          style="border: 0.1vw solid #B0A29E; border-radius: 0.26vw;"
+          key={index}
+        >
+          <div class="flex items-center h-full">
+            <div
+              class="w-[4.17vw] h-[4.17vw] flex ml-[0.63vw] mr-[1.25vw] justify-center items-center rounded-[0.3vw] border-[0.03vw] border-[rgba(133,114,106,1)]"
+              style="background: linear-gradient(90.93deg, rgba(173, 173, 173, 0.05) 20.83%, rgba(153, 143, 136, 0.5) 100%);"
+            >
+              <img src={item.imgSrc} alt="" class="w-[2.29vw] h-[2.29vw]" />
             </div>
-            <div class="w-[14.27vw] text-gray-300" style="font-size: 0.73vw; line-height: 1.06vw;">
-              {item.description}
+            <div>
+              <div
+                class="font-medium bg-gradient-to-t from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,1)] text-transparent bg-clip-text"
+                style="font-size: 1.04vw; font-weight: 500;"
+              >
+                {item.title}
+              </div>
+              <div class="w-[14.27vw] text-gray-300" style="font-size: 0.73vw; line-height: 1.06vw;">
+                {item.description}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    ))}
+      ))
+    }
   </div>
 </div>
+<style>
+  .circle-ring {
+    position: relative;
+    width: 0.469vw;
+    height: 0.469vw;
+    /* 用容器包裹，使所有圆心重叠 */
+  }
+
+  /* 外圆，最大圆 */
+  .outer-circle {
+    width: 0.469vw;
+    height: 0.469vw;
+    border-radius: 50%; /* 圆形 */
+    border: 0.234vw solid rgba(255, 173, 148, 0.18);
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  /* 第二个圆，中间圆 */
+  .middle-circle {
+    width: 0.417vw;
+    height: 0.417vw;
+    border-radius: 50%;
+    border: 0.208vw solid transparent;
+    background: transparent;
+    position: absolute;
+    top: 0.026vw;
+    left: 0.026vw;
+  }
+
+  /* 最小圆 */
+  .inner-circle {
+    width: 0.26vw;
+    height: 0.26vw;
+    border-radius: 50%;
+    border: 0.13vw solid rgba(255, 173, 148, 0.18);
+    background: rgba(255, 173, 148, 0.18);
+    position: absolute;
+    top: 0.104vw;
+    left: 0.104vw;
+  }
+</style>

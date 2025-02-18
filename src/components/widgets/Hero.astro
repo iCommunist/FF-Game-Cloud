@@ -16,6 +16,12 @@ const {
   id,
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
+
+const coverVideoRes = await fetch('https://apifoxmock.com/m1/5804244-5489264-default/index/cover');
+const coverVideoResult = await coverVideoRes.json();
+const coverVideo = coverVideoResult.coverVideo || '/assets/images/FFIndex.webm';
+const centerTxt = coverVideoResult.centerTxt || '自助游戏开服平台丨体验快速开服联机';
+console.log('封面',coverVideo,centerTxt)
 ---
 
 <section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
@@ -29,7 +35,9 @@ const {
       class="intersect-once intercept-no-queue intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
     >
       <div class="relative w-full h-full">
-        <img class="w-full" src="/assets/images/game-img.png" alt="" />
+        <!-- <img class="w-full" src="/assets/images/game-img.png" alt="" /> -->
+        <video id="myVideo" class="auto-play-video" src={coverVideo} autoplay muted loop playsinline>
+        </video>
 
         <!-- 文字内容 -->
         <div
@@ -38,10 +46,9 @@ const {
           <div>
             <img src="/assets/images/ffClould.png" alt="" class="mt-[] w-[17.87vw] h-[4.17vw]" />
           </div>
-          <div>
-            <img src="/assets/images/ffClouldDesc.png" alt="" class="mt-[] w-[46.51vw] h-[4.17vw]" />
+          <div class="grad-ff-text w-[46.51vw] h-[4.166vw] flex justify-center items-center">
+            <span>{centerTxt}</span>
           </div>
-
           <div>
             <a
               id="gameLibraryLink"
@@ -82,29 +89,52 @@ const {
   }
 
   /* 用伪元素添加扩散的背景色 */
-  #gameLibraryLink::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200%;
-    height: 200%;
-    background-color: #a4aaad; /* 扩展的背景色 */
-    transition: all 0.5s ease; /* 动画效果 */
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0); /* 初始状态：缩放到0，居中 */
-    z-index: -1; /* 确保背景色不会覆盖文本 */
-  }
-
-  /* 鼠标悬停时，背景色从中心扩展 */
-  #gameLibraryLink:hover::before {
-    transform: translate(-50%, -50%) scale(1); /* 鼠标移入时，背景色扩展到整个元素 */
-  }
+#gameLibraryLink::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(90deg, rgba(28, 128, 235, 1) 0%, rgba(64, 198, 255, 1) 100%);
+  transition: all 0.8s ease; /* 动画效果 */
+  border-radius: 0%; /* 去掉圆角 */
+  transform: translate(-50%, -50%) scale(0); /* 初始状态：缩放到0，居中 */
+  z-index: -1; /* 确保背景色不会覆盖文本 */
+}
+ 
+/* 鼠标悬停时，背景色从中心扩展 */
+#gameLibraryLink:hover::before {
+  transform: translate(-50%, -50%) scale(1); /* 鼠标移入时，背景色扩展到整个元素 */
+}
 
   /* 给链接文字添加样式 */
   #gameLibraryLink {
-   background: #E3E3E340; /* 初始背景透明 */
-   text-align: center;
-   line-height: 3.84vw;
+    background: #e3e3e340; /* 初始背景透明 */
+    text-align: center;
+    line-height: 3.84vw;
+  }
+  .auto-play-video {
+    width: 100vw;
+    height: auto;
+    /* min-height: 56.25vw; */
+    border: none;
+    background: transparent;
+  }
+
+  /* 隐藏视频容器的默认样式 */
+  .video-container {
+    overflow: hidden;
+  }
+  /* 渐变飞鱼游戏云下方文字 */
+  .grad-ff-text {
+    font-size: 2.395vw;
+    font-weight: 500;
+    letter-spacing: 0.052vw;
+    line-height: 4.166vw;
+    background: linear-gradient(to right, #FFFFFF30, white, #FFFFFF30);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
 </style>
