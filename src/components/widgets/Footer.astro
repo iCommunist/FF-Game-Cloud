@@ -80,7 +80,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
           {socialLinks.map(({ ariaLabel, href, text, icon }, index) => (
             <li :key={index}>
               <a
-                class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm inline-flex items-center border-r border-gray-300 p-0 py-2.5 last:border-r-0"
+                 class="text-muted dark:text-gray-400 hover:underline focus:outline-none  dark:focus:ring-gray-700 rounded-lg text-sm inline-flex items-center border-r border-gray-300 p-0 py-2.5 last:border-r-0 transition duration-150 ease-in-out"
                 aria-label={ariaLabel}
                 href={href}
                 style="color: rgba(148, 148, 148, 100);"
