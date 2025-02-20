@@ -12,7 +12,7 @@ export interface Props {
   metadata?: MetaData;
 }
 
-const { showHeader = true,  metadata, showFooter=true} = Astro.props;
+const { showHeader = false,  metadata, showFooter=false} = Astro.props;
 ---
 
 <Layout metadata={metadata}>

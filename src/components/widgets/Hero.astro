@@ -21,10 +21,11 @@ const coverVideoRes = await fetch('https://apifoxmock.com/m1/5804244-5489264-def
 const coverVideoResult = await coverVideoRes.json();
 const coverVideo = coverVideoResult.coverVideo || '/assets/images/FFIndex.webm';
 const centerTxt = coverVideoResult.centerTxt || '自助游戏开服平台丨体验快速开服联机';
-console.log('封面',coverVideo,centerTxt)
+const centerTxtTwo = coverVideoResult.centerTxtTwo || '自助游戏开服平台丨体验快速开服联机';
+console.log('封面', coverVideo, centerTxt);
 ---
 
-<section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
+<section class="relative not-prose" {...id ? { id } : {}}>
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
     <slot name="bg">
       {bg ? <Fragment set:html={bg} /> : null}
@@ -36,52 +37,122 @@ console.log('封面',coverVideo,centerTxt)
     >
       <div class="relative w-full h-full">
         <!-- <img class="w-full" src="/assets/images/game-img.png" alt="" /> -->
-        <video id="myVideo" class="auto-play-video" src={coverVideo} autoplay muted loop playsinline>
-        </video>
-
+        <video id="myVideo" class="auto-play-video" src={coverVideo} autoplay muted loop playsinline> </video>
+        <img
+          src="/assets/images/音乐.svg"
+          id="music-icon"
+          class="w-[1.30vw] h-[1.30vw] absolute top-[9.166vw] right-[8.072vw] cursor-pointer"
+          alt=""
+          srcset=""
+        />
+        <div class="my-header pt-[0.9375vw]">
+          <div class="ff-logo cursor-pointer">
+            <img src="/assets/images/飞鱼游戏云logo.svg" class="w-[6.77vw] h-[1.444vw] ml-[7.92vw]" alt="" srcset="" />
+          </div>
+          <div class="cursor-pointer">
+            <img src="/assets/images/user-icon.svg" class="w-[1.406vw] h-[1.406vw] mr-[7.92vw]" alt="" srcset="" />
+          </div>
+        </div>
         <!-- 文字内容 -->
         <div
-          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-lg flex flex-col items-center justify-between"
+          class="absolute flex flex-col items-center justify-between top-[7.083vw] left-1/2 transform -translate-x-1/2"
         >
-          <div>
-            <img src="/assets/images/ffClould.png" alt="" class="mt-[] w-[17.87vw] h-[4.17vw]" />
+          <div style="font-size: 4.166vw;width:fit-content;" class="my-text grad-ff-text">
+            <!-- <img src="/assets/images/ffClould.png" alt="" class="mt-[] w-[17.87vw] h-[4.17vw]" /> -->
+            {centerTxt}
           </div>
-          <div class="grad-ff-text w-[46.51vw] h-[4.166vw] flex justify-center items-center">
-            <span>{centerTxt}</span>
+          <div class="grad-ff-text-r my-text flex justify-center items-center mt-[1.041vw]">
+            <span>{centerTxtTwo}</span>
           </div>
-          <div>
+          <div class="mt-[9.531vw]">
             <a
               id="gameLibraryLink"
-              class="w-[12.19vw] h-[3.84vw] mt-[2.71vw] cursor-pointer flex items-center justify-center"
-              style="border-radius: 0.31vw; font-size: 1.35vw; color: #FFFFFF; font-weight: 400; position: relative;"
+              href="/gameLibrary"
+              class="w-[8.593vw] h-[3.38vw] cursor-pointer flex items-center justify-center bg-[#ffffff50]"
+              style="border-radius: 0.31vw;  color: #FFFFFF; font-weight: 400; "
             >
-              游戏库
+              <div class="flex justify-center items-center w-[8.593vw] h-[3.38vw]">
+                <img
+                  src="/assets/images/游戏库手柄.svg"
+                  class="w-[1.145vw] h-[1vw] mr-[0.781vw]"
+                  alt=""
+                  srcset=""
+                /><div style="font-size: 0.9375vw;">游戏库</div>
+              </div>
             </a>
+          </div>
+        </div>
+        <div
+          class="my-footer absolute bottom-[0.520vw] w-full h-[0.885vw] flex justify-between"
+          style="font-size:0.625vw;color:rgba(255, 255, 255, 0.7)"
+        >
+          <div class="ml-[7.29vw]">
+            <a href="#">Copyright©2024 河南轻柔水科技有限公司</a>
+            丨<a href="#">飞鱼游戏云</a>丨<a href="#">合作伙伴</a>丨<a href="#">服务监控</a>
+          </div>
+          <div class="mr-[7.29vw]">
+            <a href="#">B1-202357421</a>丨<a href="#">豫ICP备2023021746号</a>丨<a href="#">公网安备41010702003337号</a>
           </div>
         </div>
       </div>
     </div>
-    <div
+    <!-- <div
       class="w-full absolute bottom-0 h-[4.5vw]"
       style=" opacity: 0.7; background: linear-gradient(to bottom, transparent 0%,  #221D1B 56.36%, #000000 100%);"
     >
-    </div>
+    </div> -->
   </div>
 </section>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    let link = document.getElementById('gameLibraryLink');
-    if (link) {
-      link.addEventListener('click', function (event) {
-        // 延迟执行，确保能够处理所有设备
-        setTimeout(function () {
-          window.location.href = '/gameLibrary';
-        }, 10); // 延迟10ms避免阻止默认跳转的冲突
-      });
-    }
+  // 等待页面加载完成
+  window.addEventListener('load', () => {
+    // 获取视频元素和音乐图标
+    const video = document.getElementById('myVideo');
+    const musicIcon = document.getElementById('music-icon');
+
+    // 点击音乐图标时触发事件
+    musicIcon.addEventListener('click', () => {
+      // 判断当前视频是否静音
+      if (video.muted) {
+        // 取消静音并播放声音
+        video.muted = false;
+        // 添加旋转动画
+        musicIcon.classList.add('music-playing');
+      } else {
+        // 设置为静音
+        video.muted = true;
+        // 移除旋转动画
+        musicIcon.classList.remove('music-playing');
+      }
+    });
   });
 </script>
 <style>
+  @font-face {
+    font-family: 'ZCoolHYT';
+    src:
+      url('~/assets/fonts/站酷庆科黄油体.ttf'),
+      url('~/assets/fonts/站酷庆科黄油体.woff') format('woff'),
+      format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .my-text {
+    font-family: 'ZCoolHYT', sans-serif;
+    font-weight: normal;
+  }
+  .my-header {
+    /* margin-top: 0.9375vw; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    width: 100%;
+    height: fit-content;
+  }
   #gameLibraryLink {
     position: relative;
     display: inline-block;
@@ -89,35 +160,40 @@ console.log('封面',coverVideo,centerTxt)
   }
 
   /* 用伪元素添加扩散的背景色 */
-#gameLibraryLink::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(90deg, rgba(28, 128, 235, 1) 0%, rgba(64, 198, 255, 1) 100%);
-  transition: all 0.8s ease; /* 动画效果 */
-  border-radius: 0%; /* 去掉圆角 */
-  transform: translate(-50%, -50%) scale(0); /* 初始状态：缩放到0，居中 */
-  z-index: -1; /* 确保背景色不会覆盖文本 */
-}
- 
-/* 鼠标悬停时，背景色从中心扩展 */
-#gameLibraryLink:hover::before {
-  transform: translate(-50%, -50%) scale(1); /* 鼠标移入时，背景色扩展到整个元素 */
-}
+  #gameLibraryLink::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(90deg, rgba(28, 128, 235, 1) 0%, rgba(64, 198, 255, 1) 100%);
+    transition: all 0.8s ease; /* 动画效果 */
+    border-radius: 0%; /* 去掉圆角 */
+    transform: translate(-50%, -50%) scale(0); /* 初始状态：缩放到0，居中 */
+    z-index: -1; /* 确保背景色不会覆盖文本 */
+  }
+
+  /* 鼠标悬停时，背景色从中心扩展 */
+  #gameLibraryLink:hover::before {
+    transform: translate(-50%, -50%) scale(1); /* 鼠标移入时，背景色扩展到整个元素 */
+  }
 
   /* 给链接文字添加样式 */
   #gameLibraryLink {
     background: #e3e3e340; /* 初始背景透明 */
     text-align: center;
-    line-height: 3.84vw;
+    line-height: 3.38vw;
   }
   .auto-play-video {
     width: 100vw;
     height: auto;
     /* min-height: 56.25vw; */
+    border: none;
+    background: transparent;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover; /* 保持视频宽高比并填充整个容器 */
     border: none;
     background: transparent;
   }
@@ -131,10 +207,41 @@ console.log('封面',coverVideo,centerTxt)
     font-size: 2.395vw;
     font-weight: 500;
     letter-spacing: 0.052vw;
-    line-height: 4.166vw;
-    background: linear-gradient(to right, #FFFFFF30, white, #FFFFFF30);
+    background: linear-gradient(to right, #ffffff, #ffffff30, #ffffff);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+  }
+  .grad-ff-text-r {
+    font-size: 2.395vw;
+    font-weight: 500;
+    letter-spacing: 0.052vw;
+    line-height: 4.166vw;
+    background: linear-gradient(to right, #ffffff30, #ffffff, #ffffff30);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  .my-footer a:hover {
+    text-decoration: underline;
+  }
+  /* 音乐图标默认样式 */
+  #music-icon {
+    transition: transform 0.3s ease;
+  }
+
+  /* 旋转动画 */
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* 应用旋转动画 */
+  .music-playing {
+    animation: rotate 1s linear infinite;
   }
 </style>
