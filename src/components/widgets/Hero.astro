@@ -36,7 +36,6 @@ console.log('封面', coverVideo, centerTxt);
       class="intersect-once intercept-no-queue intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
     >
       <div class="relative w-full h-full">
-        <!-- <img class="w-full" src="/assets/images/game-img.png" alt="" /> -->
         <video id="myVideo" class="auto-play-video" src={coverVideo} autoplay muted loop playsinline> </video>
         <img
           src="/assets/images/音乐.svg"
@@ -49,7 +48,7 @@ console.log('封面', coverVideo, centerTxt);
           <div class="ff-logo cursor-pointer">
             <img src="/assets/images/飞鱼游戏云logo.svg" class="w-[6.77vw] h-[1.444vw] ml-[7.92vw]" alt="" srcset="" />
           </div>
-          <div class="cursor-pointer">
+          <div class="cursor-pointer" id="login-img">
             <img src="/assets/images/user-icon.svg" class="w-[1.406vw] h-[1.406vw] mr-[7.92vw]" alt="" srcset="" />
           </div>
         </div>
@@ -58,7 +57,6 @@ console.log('封面', coverVideo, centerTxt);
           class="absolute flex flex-col items-center justify-between top-[7.083vw] left-1/2 transform -translate-x-1/2"
         >
           <div style="font-size: 4.166vw;width:fit-content;" class="my-text grad-ff-text">
-            <!-- <img src="/assets/images/ffClould.png" alt="" class="mt-[] w-[17.87vw] h-[4.17vw]" /> -->
             {centerTxt}
           </div>
           <div class="grad-ff-text-r my-text flex justify-center items-center mt-[1.041vw]">
@@ -71,8 +69,11 @@ console.log('封面', coverVideo, centerTxt);
               class="w-[8.593vw] h-[3.38vw] cursor-pointer flex items-center justify-center bg-[#ffffff50]"
               style="border-radius: 0.31vw;  color: #FFFFFF; font-weight: 400; "
             >
-              <div class="flex justify-center items-center w-[8.593vw] h-[3.38vw]" style="border: 0.052vw solid #FFFFFF;
-backdrop-filter: blur(26.04vw);border-radius: 0.52vw;">
+              <div
+                class="flex justify-center items-center w-[8.593vw] h-[3.38vw]"
+                style="border: 0.052vw solid #FFFFFF;
+backdrop-filter: blur(26.04vw);border-radius: 0.52vw;"
+              >
                 <img
                   src="/assets/images/游戏库手柄.svg"
                   class="w-[1.145vw] h-[1vw] mr-[0.781vw]"
@@ -97,11 +98,321 @@ backdrop-filter: blur(26.04vw);border-radius: 0.52vw;">
         </div>
       </div>
     </div>
-    <!-- <div
-      class="w-full absolute bottom-0 h-[4.5vw]"
-      style=" opacity: 0.7; background: linear-gradient(to bottom, transparent 0%,  #221D1B 56.36%, #000000 100%);"
+    <!-- 登录表单（默认为隐藏） -->
+    <div
+      id="login-form"
+      class="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center hidden backdrop-blur"
+      style="backdrop-filter: blur(0.26vw);"
     >
-    </div> -->
+      <div class="bg-[#262323] rounded-lg w-[62.03vw] h-[34.38vw] flex relative" style="transform: scale(0.8);">
+        <!-- 左侧图片区域，占2/5 -->
+        <div class="w-[24.84vw] h-[34.38vw] flex justify-center items-center">
+          <img src="/assets/images/login-img.png" alt="" class="object-fill w-full h-full" />
+        </div>
+
+        <!-- 右侧表单区域，占3/5 -->
+        <div id="login-right" class="w-[37.19vw] h-[34.38vw] flex flex-col items-center text-white">
+          <h2 class="font-medium mt-[2.71vw]" style="font-size: 1.56vw;">账号登录</h2>
+          <div class="text-center text-[#949494] mt-[0.3]" style="font-size: 0.83vw">
+            推荐使用快捷登录，防止盗号风险
+          </div>
+
+          <!-- 用户名输入框 -->
+          <div
+            class="flex h-[3.02vw] text-[1.04vw] mt-[2.08vw] text-white/60 w-[22.92vw] items-center bg-[#262323] border border-white rounded-[0.26vw] focus-within:ring-2 focus-within:ring-gray-700 focus-within:ring-offset-2 focus-within:ring-offset-[#09090b] transition-all duration-150 ease-in-out"
+          >
+            <img src="/assets/images/user.svg" alt="用户图标" class="w-[0.83vw] h-[0.83vw] mx-[1.041vw]" />
+            <input
+              autocomplete="off"
+              type="text"
+              placeholder="用户名"
+              id="username"
+              style="border-radius: 0.26vw;"
+              class="w-[22.92vw] h-[3.02vw] bg-transparent text-white px-[0.1vw] rounded-l-lg focus:outline-none"
+            />
+          </div>
+
+          <!-- 密码输入框 -->
+          <div
+            class="w-[22.92vw] h-[3.02vw] mt-[1.25vw] flex items-center text-white/60 bg-[#262323] border border-white rounded-[0.26vw] focus-within:ring-2 focus-within:ring-gray-700 focus-within:ring-offset-2 focus-within:ring-offset-[#09090b] transition-all duration-150 ease-in-out"
+          >
+            <img src="/assets/images/lock.svg" alt="密码图标" class="w-[0.83vw] h-[0.83vw] mx-[1.041vw]" />
+            <input
+              type="password"
+              autocomplete="new-password"
+              autocomplete="off"
+              placeholder="密码"
+              id="password"
+              style="border-radius: 0.26vw;"
+              class="w-[17vw] h-[3.02vw] bg-transparent text-[1.04vw] text-white px-[0.1vw] rounded-l-lg focus:outline-none"
+            />
+            <!-- 查看密码图标 -->
+            <img
+              src="/assets/images/eyes1.svg"
+              alt="查看密码"
+              class="w-[0.83vw] h-[0.83vw] mx-[1.041vw] cursor-pointer"
+              id="toggle-password"
+            />
+          </div>
+
+          <!-- 忘记密码、注册表单切换 -->
+          <div class="w-[22.92vw] h-[3.02vw] flex justify-between gap-2 mt-[1.25vw] px-1 text-[#1D82EC]">
+            <div id="show-register" class="cursor-pointer" style="font-size: 0.83vw;">账号注册</div>
+            <div id="show-forgot" class="cursor-pointer" style="font-size: 0.83vw;">忘记密码？</div>
+          </div>
+
+          <!-- 登录按钮 -->
+          <div
+            style="border-radius: 0.26vw;"
+            id="submit-button"
+            class="w-[22.92vw] h-[3.02vw] flex justify-center items-center cursor-pointer bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
+          >
+            <div class="flex justify-center items-center">
+              <img src="/assets/images/登录.svg" alt="" class="w-[0.83vw] h-[ 0.83vw] mr-[0.73vw]" />
+              <span class="" style="font-size: 0.83vw;">登录</span>
+            </div>
+          </div>
+
+          <!-- 第三方登录 -->
+          <div class="flex justify-center gap-2 w-[22.92vw] h-[3.02vw] mt-[2.60vw]" style="font-size: 0.83vw;">
+            第三方快捷登录
+          </div>
+          <div class="flex justify-center gap-2 w-[22.92vw] h-[3.02vw] mt-[1.67vw]">
+            <picture>
+              <img
+                src="/assets/images/微信.png"
+                decoding="async"
+                loading="lazy"
+                alt="我的图片描述"
+                class="w-[2.60vw] h-[2.60vw] cursor-pointer"
+              />
+            </picture>
+            <picture>
+              <img
+                src="/assets/images/QQ登录.png"
+                width="1600"
+                height="900"
+                decoding="async"
+                loading="lazy"
+                alt="我的图片描述"
+                class="w-[2.60vw] h-[2.60vw] cursor-pointer"
+              />
+            </picture>
+          </div>
+        </div>
+
+        <!-- 关闭按钮 -->
+        <button
+          id="close-login-form"
+          class="absolute top-2 right-2 text-white cursor-pointer"
+          style="font-size: 0.83vw;"
+          onclick="document.getElementById('login-form').style.display = 'none';"
+        >
+          &times;
+        </button>
+      </div>
+    </div>
+    <!-- 注册表单（默认为隐藏） -->
+    <div
+      id="register-form"
+      class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center backdrop-blur"
+    >
+      <div class="bg-[#262323] rounded-lg w-[62.03vw] h-[34.38vw] flex" style="transform: scale(0.8);">
+        <!-- 左侧图片区域，占2/5 -->
+        <div class="w-[24.84vw] h-[34.38vw] flex justify-center items-center">
+          <img src="/assets/images/login-img.png" alt="haib" class="object-fill w-full h-full" />
+        </div>
+
+        <!-- 右侧表单区域，占3/5 -->
+        <div id="register-right" class="w-[37.19vw] h-[34.38vw] flex flex-col items-center text-white px-4">
+          <div class="font-medium mt-[2.92vw]" style="font-size: 1.56vw;">注册账号</div>
+          <div class="text-center text-[#949494] mt-[0.26vw]" style="font-size: 0.83vw;">请输入您的信息来创建账号</div>
+          <div class="w-[22.92vw] h-[11.72vw] mt-[2.08vw]">
+            <!-- 用户名输入框 -->
+            <div
+              class="w-[22.92vw] h-[3.02vw] mb-[1.30vw] text-white/60 flex items-center bg-[#262323] border border-white rounded-[0.26vw] focus-within:ring-2 focus-within:ring-gray-700 focus-within:ring-offset-2 focus-within:ring-offset-[#09090b] transition-all duration-150 ease-in-out"
+            >
+              <img src="/assets/images/user-icon.png" alt="用户图标" class="w-[0.83vw] h-[0.83vw] mx-[1.041vw]" />
+              <input
+                type="text"
+                autocomplete="off"
+                placeholder="手机号/邮箱"
+                id="register-username"
+                style="border-radius: 0.26vw;"
+                class="w-[22.92vw] h-[3.02vw] bg-transparent text-[1.04vw] text-white px-[0.1vw] rounded-l-lg focus:outline-none"
+              />
+            </div>
+            <div class=" w-[22.92vw] h-[3.02vw] mb-[1.30vw] flex justify-between">
+              <div class="w-[13.02vw]  text-white/60 flex items-center bg-[#262323] border border-white rounded-[0.26vw] focus-within:ring-2 focus-within:ring-gray-700 focus-within:ring-offset-2 focus-within:ring-offset-[#09090b] transition-all duration-150 ease-in-out">
+                <img
+                  src="/assets/images/user-icon.png"
+                  alt="用户图标"
+                  class="w-[0.83vw] h-[0.83vw] mx-[1.041vw]"
+                />
+                <input
+                  type="text"
+                  autocomplete="off"
+                  placeholder="请输入验证码"
+                  id="register-username"
+                  style="border-radius: 0.26vw;"
+                  class="w-[10.02vw] h-[3.02vw] bg-transparent text-[1.04vw] text-white px-[0.1vw] rounded-l-lg focus:outline-none"
+                />
+              </div>
+              <div
+                class="w-[8.54vw] h-[3.02vw] leading-[3.02vw] cursor-pointer bg-gradient-to-r from-[#1C80EB] to-[#40C6FF] text-white text-center"
+                style="font-size: 0.83vw;border-radius: 0.26vw;"
+              >
+                获取验证码
+              </div>
+            </div>
+            <!-- 密码输入框 -->
+            <div
+              class="w-[22.92vw] h-[3.02vw] flex items-center text-white/60 bg-[#262323] border border-white rounded-[0.26vw] focus-within:ring-2 focus-within:ring-gray-700 focus-within:ring-offset-2 focus-within:ring-offset-[#09090b] transition-all duration-150 ease-in-out"
+            >
+              <img src="/assets/images/password-icon.png" alt="密码图标" class="w-[0.83vw] h-[0.83vw] mx-[1.041vw]" />
+              <input
+                autocomplete="off"
+                autocomplete="new-password"
+                type="password"
+                placeholder="密码"
+                id="register-password"
+                style="border-radius: 0.26vw;"
+                class="w-[17vw] h-[3.02vw] bg-transparent text-[1.04vw] text-white px-[0.1vw] rounded-l-lg focus:outline-none"
+              />
+              <!-- 查看密码图标 -->
+              <img
+                src="/assets/images/eyes1.svg"
+                alt="查看密码"
+                class="w-[0.83vw] h-[0.83vw] mx-[1.041vw] cursor-pointer "
+                id="register-toggle-password"
+              />
+            </div>
+          </div>
+          <div class="w-[22.92vw] mt-[1.04vw] flex justify-between">
+            <div class="flex items-center">
+              <img src="/assets/images/no_select.svg" alt="" class="w-[0.83vw] h-[0.83vw] mr-[0.52vw] cursor-pointer" />
+              <span style="font-size: 0.83vw; color:rgba(148, 148, 148, 1);">同意《用户协议》和《隐私协议》</span>
+            </div>
+            <!-- 返回登录表单 -->
+            <div id="back-to-login" class="cursor-pointer" style="font-size: 0.83vw; color:rgba(29, 130, 236, 1);">
+              账号登录
+            </div>
+          </div>
+          <!-- 注册按钮 -->
+          <div
+            id="register-submit-button"
+            style="border-radius: 0.26vw;"
+            class="w-[22.92vw] h-[3.02vw] mt-[3.23vw] flex justify-center items-center cursor-pointer bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
+          >
+            <img src="/assets/images/注册.svg" alt="" srcset="" /><span
+              class=""
+              style="font-size: 0.8333vw;text-align: center;">注册</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 忘记密码表单（默认为隐藏） -->
+    <div
+      id="forgot-password-form"
+      class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center backdrop-blur"
+    >
+      <div class="bg-[#262323] rounded-lg w-[62.03vw] h-[34.38vw] flex" style="transform: scale(0.8);">
+        <!-- 左侧图片区域，占2/5 -->
+        <div class="w-[24.84vw] h-[34.38vw] flex justify-center items-center">
+          <img src="/assets/images/login-img.png" alt="haib" class="object-fill w-full h-full" />
+        </div>
+
+        <!-- 右侧表单区域，占3/5 -->
+        <div id="forgot-password-right" class="w-[37.19vw] h-[34.38vw] flex flex-col items-center text-white">
+          <div class="font-medium mt-[2.92vw] mb-[4.27vw]" style="font-size: 1.56vw;">找回密码</div>
+          <!-- 邮箱/手机号输入框 -->
+          <div class="w-[22.92vw] h-[13.02vw]">
+            <div class=" w-[22.92vw] h-[3.02vw] bg-[#262323] flex items-center  text-white/60  border border-white rounded-[0.26vw] focus-within:ring-2 focus-within:ring-gray-700 focus-within:ring-offset-2 focus-within:ring-offset-[#09090b] transition-all duration-150 ease-in-out">
+              <img
+                src="/assets/images/user-icon.png"
+                alt="邮箱图标"
+                class=" w-[0.83vw] h-[0.83vw]  mx-[1.041vw]"
+              />
+              <input
+                style="border-radius: 0.26vw;"
+                type="text"
+                autocomplete="off"
+                placeholder="手机号/邮箱"
+                id="forgot-email"
+                class="w-[17vw] h-[3.02vw] bg-transparent text-[1.04vw] text-white px-[0.1vw] rounded-l-lg focus:outline-none"
+              />
+            </div>
+
+            <!-- 验证码输入框 -->
+            <div
+              class="w-[22.92vw] h-[3.02vw] mt-[1.46vw] bg-[#262323] flex items-center justify-between  text-white/60  border border-white rounded-[0.26vw] focus-within:ring-2 focus-within:ring-gray-700 focus-within:ring-offset-2 focus-within:ring-offset-[#09090b] transition-all duration-150 ease-in-out"
+              style="border-radius: 0.26vw;"
+            >
+              <img
+                src="/assets/images/verify-icon.png"
+                alt="验证码图标"
+                class=" w-[0.83vw] h-[0.83vw]  mx-[1.041vw]"
+              />
+              <input
+                type="text"
+                placeholder="验证码"
+                autocomplete="off"
+                id="forgot-verify-code"
+                style="border-radius: 0.26vw;"
+                class=" h-[3.02vw] bg-transparent text-[1.04vw] text-white px-[0.1vw] rounded-l-lg focus:outline-none"
+              />
+              <button
+                id="send-code"
+                class=" text-blue-400 cursor-pointer mx-[1.041vw]"
+                style="font-size: 0.73vw;"
+              >
+                获取验证码
+              </button>
+            </div>
+
+            <!-- 新密码输入框 -->
+            <div class="w-[22.92vw] h-[3.02vw] mt-[1.46vw] bg-[#262323] flex items-center   text-white/60  border border-white rounded-[0.26vw] focus-within:ring-2 focus-within:ring-gray-700 focus-within:ring-offset-2 focus-within:ring-offset-[#09090b] transition-all duration-150 ease-in-out">
+              <img
+                src="/assets/images/lock_icon.svg"
+                alt="密码图标"
+                class=" w-[0.83vw] h-[0.83vw]  mx-[1.041vw]"
+              />
+              <input
+                type="password"
+                autocomplete="new-password"
+                placeholder="新密码"
+                autocomplete="off"
+                id="forgot-new-password"
+                style="border-radius: 0.26vw;"
+                class="w-[17vw] h-[3.02vw]  bg-transparent text-[1.04vw] text-white px-[0.1vw] rounded-l-lg focus:outline-none"
+              />
+              <img
+                src="/assets/images/eyes1.svg"
+                alt="查看密码"
+                class=" cursor-pointer w-[0.83vw] h-[0.83vw] mx-[1.041vw]"
+                id="forgot-new-password-icon"
+              />
+            </div>
+          </div>
+          <div class="w-[22.92vw] text-xs text-[#1D82EC] cursor-pointer text-left">
+            <span id="back-to-login-from-forgot" style="font-size: 0.8333vw;">账号登录</span>
+          </div>
+
+          <!-- 修改密码按钮 -->
+          <div
+            style="border-radius: 0.26vw;"
+            id="forgot-submit-button"
+            class="w-[22.92vw] h-[3.02vw] flex mt-[2.5vw] justify-center items-center cursor-pointer bg-gradient-to-r from-[#1C80EB] to-[#40C6FF]"
+          >
+            <img src="/assets/images/修改密码.svg" alt="" class="w-[0.83vw] h-[ 0.83vw] mr-[0.73vw]" />
+            <span class="" style="font-size: 0.8333vw; color:#ffffff">修改密码</span>
+          </div>
+
+          <!-- 返回登录表单 -->
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 <script>
@@ -128,12 +439,341 @@ backdrop-filter: blur(26.04vw);border-radius: 0.52vw;">
     });
   });
 </script>
+<script>
+  function showMessage({ msg, duration = 2000, position = 'top-center', type = 'success', borderRadius = '5px' }) {
+    // 默认样式
+    let backgroundColor, textColor;
+
+    // 根据类型设置不同的背景色和文本色
+    if (type === 'success') {
+      backgroundColor = '#4CAF50'; // 成功的绿色
+      textColor = '#fff'; // 白色文本
+    } else if (type === 'error') {
+      backgroundColor = '#F44336'; // 错误的红色
+      textColor = '#fff'; // 白色文本
+    } else {
+      backgroundColor = '#333'; // 默认灰色
+      textColor = '#fff'; // 默认白色文本
+    }
+
+    // 创建消息容器
+    const message = document.createElement('div');
+    message.style.position = 'fixed';
+    message.style.zIndex = '9999'; // 确保消息浮在最上层
+
+    // 设置显示位置
+    if (position === 'top-center') {
+      message.style.top = '10px';
+      message.style.left = '50%';
+      message.style.transform = 'translateX(-50%)'; // 水平居中
+    } else if (position === 'bottom-right') {
+      message.style.bottom = '10px';
+      message.style.right = '10px';
+    } else if (position === 'bottom-left') {
+      message.style.bottom = '10px';
+      message.style.left = '10px';
+    } else if (position === 'top-left') {
+      message.style.top = '10px';
+      message.style.left = '10px';
+    } else if (position === 'top-right') {
+      message.style.top = '10px';
+      message.style.right = '10px';
+    }
+
+    // 样式设置
+    message.style.backgroundColor = backgroundColor;
+    message.style.color = textColor;
+    message.style.borderRadius = borderRadius;
+    message.style.padding = '10px';
+    message.style.fontSize = '14px';
+    message.style.fontWeight = 'normal';
+    message.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
+    message.style.transition = 'opacity 0.5s ease-out';
+    message.style.opacity = '1';
+
+    // 设置消息文本
+    message.textContent = msg;
+
+    // 将消息添加到文档
+    document.body.appendChild(message);
+
+    // 2秒后淡出并移除消息
+    setTimeout(() => {
+      message.style.opacity = '0'; // 添加淡出效果
+      setTimeout(() => {
+        document.body.removeChild(message);
+      }, 500); // 等待动画完成后移除
+    }, duration);
+  }
+
+  // 获取元素
+  document.addEventListener('DOMContentLoaded', () => {
+    const loginImg = document.getElementById('login-img');
+    const loginForm = document.getElementById('login-form');
+    const submitButton = document.getElementById('submit-button');
+    const closeButton = document.getElementById('close-button');
+
+    // 点击图片时显示登录表单
+    loginImg?.addEventListener('click', () => {
+      loginForm.style.display = 'flex'; // 显示表单
+    });
+
+    // 点击关闭按钮时隐藏登录表单
+    closeButton?.addEventListener('click', () => {
+      loginForm.style.display = 'none'; // 隐藏表单
+    });
+
+    // 提交登录表单的事件绑定
+    submitButton?.addEventListener('click', () => {
+      const username = document.getElementById('username')?.value;
+      const password = document.getElementById('password')?.value;
+
+      console.log('用户名:', username);
+      console.log('密码:', password);
+
+      // 提交数据到后端接口
+      fetch('https://apifoxmock.com/m1/5804244-5489264-default/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('登录成功:', data);
+          if (data.code === 200) {
+            // alert('登录成功！');
+            showMessage({
+              msg: '操作成功！',
+              duration: 3000, // 3秒后消失
+              type: 'success', // 成功类型
+            });
+          } else {
+            alert('登录失败！请检查用户名和密码');
+          }
+        })
+        .catch((error) => {
+          console.error('请求错误:', error);
+          alert('发生了错误，请稍后再试');
+        });
+
+      // 提交后关闭表单
+      loginForm.style.display = 'none';
+    });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    const forgotPasswordForm = document.getElementById('forgot-password-form');
+    const loginRight = document.getElementById('login-right');
+    const registerRight = document.getElementById('register-right');
+    const forgotPasswordRight = document.getElementById('forgot-password-right');
+
+    // 切换到注册表单
+    document.getElementById('show-register')!.addEventListener('click', () => {
+      loginForm!.style.display = 'none';
+      registerForm!.classList.remove('hidden');
+    });
+
+    // 切换到忘记密码表单
+    document.getElementById('show-forgot')!.addEventListener('click', () => {
+      loginForm!.style.display = 'none';
+      forgotPasswordForm!.classList.remove('hidden');
+    });
+
+    // 返回到登录表单
+    document.getElementById('back-to-login')!.addEventListener('click', () => {
+      registerForm.classList.add('hidden');
+      loginForm.style.display = 'flex';
+    });
+
+    // 返回到登录表单（忘记密码）
+    document.getElementById('back-to-login-from-forgot')!.addEventListener('click', () => {
+      forgotPasswordForm.classList.add('hidden');
+      loginForm.style.display = 'flex';
+    });
+  });
+  // 获取验证码的倒计时
+  let countdown = 60;
+  let timer;
+  const sendCodeButton = document.getElementById('send-code');
+
+  function startCountdown() {
+    sendCodeButton.disabled = true;
+    sendCodeButton.textContent = `${countdown}s后重新获取`;
+
+    timer = setInterval(() => {
+      countdown--;
+      sendCodeButton.textContent = `${countdown}s后重新获取`;
+
+      if (countdown <= 0) {
+        clearInterval(timer);
+        sendCodeButton.disabled = false;
+        sendCodeButton.textContent = '获取验证码';
+        countdown = 60;
+      }
+    }, 1000);
+  }
+
+  // 点击获取验证码按钮时触发倒计时
+  sendCodeButton!.addEventListener('click', () => {
+    const email = document.getElementById('forgot-email')!.value;
+    if (email) {
+      startCountdown();
+      // 模拟发送验证码的逻辑
+      showMessage({
+        msg: '验证码已发送，请查收',
+        duration: 3000, // 3秒后消失
+        type: 'success', // 成功类型
+      });
+    } else {
+      // alert('请输入邮箱或手机号');
+      showMessage({
+        msg: '请输入邮箱或手机号',
+        duration: 3000, // 3秒后消失
+        type: 'error', // 成功类型
+      });
+    }
+  });
+
+  // 点击修改密码按钮提交
+  document.getElementById('forgot-submit-button')!.addEventListener('click', () => {
+    const email = document.getElementById('forgot-email')!.value;
+    const verifyCode = document.getElementById('forgot-verify-code')!.value;
+    const newPassword = document.getElementById('forgot-new-password')!.value;
+
+    if (!email || !verifyCode || !newPassword) {
+      alert('请完整填写表单');
+      return;
+    }
+
+    // 提交表单的逻辑
+    fetch('https://example.com/reset-password', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        verifyCode: verifyCode,
+        newPassword: newPassword,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          alert('密码修改成功');
+          // 可以在此处关闭忘记密码表单
+          document.getElementById('forgot-password-form')!.classList.add('hidden');
+        } else {
+          alert('密码修改失败，请重试');
+        }
+      })
+      .catch((error) => {
+        console.error('请求失败:', error);
+        alert('发生错误，请稍后再试');
+      });
+  });
+
+  // 返回登录表单
+  document.getElementById('back-to-login-from-forgot')!.addEventListener('click', () => {
+    document.getElementById('forgot-password-form')!.classList.add('hidden');
+  });
+
+  // 监听 toggle-password 的点击事件
+  document.getElementById('toggle-password').addEventListener('click', function () {
+    const passwordField = document.getElementById('password');
+    const toggleIcon = document.getElementById('toggle-password');
+
+    // 判断密码框的 type，切换为 text 或 password
+    if (passwordField.type === 'password') {
+      passwordField.type = 'text'; // 显示密码
+      toggleIcon.src = '/assets/images/eyes2.svg'; // 切换为眼睛图标2（显示密码）
+    } else {
+      passwordField.type = 'password'; // 隐藏密码
+      toggleIcon.src = '/assets/images/eyes1.svg'; // 切换为眼睛图标1（隐藏密码）
+    }
+  });
+
+  // 监听 注册查看密码 register-toggle-password 的点击事件
+  document.getElementById('register-toggle-password').addEventListener('click', function () {
+    const passwordField = document.getElementById('register-password');
+    const toggleIcon = document.getElementById('register-toggle-password');
+
+    // 判断密码框的 type，切换为 text 或 password
+    if (passwordField.type === 'password') {
+      passwordField.type = 'text'; // 显示密码
+      toggleIcon.src = '/assets/images/eyes2.svg'; // 切换为眼睛图标2（显示密码）
+    } else {
+      passwordField.type = 'password'; // 隐藏密码
+      toggleIcon.src = '/assets/images/eyes1.svg'; // 切换为眼睛图标1（隐藏密码）
+    }
+  });
+
+  // 监听 忘记密码 register-toggle-password 的点击事件
+  document.getElementById('forgot-new-password-icon').addEventListener('click', function () {
+    const passwordField = document.getElementById('forgot-new-password');
+    const toggleIcon = document.getElementById('forgot-new-password-icon');
+
+    // 判断密码框的 type，切换为 text 或 password
+    if (passwordField.type === 'password') {
+      passwordField.type = 'text'; // 显示密码
+      toggleIcon.src = '/assets/images/eyes2.svg'; // 切换为眼睛图标2（显示密码）
+    } else {
+      passwordField.type = 'password'; // 隐藏密码
+      toggleIcon.src = '/assets/images/eyes1.svg'; // 切换为眼睛图标1（隐藏密码）
+    }
+  });
+</script>
+<style>
+  .placeholder-sm::placeholder {
+    font-size: 0.73vw; /* 14px -> 0.73vw */
+  }
+  .input {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0.2083vw 0.83vw; /* padding: 4px 11px */
+    width: 100%;
+    height: 3.3635vw; /* height: 64.44px */
+    font-size: 0.7292vw; /* font-size: 14px */
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 1);
+    background-color: #262323;
+    background-image: none;
+    border: 0.0521vw solid #262323; /* border: 1px solid #d9d9d9 */
+    border-radius: 0.1042vw; /* border-radius: 2px */
+    transition: all 0.3s;
+  }
+
+  .input:focus {
+    border-color: #40a9ff;
+    border-right-width: 0.0521vw !important; /* border-right-width: 1px */
+    outline: 0;
+    box-shadow: 0 0 0 0.1042vw rgba(24, 144, 255, 0.2); /* box-shadow: 0 0 0 2px */
+  }
+
+  /* 禁用的时候 */
+  .input:disabled {
+    background-color: #262323;
+    border-color: #262323;
+    color: rgba(0, 0, 0, 0.25);
+    cursor: not-allowed;
+  }
+
+  .input:disabled:hover {
+    border-color: #262323;
+  }
+</style>
 <style>
   @font-face {
     font-family: 'ZCoolHYT';
     src:
-      url('~/assets/fonts/站酷庆科黄油体.ttf'),
-      url('~/assets/fonts/站酷庆科黄油体.woff') format('woff'),
+      url('~/assets/fonts/站酷庆科黄油体.woff'),
+      url('~/assets/fonts/站酷庆科黄油体.ttf') format('woff'),
       format('truetype');
     font-weight: normal;
     font-style: normal;
@@ -144,7 +784,6 @@ backdrop-filter: blur(26.04vw);border-radius: 0.52vw;">
     font-weight: normal;
   }
   .my-header {
-    /* margin-top: 0.9375vw; */
     display: flex;
     align-items: center;
     justify-content: space-between;

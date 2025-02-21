@@ -38,7 +38,7 @@ const morePeopleList = morePeopleListResult.data || [];
     >
       <div><img src="/assets/images/FFGameCloud-logo.png" class="w-[8.75vw] h-[2.08vw]" alt="" /></div>
       <div
-        class="w-[6.25vw] h-[2.34vw] cursor-pointer flex justify-between items-center bg-white bg-opacity-30 rounded-[0.26vw] px-[0.8333vw] py-[0.625vw] group relative"
+        class="control-btn w-[6.25vw] h-[2.34vw] cursor-pointer flex justify-between items-center px-[0.8333vw] py-[0.625vw] group relative"
       >
         <div style="font-size: 0.73vw;color:#ffffff">控制台</div>
         <div><img src="/assets/images/控制台圆形.png" alt="" class="w-[1.4583vw] h-[1.4583vw]" /></div>
@@ -676,6 +676,10 @@ const morePeopleList = morePeopleListResult.data || [];
 </script>
 
 <style>
+  .control-btn:hover{
+    background-color:#fff;
+    border: 0.26vw solid  #ffffff30;
+  }
   .card-stack {
     position: relative;
     width: 62.5vw;
