@@ -242,13 +242,11 @@ backdrop-filter: blur(26.04vw);border-radius: 0.52vw;"
                 class="w-[22.92vw] h-[3.02vw] bg-transparent text-[1.04vw] text-white px-[0.1vw] rounded-l-lg focus:outline-none"
               />
             </div>
-            <div class=" w-[22.92vw] h-[3.02vw] mb-[1.30vw] flex justify-between">
-              <div class="w-[13.02vw]  text-white/60 flex items-center bg-[#262323] border border-white rounded-[0.26vw] focus-within:ring-2 focus-within:ring-gray-700 focus-within:ring-offset-2 focus-within:ring-offset-[#09090b] transition-all duration-150 ease-in-out">
-                <img
-                  src="/assets/images/user-icon.png"
-                  alt="用户图标"
-                  class="w-[0.83vw] h-[0.83vw] mx-[1.041vw]"
-                />
+            <div class="w-[22.92vw] h-[3.02vw] mb-[1.30vw] flex justify-between">
+              <div
+                class="w-[13.02vw] text-white/60 flex items-center bg-[#262323] border border-white rounded-[0.26vw] focus-within:ring-2 focus-within:ring-gray-700 focus-within:ring-offset-2 focus-within:ring-offset-[#09090b] transition-all duration-150 ease-in-out"
+              >
+                <img src="/assets/images/user-icon.png" alt="用户图标" class="w-[0.83vw] h-[0.83vw] mx-[1.041vw]" />
                 <input
                   type="text"
                   autocomplete="off"
@@ -283,7 +281,7 @@ backdrop-filter: blur(26.04vw);border-radius: 0.52vw;"
               <img
                 src="/assets/images/eyes1.svg"
                 alt="查看密码"
-                class="w-[0.83vw] h-[0.83vw] mx-[1.041vw] cursor-pointer "
+                class="w-[0.83vw] h-[0.83vw] mx-[1.041vw] cursor-pointer"
                 id="register-toggle-password"
               />
             </div>
@@ -328,12 +326,10 @@ backdrop-filter: blur(26.04vw);border-radius: 0.52vw;"
           <div class="font-medium mt-[2.92vw] mb-[4.27vw]" style="font-size: 1.56vw;">找回密码</div>
           <!-- 邮箱/手机号输入框 -->
           <div class="w-[22.92vw] h-[13.02vw]">
-            <div class=" w-[22.92vw] h-[3.02vw] bg-[#262323] flex items-center  text-white/60  border border-white rounded-[0.26vw] focus-within:ring-2 focus-within:ring-gray-700 focus-within:ring-offset-2 focus-within:ring-offset-[#09090b] transition-all duration-150 ease-in-out">
-              <img
-                src="/assets/images/user-icon.png"
-                alt="邮箱图标"
-                class=" w-[0.83vw] h-[0.83vw]  mx-[1.041vw]"
-              />
+            <div
+              class="w-[22.92vw] h-[3.02vw] bg-[#262323] flex items-center text-white/60 border border-white rounded-[0.26vw] focus-within:ring-2 focus-within:ring-gray-700 focus-within:ring-offset-2 focus-within:ring-offset-[#09090b] transition-all duration-150 ease-in-out"
+            >
+              <img src="/assets/images/user-icon.png" alt="邮箱图标" class="w-[0.83vw] h-[0.83vw] mx-[1.041vw]" />
               <input
                 style="border-radius: 0.26vw;"
                 type="text"
@@ -346,38 +342,28 @@ backdrop-filter: blur(26.04vw);border-radius: 0.52vw;"
 
             <!-- 验证码输入框 -->
             <div
-              class="w-[22.92vw] h-[3.02vw] mt-[1.46vw] bg-[#262323] flex items-center justify-between  text-white/60  border border-white rounded-[0.26vw] focus-within:ring-2 focus-within:ring-gray-700 focus-within:ring-offset-2 focus-within:ring-offset-[#09090b] transition-all duration-150 ease-in-out"
+              class="w-[22.92vw] h-[3.02vw] mt-[1.46vw] bg-[#262323] flex items-center justify-between text-white/60 border border-white rounded-[0.26vw] focus-within:ring-2 focus-within:ring-gray-700 focus-within:ring-offset-2 focus-within:ring-offset-[#09090b] transition-all duration-150 ease-in-out"
               style="border-radius: 0.26vw;"
             >
-              <img
-                src="/assets/images/verify-icon.png"
-                alt="验证码图标"
-                class=" w-[0.83vw] h-[0.83vw]  mx-[1.041vw]"
-              />
+              <img src="/assets/images/verify-icon.png" alt="验证码图标" class="w-[0.83vw] h-[0.83vw] mx-[1.041vw]" />
               <input
                 type="text"
                 placeholder="验证码"
                 autocomplete="off"
                 id="forgot-verify-code"
                 style="border-radius: 0.26vw;"
-                class=" h-[3.02vw] bg-transparent text-[1.04vw] text-white px-[0.1vw] rounded-l-lg focus:outline-none"
+                class="h-[3.02vw] bg-transparent text-[1.04vw] text-white px-[0.1vw] rounded-l-lg focus:outline-none"
               />
-              <button
-                id="send-code"
-                class=" text-blue-400 cursor-pointer mx-[1.041vw]"
-                style="font-size: 0.73vw;"
-              >
+              <button id="send-code" class="text-blue-400 cursor-pointer mx-[1.041vw]" style="font-size: 0.73vw;">
                 获取验证码
               </button>
             </div>
 
             <!-- 新密码输入框 -->
-            <div class="w-[22.92vw] h-[3.02vw] mt-[1.46vw] bg-[#262323] flex items-center   text-white/60  border border-white rounded-[0.26vw] focus-within:ring-2 focus-within:ring-gray-700 focus-within:ring-offset-2 focus-within:ring-offset-[#09090b] transition-all duration-150 ease-in-out">
-              <img
-                src="/assets/images/lock_icon.svg"
-                alt="密码图标"
-                class=" w-[0.83vw] h-[0.83vw]  mx-[1.041vw]"
-              />
+            <div
+              class="w-[22.92vw] h-[3.02vw] mt-[1.46vw] bg-[#262323] flex items-center text-white/60 border border-white rounded-[0.26vw] focus-within:ring-2 focus-within:ring-gray-700 focus-within:ring-offset-2 focus-within:ring-offset-[#09090b] transition-all duration-150 ease-in-out"
+            >
+              <img src="/assets/images/lock_icon.svg" alt="密码图标" class="w-[0.83vw] h-[0.83vw] mx-[1.041vw]" />
               <input
                 type="password"
                 autocomplete="new-password"
@@ -385,12 +371,12 @@ backdrop-filter: blur(26.04vw);border-radius: 0.52vw;"
                 autocomplete="off"
                 id="forgot-new-password"
                 style="border-radius: 0.26vw;"
-                class="w-[17vw] h-[3.02vw]  bg-transparent text-[1.04vw] text-white px-[0.1vw] rounded-l-lg focus:outline-none"
+                class="w-[17vw] h-[3.02vw] bg-transparent text-[1.04vw] text-white px-[0.1vw] rounded-l-lg focus:outline-none"
               />
               <img
                 src="/assets/images/eyes1.svg"
                 alt="查看密码"
-                class=" cursor-pointer w-[0.83vw] h-[0.83vw] mx-[1.041vw]"
+                class="cursor-pointer w-[0.83vw] h-[0.83vw] mx-[1.041vw]"
                 id="forgot-new-password-icon"
               />
             </div>
@@ -411,6 +397,84 @@ backdrop-filter: blur(26.04vw);border-radius: 0.52vw;"
 
           <!-- 返回登录表单 -->
         </div>
+      </div>
+    </div>
+    <div id="message-container" class="space-y-2 p-4" style="display: none;">
+      <div
+        id="success-message"
+        class="message bg-green-100 text-green-900 p-2 rounded-[0.3vw] flex items-center justify-center transition duration-300 ease-in-out transform opacity-0"
+      >
+        <svg
+          t="1740156480442"
+          class="icon"
+          viewBox="0 0 1075 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="5727"
+          width="16"
+          height="16"
+          ><path
+            d="M541.3376 0c-282.7776 0-512 229.2224-512 512s229.2224 512 512 512 512-229.2224 512-512-229.2224-512-512-512z m290.7648 400.7424l-336.384 340.6336a53.76 53.76 0 0 1-76.8 0L259.584 579.9936a55.3984 55.3984 0 0 1 0-77.6704 53.76 53.76 0 0 1 76.7488 0l120.9856 122.5216 298.0352-301.824a53.76 53.76 0 0 1 76.7488 0 55.4496 55.4496 0 0 1 0 77.7216z"
+            fill="#35B262"
+            p-id="5728"></path></svg
+        >
+        <p class="text-xs font-semibold mx-[1vw]">Success - Everything went smoothly!</p>
+      </div>
+
+      <div
+        id="info-message"
+        class="message bg-blue-100 text-blue-900 p-2 rounded-lg flex items-center transition duration-300 ease-in-out transform opacity-0"
+      >
+        <svg class="h-5 w-5 flex-shrink-0 mr-2 text-blue-600">
+          <path
+            d="M13 16h-1v-4h1m0-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            stroke-width="2"
+            stroke-linejoin="round"
+            stroke-linecap="round"></path>
+        </svg>
+        <p class="text-xs font-semibold">Info - This is some information for you.</p>
+      </div>
+
+      <div
+        id="warning-message"
+        class="message bg-yellow-100 text-yellow-900 p-2 rounded-[0.3vw] flex items-center justify-center transition duration-300 ease-in-out transform opacity-0"
+      >
+        <svg
+          t="1740157266062"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="10892"
+          width="16"
+          height="16"
+          ><path
+            d="M511.857817 0a511.857817 511.857817 0 1 0 511.857818 511.857817 511.857817 511.857817 0 0 0-511.857818-511.857817z m0 813.285199a60.569842 60.569842 0 0 1 0-120.855318 60.569842 60.569842 0 1 1 0 120.855318z m36.398778-211.567898a36.967509 36.967509 0 0 1-72.51319 0l-24.171064-325.882811A61.991669 61.991669 0 0 1 511.857817 209.57734a60.569842 60.569842 0 0 1 60.569842 60.285476z"
+            fill="#e8a245"
+            p-id="10893"></path></svg
+        >
+        <p class="text-xs font-semibold mx-[1vw]">Warning - Be careful with this next step.</p>
+      </div>
+
+      <div
+        id="error-message"
+        class="message bg-red-100 text-red-900 p-2 rounded-[0.3vw] flex items-center justify-center transition duration-300 ease-in-out transform opacity-0"
+      >
+        <svg
+          t="1740157046834"
+          class="icon"
+          viewBox="0 0 1075 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="7013"
+          width="16"
+          height="16"
+          ><path
+            d="M519.168 0C236.544 0 7.4752 229.0688 7.4752 511.6928s229.12 511.6928 511.6928 511.6928c282.624 0 511.6928-229.12 511.6928-511.6928C1030.8608 229.0688 801.792 0 519.168 0z m203.1616 664.1152a35.84 35.84 0 0 1-50.7904 50.688l-152.1664-152.1152-152.1152 152.1152a35.84 35.84 0 0 1-50.7904-50.688l152.2688-152.2176-152.2688-152.2176a35.84 35.84 0 1 1 50.7904-50.688l152.1664 152.1664 152.2176-152.1664a35.8912 35.8912 0 0 1 50.688 50.688l-152.2176 152.2176 152.2176 152.2176z"
+            fill="#FA6565"
+            p-id="7014"></path></svg
+        >
+        <p class="text-xs font-semibold mx-[1vw]">Error - Something went wrong.</p>
       </div>
     </div>
   </div>
@@ -440,69 +504,94 @@ backdrop-filter: blur(26.04vw);border-radius: 0.52vw;"
   });
 </script>
 <script>
-  function showMessage({ msg, duration = 2000, position = 'top-center', type = 'success', borderRadius = '5px' }) {
-    // 默认样式
-    let backgroundColor, textColor;
+  let debounceTimeout; // 用来存储防抖的计时器
 
-    // 根据类型设置不同的背景色和文本色
+  // 防抖函数
+  function debounce(callback, wait = 3000) {
+    return function () {
+      const context = this;
+      const args = arguments;
+
+      // 如果计时器已存在，意味着用户已经点击了按钮，需要提示
+      if (debounceTimeout) {
+        showMessage({
+          msg: `请勿频繁操作, ${wait / 1000}秒后再试`,
+          duration: 2000,
+          type: 'warning',
+        });
+      }
+
+      // 清除之前的计时器
+      clearTimeout(debounceTimeout);
+
+      // 设置新的计时器，延迟执行回调函数
+      debounceTimeout = setTimeout(() => {
+        callback.apply(context, args); // 执行回调函数
+      }, wait);
+    };
+  }
+  // 节流函数
+  function throttle(callback, wait = 3000) {
+    let lastTime = 0;
+    return function () {
+      const now = Date.now();
+      if (now - lastTime >= wait) {
+        callback();
+        lastTime = now;
+      } else {
+        showMessage({
+          msg: `请勿频繁操作, ${wait / 1000}秒后再试`,
+          duration: 2000,
+          type: 'warning',
+        });
+      }
+    };
+  }
+
+  function showMessage({ msg, duration = 2000, position = 'top-center', type = 'success' }) {
+    // 获取提示框容器
+    const container = document.getElementById('message-container');
+    const successMessage = document.getElementById('success-message');
+    const infoMessage = document.getElementById('info-message');
+    const warningMessage = document.getElementById('warning-message');
+    const errorMessage = document.getElementById('error-message');
+
+    // 默认不显示提示框
+    container.style.display = 'block';
+
+    // 重置所有消息框的显示状态
+    successMessage.classList.remove('show');
+    infoMessage.classList.remove('show');
+    warningMessage.classList.remove('show');
+    errorMessage.classList.remove('show');
+
+    // 根据类型显示对应的消息框
+    let messageElement;
     if (type === 'success') {
-      backgroundColor = '#4CAF50'; // 成功的绿色
-      textColor = '#fff'; // 白色文本
+      messageElement = successMessage;
+      messageElement.querySelector('p').textContent = msg;
+    } else if (type === 'info') {
+      messageElement = infoMessage;
+      messageElement.querySelector('p').textContent = msg;
+    } else if (type === 'warning') {
+      messageElement = warningMessage;
+      messageElement.querySelector('p').textContent = msg;
     } else if (type === 'error') {
-      backgroundColor = '#F44336'; // 错误的红色
-      textColor = '#fff'; // 白色文本
-    } else {
-      backgroundColor = '#333'; // 默认灰色
-      textColor = '#fff'; // 默认白色文本
+      messageElement = errorMessage;
+      messageElement.querySelector('p').textContent = msg;
     }
 
-    // 创建消息容器
-    const message = document.createElement('div');
-    message.style.position = 'fixed';
-    message.style.zIndex = '9999'; // 确保消息浮在最上层
-
-    // 设置显示位置
-    if (position === 'top-center') {
-      message.style.top = '10px';
-      message.style.left = '50%';
-      message.style.transform = 'translateX(-50%)'; // 水平居中
-    } else if (position === 'bottom-right') {
-      message.style.bottom = '10px';
-      message.style.right = '10px';
-    } else if (position === 'bottom-left') {
-      message.style.bottom = '10px';
-      message.style.left = '10px';
-    } else if (position === 'top-left') {
-      message.style.top = '10px';
-      message.style.left = '10px';
-    } else if (position === 'top-right') {
-      message.style.top = '10px';
-      message.style.right = '10px';
-    }
-
-    // 样式设置
-    message.style.backgroundColor = backgroundColor;
-    message.style.color = textColor;
-    message.style.borderRadius = borderRadius;
-    message.style.padding = '10px';
-    message.style.fontSize = '14px';
-    message.style.fontWeight = 'normal';
-    message.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
-    message.style.transition = 'opacity 0.5s ease-out';
-    message.style.opacity = '1';
-
-    // 设置消息文本
-    message.textContent = msg;
-
-    // 将消息添加到文档
-    document.body.appendChild(message);
-
-    // 2秒后淡出并移除消息
+    // 显示消息框并添加动画效果
     setTimeout(() => {
-      message.style.opacity = '0'; // 添加淡出效果
+      messageElement.classList.add('show');
+    }, 100);
+
+    // 消息框持续时间后移除
+    setTimeout(() => {
+      messageElement.classList.remove('show');
       setTimeout(() => {
-        document.body.removeChild(message);
-      }, 500); // 等待动画完成后移除
+        container.style.display = 'none'; // 隐藏消息容器
+      }, 300); // 等待动画完成
     }, duration);
   }
 
@@ -523,47 +612,86 @@ backdrop-filter: blur(26.04vw);border-radius: 0.52vw;"
       loginForm.style.display = 'none'; // 隐藏表单
     });
 
-    // 提交登录表单的事件绑定
-    submitButton?.addEventListener('click', () => {
-      const username = document.getElementById('username')?.value;
-      const password = document.getElementById('password')?.value;
+    // 登录提交事件
+    submitButton?.addEventListener(
+      'click',
+      throttle(async () => {
+        let username = document.getElementById('username')?.value;
+        let password = document.getElementById('password')?.value;
 
-      console.log('用户名:', username);
-      console.log('密码:', password);
+        // 校验用户名和密码
+        if (!username) {
+          showMessage({
+            msg: '请填写用户名',
+            duration: 3000,
+            type: 'warning',
+          });
+          return;
+        }
 
-      // 提交数据到后端接口
-      fetch('https://apifoxmock.com/m1/5804244-5489264-default/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
+        if (!password) {
+          showMessage({
+            msg: '请填写密码',
+            duration: 3000,
+            type: 'warning',
+          });
+          return;
+        }
+
+        try {
+          // 提交数据到后端接口
+          const response = await fetch('https://apifoxmock.com/m1/5804244-5489264-default/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              username: username,
+              password: password,
+            }),
+          });
+
+          const data = await response.json();
           console.log('登录成功:', data);
+
           if (data.code === 200) {
-            // alert('登录成功！');
+            // 登录成功时保存 token
+            localStorage.setItem('FF_TOKEN', data.token);
+
+            // 提示操作成功
             showMessage({
               msg: '操作成功！',
               duration: 3000, // 3秒后消失
               type: 'success', // 成功类型
             });
-          } else {
-            alert('登录失败！请检查用户名和密码');
-          }
-        })
-        .catch((error) => {
-          console.error('请求错误:', error);
-          alert('发生了错误，请稍后再试');
-        });
 
-      // 提交后关闭表单
-      loginForm.style.display = 'none';
-    });
+            // 清空表单用户名和密码
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+
+            // 提交成功后关闭表单
+            loginForm.style.display = 'none';
+          } else {
+            // 登录失败时的提示
+            showMessage({
+              msg: '登录失败！请检查用户名和密码',
+              duration: 3000,
+              type: 'error',
+            });
+
+            // 清除本地 token
+            localStorage.removeItem('FF_TOKEN');
+          }
+        } catch (error) {
+          // 请求失败时的错误提示
+          showMessage({
+            msg: '请求错误:发生了错误，请稍后再试',
+            duration: 3000,
+            type: 'error',
+          });
+        }
+      }, 3000) // 设置每次点击间隔 3 秒
+    ); // 使用节流效果，每 3 秒最多触发一次
   });
   document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
@@ -730,6 +858,17 @@ backdrop-filter: blur(26.04vw);border-radius: 0.52vw;"
   });
 </script>
 <style>
+  html,
+  body {
+    overflow: hidden;
+    height: 100%;
+  }
+
+  /* 隐藏所有滚动条 */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   .placeholder-sm::placeholder {
     font-size: 0.73vw; /* 14px -> 0.73vw */
   }
@@ -883,5 +1022,43 @@ backdrop-filter: blur(26.04vw);border-radius: 0.52vw;"
   /* 应用旋转动画 */
   .music-playing {
     animation: rotate 1s linear infinite;
+  }
+  .message {
+    top: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px); /* 使消息水平居中 */
+    opacity: 0;
+    transition:
+      transform 0.3s ease-out,
+      opacity 0.3s ease-out;
+    max-width: 90%; /* 限制最大宽度 */
+    z-index: 99999;
+  }
+
+  .message.show {
+    transform: translateX(-50%) translateY(0); /* 显示时动画效果 */
+    opacity: 1;
+  }
+
+  #message-container {
+    top: 20px; /* 从顶部开始 */
+    width: 100%; /* 容器宽度100% */
+    z-index: 9999; /* 确保在最上层 */
+  }
+  #success-message svg {
+    fill: green;
+  }
+
+  #info-message svg {
+    fill: blue;
+  }
+
+  #warning-message svg {
+    fill: yellow;
+  }
+
+  #error-message svg {
+    fill: red;
   }
 </style>
