@@ -21,7 +21,7 @@ const morePeopleList = morePeopleListResult.data || [];
 
 <Layout showHeader={false} showFooter={true}>
   <div
-    class="w-full"
+    class="w-[100vw]"
     style="padding-top: 56.25%;background: linear-gradient(0deg, rgba(33, 29, 27, 0) 47.47%, rgba(255, 255, 255, 1) 100%, rgba(105, 101, 100, 0.5) 100%);"
   >
     <!-- 背景图层，应用背景模糊 -->
@@ -33,7 +33,7 @@ const morePeopleList = morePeopleListResult.data || [];
 
     <!-- 吸附在顶部的导航栏  h-[51.5vw] -->
     <div
-      class="fixed flex justify-between items-center top-0 left-0 w-full h-[4.17vw] pr-[8.3333vw] pl-[7.1875vw] bg-white bg-opacity-30 z-50"
+      class="fixed flex justify-between items-center top-0 left-0 w-[100vw] h-[4.17vw] pr-[8.3333vw] pl-[7.1875vw] bg-white bg-opacity-30 z-50"
       style="background:rgba(0, 0, 0, 0.7)"
     >
       <div><img src="/assets/images/FFGameCloud-logo.png" class="w-[8.75vw] h-[2.08vw]" alt="" /></div>
@@ -201,7 +201,7 @@ const morePeopleList = morePeopleListResult.data || [];
           </div>
           <div class="w-[22.2vw] h-[37vw] overflow-y-scroll overflow-hidden custom-scrollbar-hidden">
             <!-- 开服游戏列表 -->
-            <div>
+            <div id="section1">
               <div class="h-[3.17vw]">
                 <span style="color:rgba(255, 255, 255, 1); font-size: 0.88vw;">游戏：</span>
                 <span style="color: rgba(148, 148, 148, 100); font-size: 0.88vw;">你想开服的游戏是？</span>
@@ -218,6 +218,7 @@ const morePeopleList = morePeopleListResult.data || [];
                     data-price={game.price}
                     data-bImage={game.bImage}
                     data-sImage={game.sImage}
+                    data-target="#section2"
                     class="game-item w-[22.2vw] h-[5.1vw] pl-[2vw] pr-[1.1vw] flex justify-between items-center cursor-pointer mb-[1.354vw]"
                     style="background: linear-gradient(270deg, #00000030 36.62%, #403D3D30 100%); border: 0.05208vw solid #B0A29E; border-radius: 0.26vw;"
                   >
@@ -240,9 +241,6 @@ const morePeopleList = morePeopleListResult.data || [];
                   </div>
                 ))
               }
-            </div>
-            <!-- 协助区域 -->
-            <div>
               <div
                 class="w-[22.2vw] h-[5.1vw] pl-[2vw] pr-[1.1vw] flex justify-between items-center cursor-pointer mt-[1.354vw]"
                 style="border: 0.05208vw solid #B0A29E00;border-radius: 0.26vw;background: rgba(82, 66, 66, 1);"
@@ -254,8 +252,21 @@ const morePeopleList = morePeopleListResult.data || [];
                 <img src="/assets/images/gamelogo.png" class="w-[3vw] h-[3vw]" alt="" srcset="" />
               </div>
             </div>
+            <!-- 协助区域 -->
+            <!-- <div>
+              <div
+                class="w-[22.2vw] h-[5.1vw] pl-[2vw] pr-[1.1vw] flex justify-between items-center cursor-pointer mt-[1.354vw]"
+                style="border: 0.05208vw solid #B0A29E00;border-radius: 0.26vw;background: rgba(82, 66, 66, 1);"
+              >
+                <div>
+                  <div style="font-size: 0.89vw;color:#FFFFFF;margin-bottom: 0.31vw;">需要协助选择游戏?</div>
+                  <div style="font-size: 0.57vw;color:#FFFFFF;">了解不同服务器型号和性能的区别。</div>
+                </div>
+                <img src="/assets/images/gamelogo.png" class="w-[3vw] h-[3vw]" alt="" srcset="" />
+              </div>
+            </div> -->
             <!-- 镜像区域 -->
-            <div class="mt-[2.239vw]">
+            <div class="mt-[2.239vw]" id="section2">
               <div class="h-[3.17vw]">
                 <span style="color:rgba(255, 255, 255, 1); font-size: 0.88vw;">镜像：</span>
                 <span style="color: rgba(148, 148, 148, 100); font-size: 0.88vw;">你想镜像的类型是？</span>
@@ -264,6 +275,7 @@ const morePeopleList = morePeopleListResult.data || [];
                 mirrorList?.map((mirror, mirrorIndex) => (
                   <div
                     data-id={mirror.id}
+                   data-target="#section3"
                     class="mirror-item w-[22.2vw] h-[5.1vw] pl-[2vw] pr-[1.1vw] flex justify-between items-center cursor-pointer mb-[1.354vw]"
                     style="background: linear-gradient(270deg, #000000 36.62%, #403D3D 100%); border: 0.05208vw solid #B0A29E; border-radius: 0.26vw;"
                   >
@@ -294,7 +306,7 @@ const morePeopleList = morePeopleListResult.data || [];
               }
             </div>
             <!-- 人数套餐区域 -->
-            <div class="mt-[2.239vw]">
+            <div class="mt-[2.239vw]" id="section3">
               <div class="h-[3.17vw]">
                 <span style="color:rgba(255, 255, 255, 1); font-size: 0.88vw;">人数：</span>
                 <span style="color: rgba(148, 148, 148, 100); font-size: 0.88vw;">你想游玩的人数？</span>
@@ -512,10 +524,10 @@ const morePeopleList = morePeopleListResult.data || [];
   </div>
 </Layout>
 <script define:vars={{ gameList, mirrorList, peopleList, morePeopleList }}>
-  console.log('服务端>游戏列表数据:', gameList);
-  console.log('服务端>镜像列表数据:', mirrorList);
-  console.log('服务端>人数列表数据:', peopleList);
-  console.log('服务端>(更多)人数列表数据:', morePeopleList);
+  // console.log('服务端>游戏列表数据:', gameList);
+  // console.log('服务端>镜像列表数据:', mirrorList);
+  // console.log('服务端>人数列表数据:', peopleList);
+  // console.log('服务端>(更多)人数列表数据:', morePeopleList);
 
   //游戏项选中部分
   let pickGameItem = {}; //选中的游戏列表项
@@ -556,6 +568,20 @@ const morePeopleList = morePeopleListResult.data || [];
       e.currentTarget.classList.add('selected');
       e.currentTarget.style.borderColor = 'transparent'; // 设置透明的边框颜色
       e.currentTarget.style.borderImage = 'linear-gradient(to right, #40C6FF 0%, #1C80EB 100%) 1'; // 设置渐变边框
+
+      const targetSection = document.querySelector(item.getAttribute('data-target'));
+
+      if (targetSection) {
+        // 先滚动到镜像区域
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        const section1Element = document.getElementById('section1');
+        console.log(section1Element.offsetHeight);
+        // 添加偏移量 (向上滚动一定的距离)
+        setTimeout(() => {
+          window.scrollBy(0, -section1Element.offsetHeight); // 向上偏移 50px
+        }, 0);
+      }
     });
 
     // 循环完毕后，默认触发第一个卡片的点击事件
@@ -582,6 +608,20 @@ const morePeopleList = morePeopleListResult.data || [];
       e.currentTarget.classList.add('selected');
       e.currentTarget.style.borderColor = 'transparent'; // 设置透明的边框颜色
       e.currentTarget.style.borderImage = 'linear-gradient(to right, #40C6FF 0%, #1C80EB 100%) 1'; // 设置渐变边框
+
+      const targetSection = document.querySelector(item.getAttribute('data-target'));
+
+      if (targetSection) {
+        // 先滚动到人数区域
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        const section2Element = document.getElementById('section2');
+        console.log(section2Element.offsetHeight);
+        // 添加偏移量 (向上滚动一定的距离)
+        setTimeout(() => {
+          window.scrollBy(0, -section2Element.offsetHeight); // 向上偏移 50px
+        }, 0);
+      }
     });
   });
 
@@ -676,9 +716,9 @@ const morePeopleList = morePeopleListResult.data || [];
 </script>
 
 <style>
-  .control-btn:hover{
-    background-color:#fff;
-    border: 0.26vw solid  #ffffff30;
+  .control-btn:hover {
+    background-color: #fff;
+    border: 0.26vw solid #ffffff30;
   }
   .card-stack {
     position: relative;

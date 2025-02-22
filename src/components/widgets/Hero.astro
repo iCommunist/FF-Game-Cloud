@@ -71,8 +71,7 @@ console.log('封面', coverVideo, centerTxt);
             >
               <div
                 class="flex justify-center items-center w-[8.593vw] h-[3.38vw]"
-                style="border: 0.052vw solid #FFFFFF;
-backdrop-filter: blur(26.04vw);border-radius: 0.52vw;"
+                style="border: 0.1vw solid #FFFFFF;backdrop-filter: blur(26.04vw);border-radius: 0.3vw;"
               >
                 <img
                   src="/assets/images/游戏库手柄.svg"
@@ -612,12 +611,12 @@ backdrop-filter: blur(26.04vw);border-radius: 0.52vw;"
       loginForm.style.display = 'none'; // 隐藏表单
     });
 
-    // 登录提交事件
+    // 点击登录按钮
     submitButton?.addEventListener(
       'click',
       throttle(async () => {
-        let username = document.getElementById('username')?.value;
-        let password = document.getElementById('password')?.value;
+        const username = document.getElementById('username')?.value;
+        const password = document.getElementById('password')?.value;
 
         // 校验用户名和密码
         if (!username) {
@@ -948,7 +947,7 @@ backdrop-filter: blur(26.04vw);border-radius: 0.52vw;"
     height: 200%;
     background: linear-gradient(90deg, rgba(28, 128, 235, 1) 0%, rgba(64, 198, 255, 1) 100%);
     transition: all 0.8s ease; /* 动画效果 */
-    border-radius: 0%; /* 去掉圆角 */
+    border-radius:  0vw; /* 去掉圆角 */
     transform: translate(-50%, -50%) scale(0); /* 初始状态：缩放到0，居中 */
     z-index: -1; /* 确保背景色不会覆盖文本 */
   }
