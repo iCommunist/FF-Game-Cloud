@@ -774,7 +774,11 @@ console.log('封面', coverVideo, centerTxt);
     const newPassword = document.getElementById('forgot-new-password')!.value;
 
     if (!email || !verifyCode || !newPassword) {
-      alert('请完整填写表单');
+      showMessage({
+        msg: '请完整填写表单',
+        duration: 3000, // 3秒后消失
+        type: 'warning', // 成功类型
+      });
       return;
     }
 
@@ -797,7 +801,11 @@ console.log('封面', coverVideo, centerTxt);
           // 可以在此处关闭忘记密码表单
           document.getElementById('forgot-password-form')!.classList.add('hidden');
         } else {
-          alert('密码修改失败，请重试');
+          showMessage({
+            msg: '密码修改失败，请重试',
+            duration: 3000, // 3秒后消失
+            type: 'error', // 成功类型
+          });
         }
       })
       .catch((error) => {
@@ -947,7 +955,7 @@ console.log('封面', coverVideo, centerTxt);
     height: 200%;
     background: linear-gradient(90deg, rgba(28, 128, 235, 1) 0%, rgba(64, 198, 255, 1) 100%);
     transition: all 0.8s ease; /* 动画效果 */
-    border-radius:  0vw; /* 去掉圆角 */
+    border-radius: 0vw; /* 去掉圆角 */
     transform: translate(-50%, -50%) scale(0); /* 初始状态：缩放到0，居中 */
     z-index: -1; /* 确保背景色不会覆盖文本 */
   }

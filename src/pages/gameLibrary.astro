@@ -35,7 +35,7 @@ const morePeopleList = morePeopleListResult.data || [];
     <div
       id="scrollableDiv"
       class="fixed flex justify-between items-center top-0 left-0 w-full h-[4.17vw] pr-[8.3333vw] pl-[7.1875vw] bg-white bg-opacity-30 z-50"
-      style="background:rgba(0, 0, 0, 0.7)"
+      style="background:rgba(51, 51, 51, .3)"
     >
       <div><img src="/assets/images/FFGameCloud-logo.png" class="w-[8.75vw] h-[2.08vw]" alt="" /></div>
       <div
@@ -46,12 +46,12 @@ const morePeopleList = morePeopleListResult.data || [];
 
         <!-- 菜单 -->
         <div
-          class="absolute top-full left-1/2 transform -translate-x-1/2 mt-[1.15vw] hidden group-hover:block group-focus-within:block focus-within:block shadow-lg rounded-[0.26vw]"
+          class="absolute menu top-[120%] left-1/2 transform -translate-x-1/2 mt-[1.15vw] hidden group-hover:block group-focus-within:block focus-within:block shadow-lg rounded-[0.26vw]"
         >
           <ul
             class="text-sm w-[12.0417vw] rounded-[0.2604vw] border-solid border-[rgba(0,_0,_0,_0.1)] backdrop-blur-[0.1vw] bg-[rgba(0,_0,_0,_0.4)]"
           >
-            <li class="h-[2.5vw] flex items-center">
+            <li class="h-[2.5vw] flex items-center hover:bg-[rgba(255,_255,_255,_0.5)]">
               <img
                 src="/assets/images/usericon.svg"
                 class="w-[1.3542vw] h-[1.3542vw] ml-[0.625vw] mr-[0.5729vw]"
@@ -62,7 +62,7 @@ const morePeopleList = morePeopleListResult.data || [];
                 <span style="font-size: 0.5208vw; color: rgba(148, 148, 148, 1); line-height: 1;">54564654@qq.com</span>
               </div>
             </li>
-            <li class="h-[2.5vw] flex items-center" style="background-color:rgba(255, 255, 255, 0.5)">
+            <li class="h-[2.5vw] flex items-center hover:bg-[rgba(255,_255,_255,_0.5)]" style="">
               <img
                 src="/assets/images/cashicon.svg"
                 class="w-[0.78125vw] h-[0.78125vw] ml-[0.83vw] mr-[0.3646vw]"
@@ -78,7 +78,7 @@ const morePeopleList = morePeopleListResult.data || [];
                 </div>
               </div>
             </li>
-            <li class="h-[2.5vw] flex items-center">
+            <li class="h-[2.5vw] flex items-center hover:bg-[rgba(255,_255,_255,_0.5)]">
               <img
                 src="/assets/images/settingicon.svg"
                 class="w-[0.78125vw] h-[0.78125vw] ml-[0.83vw] mr-[0.3646vw]"
@@ -90,6 +90,7 @@ const morePeopleList = morePeopleListResult.data || [];
               </div>
             </li>
             <li
+              id="logout"
               class="h-[2.5vw] flex items-center justify-center text-center"
               style="border-top: 1px solid rgba(148, 148, 148, 1);font-size: 0.625vw;color:rgba(186, 179, 179, 1)"
             >
@@ -436,7 +437,6 @@ const morePeopleList = morePeopleListResult.data || [];
       </div>
     </div>
   </div>
-
   <div id="section5" class="w-[77.4vw] mx-auto flex pt-[9.33vw]">
     <div
       class="mb-[49.11vw] w-[77.4vw] h-[32.03vw] bg-[#211d1b] mx-auto flex"
@@ -487,14 +487,27 @@ const morePeopleList = morePeopleListResult.data || [];
           class="h-[13.125vw] w-[13.80vw] mt-[3.90vw] flex items-center justify-center flex-col"
           style="border-bottom: 0.052vw solid #474141;border-top: 0.052vw solid #474141;"
         >
-          <div class="w-[13.75vw] h-[4.01vw] mb-[1.822vw]">
+          <div class="w-[13.75vw] h-[4.01vw] mb-[1.822vw] relative">
             <div style="font-size: 0.833vw; color:#BAB3B3">周期</div>
             <div
-              class="w-[13.75vw] h-[2.395vw] bg-[#3B3130] px-[1.362vw] py-[0.572vw] flex items-center justify-between"
+              class="dropdown w-[13.75vw] h-[2.395vw] bg-[#3B3130] px-[1.362vw] py-[0.572vw] flex items-center justify-between"
               style="border: 0.052vw solid #61504E;font-size: 0.833vw;color:#ffffff"
             >
-              <div>1月</div>
-              <img src="/assets/images/三角形箭头.svg" alt="" srcset="" class="w-[0.64vw] h-[0.52vw]" />
+              <div id="selectedPeriod">1月</div>
+              <img src="/assets/images/三角形箭头.svg" alt="" class="w-[0.64vw] h-[0.52vw]" />
+            </div>
+            <!-- 下拉菜单 -->
+            <div
+              id="dropdownMenu"
+              class="dropdown-menu w-[13.75vw] bg-[#3B3130] mt-[0.5vw] opacity-0 scale-95 transform transition-all duration-300"
+              style="display: none;"
+            >
+              <div class="dropdown-item" data-cycle="1">1月</div>
+              <div class="dropdown-item" data-cycle="3">3月</div>
+              <div class="dropdown-item" data-cycle="6">6月</div>
+              <div class="dropdown-item" data-cycle="12">12月</div>
+              <div class="dropdown-item" data-cycle="24">24月</div>
+              <div class="dropdown-item" data-cycle="36">36月</div>
             </div>
           </div>
           <div class="w-[13.75vw] h-[4.01vw]">
@@ -503,10 +516,20 @@ const morePeopleList = morePeopleListResult.data || [];
               class="w-[13.75vw] h-[2.395vw] flex justify-between items-center bg-[#3B3130]"
               style="border: 0.052vw solid #61504E;"
             >
-              <div style="font-size: 0.833vw; color:#fff;" class="pl-[1.362vw]">验证码内容</div>
+              <!-- <div style="font-size: 0.833vw; color:#fff;" class="pl-[1.362vw]">验证码内容</div> -->
+              <input
+                required=""
+                class="bg-transparent text-[#fff] px-3 py-1 focus:outline-none w-full"
+                id="promoCode"
+                name="text"
+                type="text"
+                autocomplete="off"
+                style="font-size: 0.833vw;"
+              />
               <div
-                class="w-[3.90vw] h-[1.04vw] flex justify-center items-center"
+                class="w-[3.90vw] h-[1.04vw] flex justify-center items-center cursor-pointer"
                 style="border-left: 0.052vw solid #61504E;font-size: 0.833vw; color:#fff;"
+                id="verifPpromoCode"
               >
                 验证
               </div>
@@ -518,33 +541,51 @@ const morePeopleList = morePeopleListResult.data || [];
         <div class="h-[8.80vw] w-[17.5vw] pt-[2.256vw]" style="border-bottom:0.052vw solid #474141">
           <div class="text-[#BAB3B3] mb-[0.989vw]" style="font-size: 0.83vw;">价格</div>
           <div class="text-[#F26A16] w-[17.5vw] flex justify-center items-baseline" style="font-weight: 700;">
-            <span style="font-size: 1.25vw;margin-right:0.25vw">¥</span><span style="font-size: 2.39vw;">98</span>
+            <span style="font-size: 1.25vw;margin-right:0.25vw">¥</span><span style="font-size: 2.39vw;" id="payAmount"
+              >0</span
+            >
           </div>
         </div>
         <div class="mt-[3.80vw] w-[19.0vw]">
-          <div class="w-[18.33vw] h-[3.07vw] p-[0.52vw] flex items-center justify-between">
+          <div
+            data-payType="aliPay"
+            class="payment-method w-[18.33vw] h-[3.07vw] p-[0.52vw] flex items-center justify-between cursor-pointer"
+          >
             <div class="flex items-center">
-              <img src="/assets/images/ali_pay.svg" alt="" srcset="" class="w-[1.979vw] h-[1.979vw]" />
-              <div class="ml-[1.093vw]">支付宝</div>
+              <img src="/assets/images/ali_pay.svg" alt="" class="w-[1.979vw] h-[1.979vw]" />
+              <div class="ml-[1.093vw] text-white" style="font-size:0.833vw">支付宝</div>
             </div>
-            <img src="/assets/images/select_pay_type.svg" alt="" srcset="" class="w-[1.25vw] h-[1.25vw]" />
+            <img src="/assets/images/no_select_pay_type.svg" alt="" class="w-[1.25vw] h-[1.25vw] isselect" />
           </div>
-          <div class="w-[18.33vw] h-[3.07vw] p-[0.52vw] flex items-center justify-between">
+          <div
+            data-payType="wxPay"
+            class="payment-method w-[18.33vw] h-[3.07vw] p-[0.52vw] flex items-center justify-between cursor-pointer"
+          >
             <div class="flex items-center">
-              <img src="/assets/images/wx_pay.svg" alt="" srcset="" class="w-[1.979vw] h-[1.979vw]" />
-              <div class="ml-[1.093vw]">微信支付</div>
+              <img
+                src="/assets/images/wx_pay.svg"
+                alt=""
+                class="w-[1.979vw] h-[1.979vw] bg-[#fff]"
+                style="border-radius: 0.52vw;"
+              />
+              <div class="ml-[1.093vw] text-white" style="font-size:0.833vw">微信支付</div>
             </div>
-            <img src="/assets/images/no_select_pay_type.svg" alt="" srcset="" class="w-[1.25vw] h-[1.25vw]" />
+            <img src="/assets/images/no_select_pay_type.svg" alt="" class="w-[1.25vw] h-[1.25vw] isselect" />
           </div>
-          <div class="w-[18.33vw] h-[3.07vw] p-[0.52vw] flex items-center justify-between">
+          <div
+            data-payType="balancePay"
+            class="payment-method w-[18.33vw] h-[3.07vw] p-[0.52vw] flex items-center justify-between cursor-pointer"
+          >
             <div class="flex items-center">
-              <img src="/assets/images/balance_pay.svg" alt="" srcset="" class="w-[1.979vw] h-[1.979vw]" />
-              <div class="ml-[1.093vw]">余额</div>
+              <img src="/assets/images/balance_pay.svg" alt="" class="w-[1.979vw] h-[1.979vw]" />
+              <div class="ml-[1.093vw] text-white" style="font-size:0.833vw">余额</div>
             </div>
-            <img src="/assets/images/no_select_pay_type.svg" alt="" srcset="" class="w-[1.25vw] h-[1.25vw]" />
+            <img src="/assets/images/no_select_pay_type.svg" alt="" class="w-[1.25vw] h-[1.25vw] isselect" />
           </div>
         </div>
+
         <div
+          id="paymentBtn"
           class="w-[17.39vw] mt-[4vw] h-[4.479vw] flex justify-center items-center text-white cursor-pointer
         transition-colors duration-1000 ease-in-out
         rounded-[0.461vw]
@@ -554,6 +595,90 @@ const morePeopleList = morePeopleListResult.data || [];
         </div>
       </div>
     </div>
+    <div id="message-container" class="space-y-2 p-4" style="display: none;">
+      <div
+        id="success-message"
+        class="message bg-green-100 text-green-900 p-2 rounded-[0.3vw] flex items-center justify-center transition duration-300 ease-in-out transform opacity-0"
+      >
+        <svg
+          t="1740156480442"
+          class="icon"
+          viewBox="0 0 1075 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="5727"
+          width="16"
+          height="16"
+          ><path
+            d="M541.3376 0c-282.7776 0-512 229.2224-512 512s229.2224 512 512 512 512-229.2224 512-512-229.2224-512-512-512z m290.7648 400.7424l-336.384 340.6336a53.76 53.76 0 0 1-76.8 0L259.584 579.9936a55.3984 55.3984 0 0 1 0-77.6704 53.76 53.76 0 0 1 76.7488 0l120.9856 122.5216 298.0352-301.824a53.76 53.76 0 0 1 76.7488 0 55.4496 55.4496 0 0 1 0 77.7216z"
+            fill="#35B262"
+            p-id="5728"></path></svg
+        >
+        <p class="text-xs font-semibold mx-[1vw]">Success - Everything went smoothly!</p>
+      </div>
+
+      <div
+        id="info-message"
+        class="message bg-blue-100 text-blue-900 p-2 rounded-lg flex items-center transition duration-300 ease-in-out transform opacity-0"
+      >
+        <svg class="h-5 w-5 flex-shrink-0 mr-2 text-blue-600">
+          <path
+            d="M13 16h-1v-4h1m0-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            stroke-width="2"
+            stroke-linejoin="round"
+            stroke-linecap="round"></path>
+        </svg>
+        <p class="text-xs font-semibold">Info - This is some information for you.</p>
+      </div>
+
+      <div
+        id="warning-message"
+        class="message bg-yellow-100 text-yellow-900 p-2 rounded-[0.3vw] flex items-center justify-center transition duration-300 ease-in-out transform opacity-0"
+      >
+        <svg
+          t="1740157266062"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="10892"
+          width="16"
+          height="16"
+          ><path
+            d="M511.857817 0a511.857817 511.857817 0 1 0 511.857818 511.857817 511.857817 511.857817 0 0 0-511.857818-511.857817z m0 813.285199a60.569842 60.569842 0 0 1 0-120.855318 60.569842 60.569842 0 1 1 0 120.855318z m36.398778-211.567898a36.967509 36.967509 0 0 1-72.51319 0l-24.171064-325.882811A61.991669 61.991669 0 0 1 511.857817 209.57734a60.569842 60.569842 0 0 1 60.569842 60.285476z"
+            fill="#e8a245"
+            p-id="10893"></path></svg
+        >
+        <p class="text-xs font-semibold mx-[1vw]">Warning - Be careful with this next step.</p>
+      </div>
+
+      <div
+        id="error-message"
+        class="message bg-red-100 text-red-900 p-2 rounded-[0.3vw] flex items-center justify-center transition duration-300 ease-in-out transform opacity-0"
+      >
+        <svg
+          t="1740157046834"
+          class="icon"
+          viewBox="0 0 1075 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="7013"
+          width="16"
+          height="16"
+          ><path
+            d="M519.168 0C236.544 0 7.4752 229.0688 7.4752 511.6928s229.12 511.6928 511.6928 511.6928c282.624 0 511.6928-229.12 511.6928-511.6928C1030.8608 229.0688 801.792 0 519.168 0z m203.1616 664.1152a35.84 35.84 0 0 1-50.7904 50.688l-152.1664-152.1152-152.1152 152.1152a35.84 35.84 0 0 1-50.7904-50.688l152.2688-152.2176-152.2688-152.2176a35.84 35.84 0 1 1 50.7904-50.688l152.1664 152.1664 152.2176-152.1664a35.8912 35.8912 0 0 1 50.688 50.688l-152.2176 152.2176 152.2176 152.2176z"
+            fill="#FA6565"
+            p-id="7014"></path></svg
+        >
+        <p class="text-xs font-semibold mx-[1vw]">Error - Something went wrong.</p>
+      </div>
+    </div>
+    <!-- <div id="wxPayBox" class="fixed">
+      <img src="/assets/images/wxpay.JPG" alt="" srcset="" class="w-[10vw] h-[10vw]"/>
+    </div>
+    <div id="aliPayBox" class="fixed">
+      <img src="/assets/images/alipay.JPG" alt="" srcset="" class="w-[10vw] h-[10vw]"/>
+    </div> -->
   </div>
 </Layout>
 <script define:vars={{ gameList, mirrorList, peopleList, morePeopleList }}>
@@ -561,6 +686,33 @@ const morePeopleList = morePeopleListResult.data || [];
   console.log('服务端>镜像列表数据:', mirrorList);
   console.log('服务端>人数列表数据:', peopleList);
   console.log('服务端>(更多)人数列表数据:', morePeopleList);
+  window.onload = function () {
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' }); // 以平滑的方式滚动到页面顶部
+  };
+  // 禁止 F12
+  // document.addEventListener('keydown', function (event) {
+  //   if (event.keyCode === 123) {
+  //     // F12 键
+  //     event.preventDefault();
+  //     showMessage({
+  //       msg: '禁止使用开发者工具！',
+  //       duration: 3000,
+  //       type: 'warning',
+  //     });
+  //   }
+  // });
+
+  // // 禁止右键菜单
+  // document.addEventListener('contextmenu', function (event) {
+  //   event.preventDefault(); // 禁止右键菜单
+  //   // alert('右键功能已禁用！');
+  //   showMessage({
+  //     msg: '右键功能已禁用！',
+  //     duration: 3000,
+  //     type: 'warning',
+  //   });
+  // });
+
   // 获取目标元素
   const scrollableDiv = document.getElementById('scrollableDiv');
   const currPickGame = document.getElementById('currPickGame'); //显示选中游戏名称元素
@@ -568,7 +720,14 @@ const morePeopleList = morePeopleListResult.data || [];
   const currPickSmallImg = document.getElementById('currPickSmallImg'); //显示选中游戏小图元素
   const currPickMirror = document.getElementById('currPickMirror'); //显示选中镜像元素
   const currPickPeople = document.getElementById('currPickPeople'); //显示选中人数元素
-
+  let isProgrammaticClick = false; // 用来判断是否是程序触发的点击
+  let currPickCycle = 1; //已选周期
+  let deratePrice = 0; //优惠码减免金额
+  let pickGameItem = {}; //选中的游戏列表项
+  let pickMirrorItem = {}; // 选中的镜像列表项
+  let pickPeopleItem = {}; // 选中的人数列表项
+  let isUpIp = 0; //是否升级独立ip，0未选择，1升级，2不升级
+  let paymentType = ''; //wxPay(微信支付),aliPay（支付宝支付）,balancePay（余额支付）
   // 监听滚动事件
   window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
@@ -581,8 +740,85 @@ const morePeopleList = morePeopleListResult.data || [];
       scrollableDiv.classList.remove('hide-scrollbar');
     }
   });
+  function showMessage({ msg, duration = 2000, position = 'top-center', type = 'success' }) {
+    // 获取提示框容器
+    const container = document.getElementById('message-container');
+    const successMessage = document.getElementById('success-message');
+    const infoMessage = document.getElementById('info-message');
+    const warningMessage = document.getElementById('warning-message');
+    const errorMessage = document.getElementById('error-message');
+
+    // 默认不显示提示框
+    container.style.display = 'block';
+
+    // 重置所有消息框的显示状态
+    successMessage.classList.remove('show');
+    infoMessage.classList.remove('show');
+    warningMessage.classList.remove('show');
+    errorMessage.classList.remove('show');
+
+    // 根据类型显示对应的消息框
+    let messageElement;
+    if (type === 'success') {
+      messageElement = successMessage;
+      messageElement.querySelector('p').textContent = msg;
+    } else if (type === 'info') {
+      messageElement = infoMessage;
+      messageElement.querySelector('p').textContent = msg;
+    } else if (type === 'warning') {
+      messageElement = warningMessage;
+      messageElement.querySelector('p').textContent = msg;
+    } else if (type === 'error') {
+      messageElement = errorMessage;
+      messageElement.querySelector('p').textContent = msg;
+    }
+
+    // 显示消息框并添加动画效果
+    setTimeout(() => {
+      messageElement.classList.add('show');
+    }, 100);
+
+    // 消息框持续时间后移除
+    setTimeout(() => {
+      messageElement.classList.remove('show');
+      setTimeout(() => {
+        container.style.display = 'none'; // 隐藏消息容器
+      }, 300); // 等待动画完成
+    }, duration);
+  }
+  //点击退出登录
+  document.getElementById('logout').addEventListener('click', function () {
+    showMessage({
+      msg: '退出登陆成功！',
+      duration: 3000,
+      type: 'success',
+    });
+    location.reload();
+  });
+  // 获取所有支付方式元素
+  const paymentMethods = document.querySelectorAll('.payment-method');
+
+  // 为每个支付方式添加点击事件
+  paymentMethods.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      // console.log(e.target.dataset.paytype,'444')
+      paymentType = e.target.dataset.paytype; //保存支付方式
+      // 移除所有支付方式的 selectPay 类和勾选图片
+      paymentMethods.forEach((payment) => {
+        payment.classList.remove('selectPay'); // 移除 selectPay 类
+        const img = payment.querySelector('.isselect'); // 获取勾选图片
+        img.src = '/assets/images/no_select_pay_type.svg'; // 恢复未选中状态的勾选图片
+      });
+
+      // 给当前点击的支付方式添加 selectPay 类并更改勾选图片
+      item.classList.add('selectPay'); // 为当前选中的支付方式添加 selectPay 类
+      const selectedImg = item.querySelector('.isselect');
+      selectedImg.src = '/assets/images/select_pay_type.svg'; // 设置选中状态的勾选图片
+    });
+  });
+
   //游戏项选中部分
-  let pickGameItem = {}; //选中的游戏列表项
+
   const gameItems = document.querySelectorAll('.game-item'); //获取游戏列表
   const cardContainer = document.querySelector('.card-stack-container');
   gameItems.forEach((item, itemIndex) => {
@@ -595,7 +831,7 @@ const morePeopleList = morePeopleListResult.data || [];
       currPickGame.textContent = pickGameItem.name;
       currPickBigImg.src = pickGameItem.bImage;
       currPickSmallImg.src = pickGameItem.sImage;
-
+      calculatedAmount(); //计算金额
       // 移动卡片到顶层
       if (targetCard) {
         // 更新 z-index 和位置
@@ -625,6 +861,11 @@ const morePeopleList = morePeopleListResult.data || [];
       e.currentTarget.style.borderImage = 'linear-gradient(to right, #40C6FF 0%, #1C80EB 100%) 1'; // 设置渐变边框
 
       const targetSection = document.querySelector(item.getAttribute('data-target'));
+      // 如果是程序触发的点击事件，则跳过滚动操作
+      if (isProgrammaticClick) {
+        isProgrammaticClick = false; // 重置标志
+        return; // 跳过滚动到镜像区域
+      }
 
       if (targetSection) {
         // 先滚动到镜像区域
@@ -641,18 +882,20 @@ const morePeopleList = morePeopleListResult.data || [];
 
     // 循环完毕后，默认触发第一个卡片的点击事件
     if (itemIndex === gameItems.length - 1) {
+      isProgrammaticClick = true; // 标记为程序触发
       gameItems[0].click(); // 触发第一个卡片的点击事件
     }
   });
 
   // 镜像项选中部分
-  let pickMirrorItem = {}; // 选中的镜像列表项
+
   const mirrorItems = document.querySelectorAll('.mirror-item'); // 获取镜像列表
   mirrorItems.forEach((item) => {
     item.addEventListener('click', (e) => {
       let currMirrorId = e.currentTarget.dataset.id; // 获取当前点击项的 ID
       pickMirrorItem = mirrorList.filter((i) => i.id == currMirrorId)[0]; // 过滤出选中的镜像项
       console.log('已选镜像', pickMirrorItem); // 打印已选镜像
+      calculatedAmount(); //计算金额
       currPickMirror.textContent = pickMirrorItem.name;
       // 处理选中状态
       mirrorItems.forEach((i) => {
@@ -682,12 +925,13 @@ const morePeopleList = morePeopleListResult.data || [];
   });
 
   // 人数项选中部分
-  let pickPeopleItem = {}; // 选中的人数列表项
+
   const peopleItems = document.querySelectorAll('.people-item'); // 获取人数列表
   peopleItems.forEach((item) => {
     item.addEventListener('click', (e) => {
       pickPeopleItem = peopleList.filter((i) => i.id == e.currentTarget.dataset.id)[0]; // 过滤出选中的人数项
       console.log('已选人数', pickPeopleItem); // 打印已选人数
+      calculatedAmount(); //计算金额
       currPickPeople.textContent = pickPeopleItem.num + '人';
       // 处理选中状态
       peopleItems.forEach((i) => {
@@ -710,13 +954,6 @@ const morePeopleList = morePeopleListResult.data || [];
   //选择更多套餐
   const selectElement = document.getElementById('teamSizeSelect');
   const morePeopleItem = document.querySelector('.more-people-item');
-  // // 初始化下拉框选项
-  // morePeopleList.forEach((item) => {
-  //   const option = document.createElement('option');
-  //   option.value = item.num;
-  //   option.textContent = `${item.num}人  ${item.price}元/月`;
-  //   selectElement.appendChild(option);
-  // });
 
   // 更新价格显示
   function updatePriceDisplay(selectedNum) {
@@ -745,10 +982,10 @@ const morePeopleList = morePeopleListResult.data || [];
   // 独立IP逻辑
   const upIpAddr = document.getElementById('upIpAddr'); //升级独立IP元素
   const noUpIpAddr = document.getElementById('noUpIpAddr'); //不升级独立IP元素
-  let isUpIp = false;
+
   // 点击升级独立IP
   upIpAddr.addEventListener('click', function (e) {
-    isUpIp = true;
+    isUpIp = 1;
     console.log('升级独立IP', isUpIp);
     upIpAddr.classList.add('selected');
     upIpAddr.style.borderStyle = 'solid'; // 设置为 solid
@@ -767,7 +1004,7 @@ const morePeopleList = morePeopleListResult.data || [];
   });
 
   noUpIpAddr.addEventListener('click', function (e) {
-    isUpIp = false;
+    isUpIp = 2;
     console.log('不升级独立IP', isUpIp);
     noUpIpAddr.classList.add('selected');
     noUpIpAddr.style.borderStyle = 'solid'; // 设置为 solid
@@ -783,18 +1020,6 @@ const morePeopleList = morePeopleListResult.data || [];
       targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
-  // document.querySelector('.custom-select').addEventListener('click', function () {
-  //   this.classList.toggle('open'); // 切换显示/隐藏选项
-  //   document.querySelector('.options-list').style.display = 'block'
-  // });
-
-  // // 为每个选项添加点击事件，更新显示的选中项
-  // document.querySelectorAll('.option-item').forEach(function (item) {
-  //   item.addEventListener('click', function () {
-  //     document.querySelector('#moreSelete').textContent = this.textContent;
-  //     document.querySelector('.options-list').style.display = 'none' // 选择后关闭下拉框
-  //   });
-  // });
   // 获取下拉框和选项列表
   const customSelect = document.querySelector('.custom-select');
   const optionsList = document.querySelector('.options-list');
@@ -812,9 +1037,27 @@ const morePeopleList = morePeopleListResult.data || [];
     // 确保点击的是选项项（li）
     const target = e.target.closest('.option-item'); // 确保点击文字或其他部分都能获取到对应的 li
     if (target) {
+      console.log(target.dataset.id);
+      pickPeopleItem = morePeopleList.filter((i) => i.id == target.dataset.id)[0]; // 过滤出选中的人数项
+      console.log('已选更多套餐人数', pickPeopleItem); // 打印已选人数
+      calculatedAmount(); //计算金额
+      currPickPeople.textContent = pickPeopleItem.num + '人';
       selectedOption.textContent = `${target.dataset.num}人 - ${target.dataset.price}元/月`; // 更新选择内容
       optionsList.style.display = 'none'; // 关闭下拉框
       customSelect.classList.remove('open'); // 移除打开样式
+      const targetSection = document.querySelector('#section4');
+      morePeopleItem.classList.add('selected');
+      morePeopleItem.style.borderColor = 'transparent'; // 设置透明的边框颜色
+      morePeopleItem.style.borderImage = 'linear-gradient(to right, #40C6FF 0%, #1C80EB 100%) 1'; // 设置渐变边框
+      peopleItems.forEach((i) => {
+        i.classList.remove('selected');
+        i.style.borderColor = '#B0A29E';
+        i.style.borderImage = 'none'; // 移除之前的渐变边框
+      });
+
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
   });
 
@@ -825,10 +1068,260 @@ const morePeopleList = morePeopleListResult.data || [];
       customSelect.classList.remove('open');
     }
   });
+
+  document.getElementById('verifPpromoCode').addEventListener('click', function () {
+    // 获取输入框的值
+    const promoCodeValue = document.getElementById('promoCode').value.trim();
+    console.log(promoCodeValue);
+    // 简单验证：检查输入框是否为空
+    if (promoCodeValue == '') {
+      showMessage({
+        msg: '优惠码不能为空',
+        duration: 3000,
+        type: 'warning',
+      });
+      return;
+    }
+
+    const myHeaders = new Headers();
+    myHeaders.append('User-Agent', 'Apifox/1.0.0 (https://apifox.com)');
+    myHeaders.append('Content-Type', 'application/json');
+    myHeaders.append('Accept', '*/*');
+    myHeaders.append('Host', 'apifoxmock.com');
+    myHeaders.append('Connection', 'keep-alive');
+
+    const raw = JSON.stringify({
+      promoCode: promoCodeValue,
+    });
+
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+    };
+
+    fetch('https://apifoxmock.com/m1/5804244-5489264-default/verifPpromoCode', requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        console.log(JSON.parse(result));
+        const { code, msg, derate } = JSON.parse(result);
+        if (code == 200) {
+          showMessage({
+            msg: msg,
+            duration: 3000,
+            type: 'success',
+          });
+          deratePrice = derate;
+        } else {
+          showMessage({
+            msg: msg + ',已清空无效优惠码',
+            duration: 3000,
+            type: 'error',
+          });
+          deratePrice = 0;
+          document.getElementById('promoCode').value = '';
+        }
+        calculatedAmount(); //计算金额
+      })
+      .catch((error) => console.log('error', error));
+  });
+
+  // 获取相关元素
+  const dropdown = document.querySelector('.dropdown');
+  const dropdownMenu = document.getElementById('dropdownMenu');
+  const selectedPeriod = document.getElementById('selectedPeriod');
+
+  // 监听下拉框点击
+  dropdown.addEventListener('click', (event) => {
+    // 阻止事件冒泡，防止点击其他地方时关闭菜单
+    event.stopPropagation();
+    // 切换下拉菜单的显示状态
+    if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
+      dropdownMenu.style.display = 'block';
+      // 使用 Tailwind 的过渡动画
+      setTimeout(() => {
+        dropdownMenu.classList.remove('opacity-0', 'scale-95');
+        dropdownMenu.classList.add('opacity-100', 'scale-100');
+      }, 10); // 延迟应用过渡效果
+    } else {
+      // 隐藏下拉菜单并恢复初始状态
+      dropdownMenu.classList.remove('opacity-100', 'scale-100');
+      dropdownMenu.classList.add('opacity-0', 'scale-95');
+      setTimeout(() => {
+        dropdownMenu.style.display = 'none';
+      }, 300); // 与动画时长一致，确保在过渡后隐藏
+    }
+  });
+
+  // 监听每个下拉选项的点击
+  const items = document.querySelectorAll('.dropdown-item');
+  items.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      // 更新选择的周期
+      console.log(e.target.dataset.cycle);
+      currPickCycle = e.target.dataset.cycle;
+      selectedPeriod.textContent = e.target.textContent;
+      console.log(currPickCycle, '已选周期');
+      calculatedAmount(); //计算金额
+      // 隐藏下拉菜单
+      dropdownMenu.classList.remove('opacity-100', 'scale-100');
+      dropdownMenu.classList.add('opacity-0', 'scale-95');
+      setTimeout(() => {
+        dropdownMenu.style.display = 'none';
+      }, 300); // 与动画时长一致，确保在过渡后隐藏
+    });
+  });
+
+  // 点击其他区域时隐藏下拉菜单
+  document.addEventListener('click', () => {
+    dropdownMenu.classList.remove('opacity-100', 'scale-100');
+    dropdownMenu.classList.add('opacity-0', 'scale-95');
+    setTimeout(() => {
+      dropdownMenu.style.display = 'none';
+    }, 300); // 与动画时长一致，确保在过渡后隐藏
+  });
+  // 计算金额的方法
+  function calculatedAmount() {
+    // 打印各项数据
+    console.log(pickGameItem, '游戏');
+    console.log(pickMirrorItem, '镜像');
+    console.log(pickPeopleItem, '人数');
+
+    const payAmount = document.querySelector('#payAmount');
+    let amount = 0;
+
+    // 处理可能不存在的值，若不存在则默认为0
+    const gamePrice = pickGameItem?.price || 0;
+    const mirrorPrice = pickMirrorItem?.price || 0;
+    const peoplePrice = pickPeopleItem?.price || 0;
+
+    // 计算金额
+    amount = (gamePrice + mirrorPrice + peoplePrice) * Number(currPickCycle) - deratePrice;
+
+    // 更新支付金额
+    payAmount.textContent = amount;
+  }
+  //点击支付按钮
+
+  document.querySelector('#paymentBtn').addEventListener('click', function () {
+    // 点击按钮时的操作
+    // console.log('支付按钮被点击了');
+    // 在这里添加支付逻辑
+    if (!pickGameItem.id) {
+      return showMessage({
+        msg: '请选择要开服的游戏',
+        duration: 3000,
+        type: 'warning',
+      });
+    }
+    if (!pickMirrorItem.id) {
+      return showMessage({
+        msg: '请选择要开服的游戏的镜像',
+        duration: 3000,
+        type: 'warning',
+      });
+    }
+    if (!pickPeopleItem.id) {
+      return showMessage({
+        msg: '请选择要开服的游戏的人数',
+        duration: 3000,
+        type: 'warning',
+      });
+    }
+    if (isUpIp == 0) {
+      return showMessage({
+        msg: '请选择NAT或升级独立IP模式',
+        duration: 3000,
+        type: 'warning',
+      });
+    }
+    if (!paymentType) {
+      return showMessage({
+        msg: '请选择您的支付方式',
+        duration: 3000,
+        type: 'warning',
+      });
+    }
+    if (paymentType == 'wxPay') {
+      showMessage({
+        msg: '将使用微信支付进行支付。。。',
+        duration: 3000,
+        type: 'success',
+      });
+    }
+    if (paymentType == 'aliPay') {
+      showMessage({
+        msg: '将使用支付宝支付进行支付。。。',
+        duration: 3000,
+        type: 'success',
+      });
+    }
+    if (paymentType == 'balancePay') {
+      showMessage({
+        msg: '将使用余额支付进行支付。。。',
+        duration: 3000,
+        type: 'success',
+      });
+    }
+  });
 </script>
 
 <style>
-  /* 样式调整 */
+  /* .menu::before {
+  content: "";
+  position: absolute;
+  top: -5vw;  
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5vw solid transparent;
+  border-right: 5vw solid transparent;
+  border-bottom: 5vw solid rgba(0, 0, 0, 0.4); 
+} */
+  .menu::before {
+    content: '';
+    position: absolute;
+    top: -1.8vw; /* 伪元素偏移的距离 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10vw; /* 设置矩形的宽度 */
+    height: 2vw; /* 设置矩形的高度 */
+    background-color: rgba(0, 0, 0, 0); /* 菜单下方的矩形背景颜色 */
+  }
+
+  /* 选择周期下拉样式 */
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%; /* 保证下拉菜单位于下方 */
+    left: 0; /* 确保下拉菜单与父元素对齐 */
+    width: 100%; /* 使下拉菜单宽度与父元素相同 */
+    display: none; /* 默认隐藏 */
+    border-radius: 0.2vw;
+  }
+
+  /* 下拉项样式 */
+  .dropdown-item {
+    padding: 0.5vw;
+    font-size: 0.833vw;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .dropdown-item:hover {
+    background-color: #61504e;
+  }
+
+  /* 选择支付方式样式 */
+  .selectPay {
+    border-radius: 0.26vw;
+    background: rgba(42, 130, 228, 0.1);
+    border: 0.052vw solid rgba(42, 130, 228, 1);
+  }
+
   .custom-select-wrapper {
     position: relative;
     display: inline-block;
@@ -901,8 +1394,8 @@ const morePeopleList = morePeopleListResult.data || [];
     display: flex;
   }
   .control-btn:hover {
-    background-color: #fff;
-    border: 0.26vw solid #ffffff30;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 0.26vw;
   }
   .card-stack {
     position: relative;
@@ -954,5 +1447,43 @@ const morePeopleList = morePeopleListResult.data || [];
 
   .rotate-add-icon:not(:hover) {
     transform: rotate(-90deg); /* 离开时逆时针旋转回原位 */
+  }
+  .message {
+    top: 10px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px); /* 使消息水平居中 */
+    opacity: 0;
+    transition:
+      transform 0.3s ease-out,
+      opacity 0.3s ease-out;
+    max-width: 90%; /* 限制最大宽度 */
+    z-index: 99999;
+  }
+
+  .message.show {
+    transform: translateX(-50%) translateY(0); /* 显示时动画效果 */
+    opacity: 1;
+  }
+
+  #message-container {
+    top: 20px; /* 从顶部开始 */
+    width: 100%; /* 容器宽度100% */
+    z-index: 9999; /* 确保在最上层 */
+  }
+  #success-message svg {
+    fill: green;
+  }
+
+  #info-message svg {
+    fill: blue;
+  }
+
+  #warning-message svg {
+    fill: yellow;
+  }
+
+  #error-message svg {
+    fill: red;
   }
 </style>
