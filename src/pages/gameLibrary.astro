@@ -341,18 +341,27 @@ const morePeopleList = morePeopleListResult.data || [];
                 </div>
                 <div class="text-[#FF8D1A]" style="font-size: 0.73vw;">
                   <div class="select-container">
-                    <!-- <select class="custom-select" id="teamSizeSelect">
-                      <option value="" disabled selected>组队人数</option>
-                    </select> -->
-                    <div class="custom-select-wrapper" ">
+                    <div class="custom-select-wrapper">
                       <div class="custom-select" id="teamSizeSelect">
-                        <span class="selected-option" style="border-bottom: 0.052vw solid #2c2c2c;">组队人数</span>
+                        <div
+                          class="selected-option flex justify-between items-center"
+                          style="border-bottom: 0.052vw solid #363332;"
+                        >
+                          <div class="text-[#C9C9C9]" style="font-size:0.729vw" id="moreSelete">组队人数</div>
+                          <img src="/assets/images/下箭头.svg" alt="" class="w-[0.625vw] h-[0.625vw]" />
+                        </div>
                         <ul class="options-list">
                           {
                             morePeopleList?.map((more) => (
-                              <li class="option-item" key={more.num}>
-                                <span>{more.num}人</span>
-                                <span>{more.price}元/月</span>
+                              <li
+                                class="option-item"
+                                key={more.num}
+                                data-num={more.num}
+                                data-price={more.price}
+                                data-id={more.id}
+                              >
+                                <span class="text-[#ffffff]">{more.num}人</span>
+                                <span class="text-[#FF8D1A]">{more.price}元/月</span>
                               </li>
                             ))
                           }
@@ -774,16 +783,47 @@ const morePeopleList = morePeopleListResult.data || [];
       targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
-  document.querySelector('.custom-select').addEventListener('click', function () {
-    this.classList.toggle('open'); // 切换显示/隐藏选项
+  // document.querySelector('.custom-select').addEventListener('click', function () {
+  //   this.classList.toggle('open'); // 切换显示/隐藏选项
+  //   document.querySelector('.options-list').style.display = 'block'
+  // });
+
+  // // 为每个选项添加点击事件，更新显示的选中项
+  // document.querySelectorAll('.option-item').forEach(function (item) {
+  //   item.addEventListener('click', function () {
+  //     document.querySelector('#moreSelete').textContent = this.textContent;
+  //     document.querySelector('.options-list').style.display = 'none' // 选择后关闭下拉框
+  //   });
+  // });
+  // 获取下拉框和选项列表
+  const customSelect = document.querySelector('.custom-select');
+  const optionsList = document.querySelector('.options-list');
+  const selectedOption = document.querySelector('#moreSelete');
+
+  // 切换显示/隐藏下拉菜单
+  customSelect.addEventListener('click', function (e) {
+    e.stopPropagation(); // 阻止事件冒泡，防止触发外部点击事件
+    this.classList.toggle('open');
+    optionsList.style.display = optionsList.style.display === 'block' ? 'none' : 'block';
   });
 
-  // 为每个选项添加点击事件，更新显示的选中项
-  document.querySelectorAll('.option-item').forEach(function (item) {
-    item.addEventListener('click', function () {
-      document.querySelector('.selected-option').textContent = this.textContent;
-      document.querySelector('.custom-select').classList.remove('open'); // 选择后关闭下拉框
-    });
+  // 使用事件委托绑定点击选项事件
+  optionsList.addEventListener('click', function (e) {
+    // 确保点击的是选项项（li）
+    const target = e.target.closest('.option-item'); // 确保点击文字或其他部分都能获取到对应的 li
+    if (target) {
+      selectedOption.textContent = `${target.dataset.num}人 - ${target.dataset.price}元/月`; // 更新选择内容
+      optionsList.style.display = 'none'; // 关闭下拉框
+      customSelect.classList.remove('open'); // 移除打开样式
+    }
+  });
+
+  // 如果点击下拉外部区域关闭下拉框
+  document.addEventListener('click', function (e) {
+    if (!customSelect.contains(e.target)) {
+      optionsList.style.display = 'none';
+      customSelect.classList.remove('open');
+    }
   });
 </script>
 
@@ -799,12 +839,23 @@ const morePeopleList = morePeopleListResult.data || [];
     position: relative;
     padding: 10px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 0.208vw;
     z-index: 99999;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    min-width: 5.2vw;
+    padding: 0.2vw 0vw;
+    border-radius: 0.26vw;
+    background-color: #ffffff00;
+    cursor: pointer;
+    font-size: 0.73vw;
+    color: #fff;
+    width: fit-content;
   }
 
   .selected-option {
-    display: block;
+    display: flex;
     border: none;
   }
 
@@ -815,12 +866,11 @@ const morePeopleList = morePeopleListResult.data || [];
     top: 100%;
     left: 0;
     background-color: #2c2c2c;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
     list-style: none;
     padding: 0;
     margin: 0;
-    border-radius: 4px;
+    border-radius: 0.208vw;
   }
 
   .option-item {
@@ -828,6 +878,10 @@ const morePeopleList = morePeopleListResult.data || [];
     padding: 0.52vw;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 0.625vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .option-item:hover {
@@ -875,34 +929,6 @@ const morePeopleList = morePeopleListResult.data || [];
   .select-container {
     position: relative;
     width: fit-content;
-  }
-
-  .custom-select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 5.2vw;
-    padding: 0.2vw 0.5vw;
-    border-radius: 0.26vw;
-    background-color: #ffffff00;
-    cursor: pointer;
-    font-size: 0.73vw;
-    color: #fff;
-    border-bottom: 1px solid #363332;
-  }
-
-  .custom-select:focus {
-    outline: none;
-    /* box-shadow: 0 0 0.5vw rgba(64, 198, 255, 0.5); */
-  }
-
-  /* 自定义下拉箭头 */
-  .custom-select::-ms-expand {
-    display: none;
-  }
-
-  .custom-select {
-    position: relative;
   }
 
   /* 隐藏滚动条 */
