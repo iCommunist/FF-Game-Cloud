@@ -48,7 +48,8 @@ console.log('封面', coverVideo, centerTxt);
           <div class="ff-logo cursor-pointer">
             <img src="/assets/images/飞鱼游戏云logo.svg" class="w-[6.77vw] h-[1.444vw] ml-[7.92vw]" alt="" srcset="" />
           </div>
-          <div class="cursor-pointer" id="login-img">
+          <!-- 原id:login-img -->
+          <div class="cursor-pointer" id="my-user-icon">
             <img src="/assets/images/user-icon.svg" class="w-[1.406vw] h-[1.406vw] mr-[7.92vw]" alt="" srcset="" />
           </div>
         </div>
@@ -250,7 +251,7 @@ console.log('封面', coverVideo, centerTxt);
                   type="text"
                   autocomplete="off"
                   placeholder="请输入验证码"
-                  id="register-username"
+                  id="register-code"
                   style="border-radius: 0.26vw;"
                   class="w-[10.02vw] h-[3.02vw] bg-transparent text-[1.04vw] text-white px-[0.1vw] rounded-l-lg focus:outline-none"
                 />
@@ -476,6 +477,255 @@ console.log('封面', coverVideo, centerTxt);
         <p class="text-xs font-semibold mx-[1vw]">Error - Something went wrong.</p>
       </div>
     </div>
+
+    <!-- 更新游戏弹窗 -->
+    <div
+      id="update-game-dailog"
+      class="w-[28.645vw] h-[15.625vw] fixed top-[3.953vw] left-[50%] -translate-x-1/2 hidden"
+      style="border-radius: 0.416vw; background-color: rgba(36, 36, 36, 1);"
+    >
+      <div class="mt-[1.56vw] ml-[2.5vw] text-white" style="font-size: 0.729vw;">更新游戏</div>
+      <div
+        class="mt-[1.041vw] ml-[2.395vw] w-[23.64vw] h-[5.833vw] pt-[1.041vw] flex"
+        style="background-color: rgba(227, 129, 68, 0.1);"
+      >
+        <div class="w-[2.345vw] h-[100%] flex justify-center">
+          <img src="/assets/images/感叹号02.svg" alt="" class="h-[0.833vw] w-[0.833vw]" srcset="" />
+        </div>
+        <div class="w-[19.635vw] h-[100%] text-[#BDAFAF]" style="font-size: 0.625vw;">
+          <p style="line-height: 0.885vw;">
+            1.此操作将更新游戏服务端版本。升级操作会导致服务短暂中断，建议您提前导出存档进行备份；
+          </p>
+          <p style="line-height: 0.885vw;">
+            2.更新游戏通常需要5～10分钟，如果受到网络延时影响可能需要更长时间，请您耐心等待。
+          </p>
+        </div>
+      </div>
+      <div class="mt-[0.989vw] ml-[2.395vw] text-white" style="font-size: 0.52vw;">确定更新游戏服务端？</div>
+      <div class="mt-[1.041vw] flex justify-center">
+        <div
+          class="w-[3.541vw] h-[1.875vw] flex justify-center items-center mr-[2.864vw] cursor-pointer"
+          style="background: linear-gradient(90deg, #2A82E4 0%, #3344ED 100%); font-size: 0.625vw;"
+          id="confirmUpdateGame"
+        >
+          确定
+        </div>
+        <div
+          class="w-[3.541vw] h-[1.875vw] flex justify-center items-center cursor-pointer"
+          style="background: rgba(255, 255, 255, 0); font-size: 0.625vw; border: 0.052vw solid rgba(255, 255, 255, 0.5);"
+          id="cancelUpdateGame"
+        >
+          取消
+        </div>
+      </div>
+    </div>
+
+    <!-- 打开更新游戏弹窗的按钮 -->
+    <button id="openDialogUpdateGameBtn" class="fixed top-[-10vw]">打开弹窗</button>
+    <!-- 实名认证弹窗 -->
+    <!-- 实名认证弹窗 -->
+    <div
+      id="real-name-dailog"
+      class="w-[26.041vw] h-[15.625vw] fixed top-[3.953vw] left-[50%] -translate-x-1/2 hidden"
+      style="border-radius: 0.416vw; background-color: rgba(36, 36, 36, 1);"
+    >
+      <div
+        class="h-[2.395vw] pt-[0.677vw] ml-[1.25vw]"
+        style="font-size: 0.729vw;font-weight: 500;line-height: normal;letter-spacing: 0.1em;color: #FFFFFF;"
+      >
+        实名认证
+      </div>
+      <div style="width: inherit;border-top: 0.025vw solid rgba(255, 255, 255, 0.8);">
+        <div class="mx-auto mt-[0.729vw] text-center" style="font-size: 0.625vw;color: rgba(255, 255, 255, 0.8);">
+          为响应国家监管要求，使用本平台业务需填写实名认证
+        </div>
+      </div>
+      <div class="w-[18.437vw] h-[4.687vw] mx-auto flex flex-col justify-end items-end mt-[1.875vw]">
+        <div class="w-[18.437vw] h-[1.77vw] flex">
+          <div class="w-[3.385vw] h-[1.77vw] text-end pr-[0.52vw]" style="font-size: 0.625vw;line-height: 1.77vw">
+            姓名：
+          </div>
+          <input
+            id="real-name"
+            type="text"
+            autocomplete="off"
+            placeholder="请输入姓名"
+            class="w-[14.53vw] focus:outline-none pl-[1.041vw]"
+            style="border:0.052vw solid rgba(255, 255, 255, 0.5);background:transparent;font-size: 0.52vw;color:rgba(255, 255, 255, 0.8);"
+          />
+        </div>
+        <div class="w-[18.437vw] h-[1.77vw] flex mt-[0.989vw]">
+          <div class="w-[3.385vw] h-[1.77vw]" style="font-size: 0.625vw;line-height: 1.77vw;">身份证号：</div>
+          <input
+            id="real-id-code"
+            type="text"
+            autocomplete="off"
+            placeholder="请输入身份证号"
+            class="w-[14.53vw] focus:outline-none pl-[1.041vw]"
+            style="border:0.052vw solid rgba(255, 255, 255, 0.5);background:transparent;font-size: 0.52vw;color:rgba(255, 255, 255, 0.8);"
+          />
+        </div>
+      </div>
+      <div
+        id="submit-real-name"
+        class="w-[7.291vw] h-[2.083vw] mx-auto flex justify-center items-center mt-[1.875vw] cursor-pointer"
+        style="font-size: 0.729vw;background: linear-gradient(90deg, #2A82E4 0%, #3344ED 100%);font-weight: 500;line-height: normal;letter-spacing: 0.1em;"
+      >
+        提交
+      </div>
+    </div>
+
+    <!-- 打开实名认证 -->
+    <button id="openDialogrealName" class="fixed top-[-10vw]">打开实名认证</button>
+    <!-- 充值中心弹层 -->
+    <div class="fixed h-[28.072vw] w-[39.375vw] top-[5.364vw] left-[50%] -translate-x-1/2  hidden">
+      <div
+        class="w-[36.458vw] h-[28.072vw] absolute mx-[1.458vw]"
+        style="z-index:98; border-radius: 0.416vw;background: linear-gradient(94deg, #8D8D8D -7%, #242424 94%);"
+      >
+        <div class="flex justify-between items-center w-[36.458vw] h-[2.968vw]">
+          <div class="w-[10vw] flex items-center ml-[1.041vw]">
+            <img
+              src="/assets/images/充值中心头像.png"
+              alt=""
+              srcset=""
+              class="w-[1.77vw] h-[1.77vw] mr-[0.625vw]"
+            /><div
+              style="font-size: 0.833vw;font-weight: 500;line-height: 1.041vw;text-align: right;letter-spacing: 0px;
+              color: rgba(255,255,255, 0.8);"
+            >
+              1316****697
+            </div>
+          </div>
+          <div class="w-[10vw] flex items-center justify-end mr-[2.864vw]">
+            <img src="/assets/images/充值中心金币.svg" alt="" srcset="" class="w-[1.041vw] h-[1.041vw] mr-[0.52vw]" />
+            <div
+              style="display: font-family: Source Han Sans;font-size: 0.833vw;font-weight: 500;line-height: 1.041vw;letter-spacing: 0px;color: rgba(255, 255, 255, 0.8);"
+            >
+              0.00
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="w-[39.375vw] h-[25.104vw] absolute top-[2.968vw]"
+        style="z-index: 99;background: #242424; border-radius: 0.416vw;"
+      >
+        <div
+          class="mt-[1.145vw] ml-[1.458vw] mb-[1.51vw]"
+          style="font-family: Source Han Sans;font-size: 0.9375vw;font-weight: 500;line-height: 1.041vw;letter-spacing: 0px;color: #FFFFFF;"
+        >
+          充值中心
+        </div>
+        <div class="ml-[3.281vw] flex justify-between">
+          <div class="w-[25vw] h-[16.145vw] grid grid-cols-3 gap-2">
+            <div class="recharge-item w-[7.29vw] h-[7.29vw]">
+              <img
+                src="/assets/images/充值中心金币.svg"
+                alt=""
+                srcset=""
+                class="w-[1.041vw] h-[1.041vw] mb-[0.416vw]"
+              />
+              <div>10元</div>
+            </div>
+            <div class="recharge-item selected-recharge w-[7.29vw] h-[7.29vw]">
+              <img
+                src="/assets/images/充值中心金币.svg"
+                alt=""
+                srcset=""
+                class="w-[1.041vw] h-[1.041vw] mb-[0.416vw]"
+              />
+              <div>50元</div>
+            </div>
+            <div class="recharge-item w-[7.29vw] h-[7.29vw]">
+              <img
+                src="/assets/images/充值中心金币.svg"
+                alt=""
+                srcset=""
+                class="w-[1.041vw] h-[1.041vw] mb-[0.416vw]"
+              />
+              <div>100元</div>
+            </div>
+            <div class="recharge-item w-[7.29vw] h-[7.29vw]">
+              <img
+                src="/assets/images/充值中心金币.svg"
+                alt=""
+                srcset=""
+                class="w-[1.041vw] h-[1.041vw] mb-[0.416vw]"
+              />
+              <div>200元</div>
+            </div>
+            <div class="recharge-item w-[7.29vw] h-[7.29vw]">
+              <img
+                src="/assets/images/充值中心金币.svg"
+                alt=""
+                srcset=""
+                class="w-[1.041vw] h-[1.041vw] mb-[0.416vw]"
+              />
+              <div>500元</div>
+            </div>
+            <div class="recharge-item w-[7.29vw] h-[7.29vw]">
+              <img
+                src="/assets/images/充值中心金币.svg"
+                alt=""
+                srcset=""
+                class="w-[1.041vw] h-[1.041vw] mb-[0.416vw]"
+              />
+              <div class="w-[3.645vw] h-[1.041vw]">
+                <input
+                  type="number"
+                  autocomplete="off"
+                  class="w-[3.645vw] h-[1.041vw] focus:outline-none no-spin"
+                  style="background:transparent;border-bottom:0.052vw solid rgba(255, 255, 255, 0.5);"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="w-[11.093vw] h-[16.145vw]">
+            <div class="flex items-center mt-[1.927vw] mb-[0.572vw] justify-center">
+              <span class="mr-[1.041vw]" style="font-size: 0.9375vw;">扫码支付</span><span
+                class="text-[#FBBF65]"
+                style="font-size:1.145vw;">¥50</span
+              >
+            </div>
+            <div
+              class="flex items-center mt-[0vw] mb-[0vw] justify-center"
+              style="font-size: 0.52vw;font-weight: normal;line-height: 1.04vw;letter-spacing: 0px;color: rgba(255, 255, 255, 0.8);"
+            >
+              请使用微信或支付宝扫码支付
+            </div>
+            <div
+              class="mt-[0.52vw] w-[5.729vw] h-[5.729vw] mx-auto cursor-pointer"
+              style="border-radius: 0.416vw;background: rgba(255, 255, 255, 0.8);"
+            >
+            </div>
+            <div
+              class="flex items-center mt-[0.52vw] mb-[0vw] justify-center"
+              style="font-size: 0.52vw;font-weight: normal;line-height: 1.04vw;letter-spacing: 0px;color: rgba(255, 255, 255, 0.8);"
+            >
+              购买代表您已阅读并同意
+            </div>
+            <div
+              class="flex items-center mt-[0vw] mb-[0vw] justify-center cursor-pointer hover:underline"
+              style="font-size: 0.52vw;font-weight: normal;line-height: 1.04vw;letter-spacing: 0px;color: rgba(255, 255, 255, 1);"
+            >
+              《服务协议》
+            </div>
+          </div>
+        </div>
+        <div
+          class="ml-[3.281vw] mt-[2.03vw]"
+          style="color:rgba(255, 255, 255, 0.8);font-size: 0.52vw;line-height: 1.04vw;"
+        >
+          <p>温馨提示</p>
+          <p>
+            1.充值余额为平台的消费使用，可用于购买平台增值服务；2.余额充值后正常情况下不可退换，请您谨慎充值；3.站内扣费优先使用余额付费
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- 打开充值中心 -->
+    <button id="openDialogvoucherCenter" class="fixed top-[-10vw]">打开充值中心</button>
   </div>
 </section>
 <script>
@@ -501,8 +751,6 @@ console.log('封面', coverVideo, centerTxt);
       }
     });
   });
-</script>
-<script>
   let debounceTimeout; // 用来存储防抖的计时器
 
   // 防抖函数
@@ -593,6 +841,73 @@ console.log('封面', coverVideo, centerTxt);
       }, 300); // 等待动画完成
     }, duration);
   }
+
+  //  打开实名认证弹窗逻辑
+  // 获取 DOM 元素
+  const realNameDialog = document.getElementById('real-name-dailog');
+  const openDialogrealName = document.getElementById('openDialogrealName');
+  const submitRealName = document.getElementById('submit-real-name');
+  const realNameInput = document.getElementById('real-name');
+  const realIdCodeInput = document.getElementById('real-id-code');
+  const myUserIcon = document.getElementById('my-user-icon')
+  // 打开实名认证弹窗
+  openDialogrealName?.addEventListener('click', () => {
+    realNameDialog.classList.remove('hidden'); // 移除 hidden 类，显示弹窗
+    realNameDialog.classList.add('transition-all', 'duration-500', 'ease-in-out'); // 添加过渡效果
+  });
+
+  // 提交实名认证
+  submitRealName.addEventListener('click', () => {
+    const realName = realNameInput.value; // 获取姓名输入框的值
+    const realIdCode = realIdCodeInput.value; // 获取身份证号输入框的值
+
+    // 打印输入框内容
+    console.log('姓名:', realName);
+    console.log('身份证号:', realIdCode);
+    if (!realName) {
+      return showMessage({
+        msg: `请输入姓名`,
+        duration: 3000,
+        type: 'warning',
+      });
+    }
+    if (!realIdCode) {
+      return showMessage({
+        msg: `请输入身份证号`,
+        duration: 3000,
+        type: 'warning',
+      });
+    }
+    showMessage({
+      msg: `认证成功`,
+      duration: 3000,
+      type: 'warning',
+    });
+    // 关闭弹窗
+    realNameDialog.classList.add('hidden'); // 隐藏弹窗
+  });
+
+  // 打开更新游戏弹窗逻辑
+  const updateGameDialog = document.getElementById('update-game-dailog');
+  const openDialogUpdateGameBtn = document.getElementById('openDialogUpdateGameBtn');
+  const confirmUpdateGame = document.getElementById('confirmUpdateGame');
+  const cancelUpdateGame = document.getElementById('cancelUpdateGame');
+
+  // 打开弹窗的逻辑
+  openDialogUpdateGameBtn?.addEventListener('click', () => {
+    updateGameDialog.classList.remove('hidden'); // 移除 hidden 类，显示弹窗
+  });
+
+  // 点击取消按钮关闭弹窗
+  cancelUpdateGame.addEventListener('click', () => {
+    updateGameDialog.classList.add('hidden'); // 添加 hidden 类，隐藏弹窗
+  });
+
+  // 点击确定按钮关闭弹窗并执行相应操作
+  confirmUpdateGame.addEventListener('click', () => {
+    console.log('123'); // 这里可以执行你的确定按钮的逻辑
+    updateGameDialog.classList.add('hidden'); // 添加 hidden 类，隐藏弹窗
+  });
 
   // 获取元素
   document.addEventListener('DOMContentLoaded', () => {
@@ -863,6 +1178,11 @@ console.log('封面', coverVideo, centerTxt);
       toggleIcon.src = '/assets/images/eyes1.svg'; // 切换为眼睛图标1（隐藏密码）
     }
   });
+
+  //点击首页的user图标
+  myUserIcon.addEventListener('click', function () {
+    console.log('点击首页的user图标')
+  })
 </script>
 <style>
   html,
@@ -870,10 +1190,46 @@ console.log('封面', coverVideo, centerTxt);
     overflow: hidden;
     height: 100%;
   }
+  /* 去除加减按钮 */
+  .no-spin::-webkit-outer-spin-button,
+  .no-spin::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
+  .no-spin {
+    -moz-appearance: textfield; /* Firefox 去除加减按钮 */
+  }
   /* 隐藏所有滚动条 */
   ::-webkit-scrollbar {
     display: none;
+  }
+
+  /* 充值中心弹层样式 */
+  .selected-recharge {
+    background: rgba(251, 191, 101, 0.3) !important;
+    border: 0.104px solid #fbbf65;
+    color: #fbbf65 !important;
+  }
+
+  .recharge-item {
+    border-radius: 0.415vw;
+    opacity: 1;
+    background: #333333;
+    color: #fff;
+    font-family: Source Han Sans;
+    font-size: 1.145vw;
+    font-weight: 500;
+    line-height: 1.041vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .recharge-item:hover {
+    border: 0.104px solid #fbbf65;
   }
 
   .placeholder-sm::placeholder {
